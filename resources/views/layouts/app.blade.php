@@ -21,7 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('css')
 </head>
-<body class="bg-login">
+<body >
     <div id="app">
         @yield('body')
     </div>
