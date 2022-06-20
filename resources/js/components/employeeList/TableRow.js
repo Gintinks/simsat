@@ -14,6 +14,7 @@ class TableRow extends Component {
                 <th>{ this.props.data.id }</th>
                 <td>{ this.props.data.employee_name }</td>
                 <td>{ this.props.data.salary }</td>
+                <td>{ this.props.data.salary }</td>
                 <td>
                     <TableActionButtons eachRowId={ this.props.data.id }/>
                 </td>

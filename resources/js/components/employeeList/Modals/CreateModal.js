@@ -41,7 +41,7 @@ class CreateModal extends Component {
 
             setTimeout(() => {
                 location.reload();
-            },2500)
+            }, 2500)
         })
     }
 
@@ -56,47 +56,62 @@ class CreateModal extends Component {
                         Add New Employee
                     </button>
                 </div>
-                <div className="modal fade" id="modalCreate"  tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal fade" id="modalCreate" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Employee Details</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Employee Details</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
                                 <form className='form'>
                                     <div className="form-group">
                                         <input type="text"
                                             id="employeeName"
                                             className='form-control mb-3'
-                                            placeholder="Name Here"
+                                            placeholder="Masukkan Nama Disini"
                                             onChange={this.inputEmployeeName}
                                         />
-                                    </div>  
+                                    </div>
 
                                     <div className="form-group">
                                         <input type="text"
                                             id="employeeSalary"
                                             className='form-control mb-3'
-                                            placeholder="Salary Here"
+                                            placeholder="Masukkan Email Disini"
                                             onChange={this.inputEmployeeSalary}
                                         />
-                                    </div>  
-                                </form> 
-                        </div>
+                                    </div>
+
+                                    <div className="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01" onChange={this.inputEmployeeTPS}>Lokasi TPS</label>
+                                            </div>
+                                            <select class="custom-select" id="inputGroupSelect01">
+                                                <option selected>Pilih...</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
                             <div className="modal-footer">
-                            <input type="button"
+                                <input type="button"
                                     value="Save"
                                     className='btn btn-info'
-                                onClick={this.storeEmployeeData}
-                                        />
+                                    onClick={this.storeEmployeeData}
+                                />
 
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                </>
+                </div>
+            </>
         )
     }
 }
