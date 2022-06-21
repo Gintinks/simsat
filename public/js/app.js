@@ -5477,7 +5477,7 @@ var CreateModal = /*#__PURE__*/function (_Component) {
                       type: "text",
                       id: "employeeName",
                       className: "form-control mb-3",
-                      placeholder: "Name Here",
+                      placeholder: "Masukkan Nama Disini",
                       onChange: this.inputEmployeeName
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -5486,8 +5486,38 @@ var CreateModal = /*#__PURE__*/function (_Component) {
                       type: "text",
                       id: "employeeSalary",
                       className: "form-control mb-3",
-                      placeholder: "Salary Here",
+                      placeholder: "Masukkan Email Disini",
                       onChange: this.inputEmployeeSalary
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                    className: "form-group",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                      "class": "input-group mb-3",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                        "class": "input-group-prepend",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+                          "class": "input-group-text",
+                          "for": "inputGroupSelect01",
+                          onChange: this.inputEmployeeTPS,
+                          children: "Lokasi TPS"
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+                        "class": "custom-select",
+                        id: "inputGroupSelect01",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                          selected: true,
+                          children: "Pilih..."
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                          value: "1",
+                          children: "One"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                          value: "2",
+                          children: "Two"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                          value: "3",
+                          children: "Three"
+                        })]
+                      })]
                     })
                   })]
                 })
@@ -5610,7 +5640,7 @@ var DeleteModal = /*#__PURE__*/function (_Component) {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
                 className: "modal-title",
                 id: "exampleModalLabel",
-                children: "Employee Delete"
+                children: "Hapus Akun"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
                 type: "button",
                 className: "btn-close",
@@ -5619,7 +5649,16 @@ var DeleteModal = /*#__PURE__*/function (_Component) {
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
               className: "modal-body",
-              children: "Are you sure, You want to delete this Employee data"
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "text-center",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                  className: "m-0",
+                  children: "Apakah anda yakin ingin menghapus data ini? "
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                  className: "text-danger m-0",
+                  children: "Data tidak dapat dikembalikan setelah dihapus"
+                })]
+              })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "modal-footer",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
@@ -5629,12 +5668,12 @@ var DeleteModal = /*#__PURE__*/function (_Component) {
                 onClick: function onClick() {
                   _this2.deleteEmployeeData(_this2.props.modalId);
                 },
-                children: "Yes"
+                children: "Yakin"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
                 type: "button",
                 className: "btn btn-secondary",
                 "data-bs-dismiss": "modal",
-                children: "Close"
+                children: "Tutup"
               })]
             })]
           })
@@ -6049,25 +6088,29 @@ var Table = /*#__PURE__*/function (_Component) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Modals_CreateModal__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
               className: "card",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
-                className: "table table-hover",
+                className: "table table-hover text-center",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                       scope: "col",
-                      width: "100px",
+                      width: "30px",
                       children: "#"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                       scope: "col",
-                      width: "100px",
-                      children: "Name"
+                      width: "150px",
+                      children: "Nama"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                      scope: "col",
+                      width: "150px",
+                      children: "Email"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                      scope: "col",
+                      width: "50px",
+                      children: "TPS"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                       scope: "col",
                       width: "100px",
-                      children: "Salary"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                      scope: "col",
-                      width: "100px",
-                      children: "Actions"
+                      children: "Aksi"
                     })]
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
@@ -6291,6 +6334,8 @@ var TableRow = /*#__PURE__*/function (_Component) {
           children: this.props.data.id
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
           children: this.props.data.employee_name
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+          children: this.props.data.salary
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
           children: this.props.data.salary
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {

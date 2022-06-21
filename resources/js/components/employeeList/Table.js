@@ -43,13 +43,14 @@ class Table extends Component {
                     <div className="col-md-8">
                     <CreateModal/>
                         <div className="card">
-                        <table className="table table-hover">
+                        <table className="table table-hover text-center">
                             <thead>
                                 <tr>
-                                <th scope="col" width="100px">#</th>
-                                <th scope="col" width="100px">Name</th>
-                                <th scope="col" width="100px">Salary</th>
-                                <th scope="col" width="100px">Actions</th>
+                                <th scope="col" width="30px">#</th>
+                                <th scope="col" width="150px">Nama</th>
+                                <th scope="col" width="150px">Email</th>
+                                <th scope="col" width="50px">TPS</th>
+                                <th scope="col" width="100px">Aksi</th>
                                 </tr>
                             </thead>
                                 <tbody>
