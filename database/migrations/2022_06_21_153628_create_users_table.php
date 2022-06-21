@@ -18,13 +18,12 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('priviliges_id');
             $table->foreign('priviliges_id')->references('id')->on('priviliges');
             $table->string('name');
+            $table->string('tps');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-
-
         });
     }
 
