@@ -10,7 +10,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
+
+Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom'); 
+Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register'); 
+Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
