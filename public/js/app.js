@@ -5388,7 +5388,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 var CreateModal = /*#__PURE__*/function (_Component) {
   _inherits(CreateModal, _Component);
 
@@ -5403,31 +5402,48 @@ var CreateModal = /*#__PURE__*/function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "inputEmployeeName", function (event) {
       _this.setState({
-        employeeName: event.target.value
+        name: event.target.value
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "inputEmployeeSalary", function (event) {
+    _defineProperty(_assertThisInitialized(_this), "inputEmployeeEmail", function (event) {
       _this.setState({
-        employeeSalary: event.target.value
+        email: event.target.value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "inputEmployeePassword", function (event) {
+      _this.setState({
+        password: event.target.value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "inputEmployeeTPS", function (event) {
+      _this.setState({
+        TPS: event.target.value
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "storeEmployeeData", function () {
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('/store/employee/data', {
-        employeeName: _this.state.employeeName,
-        employeeSalary: _this.state.employeeSalary
-      }).then(function () {
-        react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.success("Employee Saved Successfully");
-        setTimeout(function () {
-          location.reload();
-        }, 2500);
-      });
+        name: _this.state.name,
+        email: _this.state.email,
+        password: _this.state.password,
+        priviliges: 1
+      }); // .then(() => {
+      //     toast.success("Employee Saved Successfully");
+      //     setTimeout(() => {
+      //         location.reload();
+      //     }, 2500)
+      // })
     });
 
     _this.state = {
-      employeeName: null,
-      employeeSalary: null
+      name: null,
+      email: null,
+      password: null,
+      priviliges: null,
+      TPS: null
     };
     return _this;
   } // Creating employee name state.
@@ -5436,39 +5452,39 @@ var CreateModal = /*#__PURE__*/function (_Component) {
   _createClass(CreateModal, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "row text-right mb-3 pb-3",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "btn btn-info text-right col-3 offset-md-9",
-            "data-toggle": "modal",
-            "data-target": "#modalCreate",
-            children: "Add New Employee"
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#modalCreate",
+            children: "Tambah Akun Baru"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "modal fade",
+          "class": "modal fade",
           id: "modalCreate",
-          tabIndex: "-1",
+          tabindex: "-1",
           "aria-labelledby": "exampleModalLabel",
           "aria-hidden": "true",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "modal-dialog",
+            "class": "modal-dialog",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-              className: "modal-content",
+              "class": "modal-content",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                className: "modal-header",
+                "class": "modal-header",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
-                  className: "modal-title",
+                  "class": "modal-title",
                   id: "exampleModalLabel",
-                  children: "Employee Details"
+                  children: "Tambah Akun Baru"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
                   type: "button",
-                  className: "btn-close",
+                  "class": "btn-close",
                   "data-bs-dismiss": "modal",
                   "aria-label": "Close"
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                className: "modal-body",
+                "class": "modal-body",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
                   className: "form",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -5484,10 +5500,49 @@ var CreateModal = /*#__PURE__*/function (_Component) {
                     className: "form-group",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                       type: "text",
-                      id: "employeeSalary",
+                      id: "employeeEmail",
                       className: "form-control mb-3",
                       placeholder: "Masukkan Email Disini",
-                      onChange: this.inputEmployeeSalary
+                      onChange: this.inputEmployeeEmail
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                    className: "form-group",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                      type: "text",
+                      id: "employeePassword",
+                      className: "form-control mb-3",
+                      placeholder: "Masukkan Password Disini",
+                      onChange: this.inputEmployeePassword
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                    className: "form-group",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                      "class": "input-group mb-3",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                        "class": "input-group-prepend",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+                          "class": "input-group-text",
+                          "for": "inputGroupSelect01",
+                          onChange: this.inputEmployeeTPS,
+                          children: "Masukkan Role"
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+                        "class": "custom-select",
+                        id: "inputGroupSelect01",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                          selected: true,
+                          children: "Pilih..."
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                          value: "1",
+                          children: "One"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                          value: "2",
+                          children: "Two"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                          value: "3",
+                          children: "Three"
+                        })]
+                      })]
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                     className: "form-group",
@@ -5522,7 +5577,7 @@ var CreateModal = /*#__PURE__*/function (_Component) {
                   })]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                className: "modal-footer",
+                "class": "modal-footer",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                   type: "button",
                   value: "Save",

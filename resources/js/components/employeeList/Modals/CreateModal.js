@@ -9,8 +9,11 @@ class CreateModal extends Component {
         super(props);
 
         this.state = {
-            employeeName: null,
-            employeeSalary: null,
+            name: null,
+            email: null,
+            password: null,
+            priviliges: null,
+            TPS: null,
         }
     }
 
@@ -18,15 +21,27 @@ class CreateModal extends Component {
 
     inputEmployeeName = (event) => {
         this.setState({
-            employeeName: event.target.value,
+            name: event.target.value,
         });
     }
 
     // Creating employee salary state.
 
-    inputEmployeeSalary = (event) => {
+    inputEmployeeEmail = (event) => {
         this.setState({
-            employeeSalary: event.target.value,
+            email: event.target.value,
+        });
+    }
+
+    inputEmployeePassword = (event) => {
+        this.setState({
+            password: event.target.value,
+        });
+    }
+
+    inputEmployeeTPS = (event) => {
+        this.setState({
+            TPS: event.target.value,
         });
     }
 
@@ -34,29 +49,113 @@ class CreateModal extends Component {
 
     storeEmployeeData = () => {
         axios.post('/store/employee/data', {
-            employeeName: this.state.employeeName,
-            employeeSalary: this.state.employeeSalary,
-        }).then(() => {
-            toast.success("Employee Saved Successfully");
-
-            setTimeout(() => {
-                location.reload();
-            }, 2500)
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password,
+            priviliges: 1,
         })
+        // .then(() => {
+        //     toast.success("Employee Saved Successfully");
+
+        //     setTimeout(() => {
+        //         location.reload();
+        //     }, 2500)
+        // })
     }
 
     render() {
         return (
-            <>
+            <div>
                 <div className='row text-right mb-3 pb-3'>
                     <button className='btn btn-info text-right col-3 offset-md-9'
-                        data-toggle="modal"
-                        data-target="#modalCreate"
-                    >
-                        Add New Employee
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalCreate">
+                        Tambah Akun Baru
                     </button>
                 </div>
-                <div className="modal fade" id="modalCreate" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+                <div class="modal fade" id="modalCreate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tambah Akun Baru</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form className='form'>
+                                    <div className="form-group">
+                                        <input type="text"
+                                            id="employeeName"
+                                            className='form-control mb-3'
+                                            placeholder="Masukkan Nama Disini"
+                                            onChange={this.inputEmployeeName}
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <input type="text"
+                                            id="employeeEmail"
+                                            className='form-control mb-3'
+                                            placeholder="Masukkan Email Disini"
+                                            onChange={this.inputEmployeeEmail}
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <input type="text"
+                                            id="employeePassword"
+                                            className='form-control mb-3'
+                                            placeholder="Masukkan Password Disini"
+                                            onChange={this.inputEmployeePassword}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01" onChange={this.inputEmployeeTPS}>Masukkan Role</label>
+                                            </div>
+                                            <select class="custom-select" id="inputGroupSelect01">
+                                                <option selected>Pilih...</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div className="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01" onChange={this.inputEmployeeTPS}>Lokasi TPS</label>
+                                            </div>
+                                            <select class="custom-select" id="inputGroupSelect01">
+                                                <option selected>Pilih...</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button"
+                                    value="Save"
+                                    className='btn btn-info'
+                                    onClick={this.storeEmployeeData}
+                                />
+
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                {/* <div className="modal fade" id="modalCreate" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -110,8 +209,8 @@ class CreateModal extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
-            </>
+                </div> */}
+            </div>
         )
     }
 }

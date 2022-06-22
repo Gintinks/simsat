@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Log;
+use Exception;
 
 class AddUserController extends Controller
 {
@@ -23,20 +25,52 @@ class AddUserController extends Controller
     }
 
     //kirim value form ke sini
+    // public function addUser(Request $request)
+    // {
+    //     $request->validate($request,[
+    //         'name' => 'required',
+    //         'email' => 'required',
+    //         'password' => 'required|min:8',
+    //         'priviliges' => 'required',
+    //     ]);
+    //     $user =  User::create([
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'priviliges_id' => $request->priviliges,
+    //         'password' => $request->password,
+            
+    //     ]);
+    //     return redirect()->route('input route disini')->withSuccess(['success' => 'Berhasi Membuet User']);
+
+    // }
+
     public function addUser(Request $request)
     {
-        $request->validate($request,[
-            'name' => 'required',
-            'password' => 'required|min:8',
-            'priviliges' => 'required',
-        ]);
-        $user =  User::create([
-            'name' => $request->name,
-            'priviliges_id' => $request->priviliges,
-            'password' => $request->password,
-        ]);
-        return redirect()->route('input route disini')->withSuccess(['success' => 'Berhasi Membuet User']);
+        try
+        {
+            $employeeName = $request->get('name');
+            $employeePassword = $request->get('password');
+            $employeeEmail = $request->get('email');
+            $employeePriviliges = $request->get('priviliges');
 
+            User::create([
+                'name'   =>  $employeeName,
+                'password'          =>  $employeePassword,
+                'email'          =>  $employeeEmail,
+                'priviliges_id'          =>  $employeePriviliges
+            ]);
+
+            return response()->json([
+                'employee_name'   =>  $employeeName,
+                'password' =>  $employeePassword,
+                'email'          =>  $employeeEmail,
+                'priviliges_id'          =>  $employeePriviliges
+            ]);
+        }
+        catch(Exception $e)
+        {
+            Log::error($e);
+        }
     }
 
     //masuk ke halaman form update
