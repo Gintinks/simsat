@@ -35,6 +35,7 @@ class SampahController extends Controller
              $beratSampahDiolah = $request->get('beratSampahDiolah');
  
              Sampah::create([
+                'user_id'   =>  $idUser,
                  'jenis_sampah'          =>  $jenisSampah,
                  'berat_sampah'          =>  $beratSampah,
                  'berat_sampah_ke_tpa'          =>  $beratSampahKeTpa,
@@ -42,6 +43,7 @@ class SampahController extends Controller
              ]);
  
              return response()->json([
+                'user_id'   =>  $idUser,
                  'jenis_sampah'          =>  $jenisSampah,
                  'berat_sampah'          =>  $beratSampah,
                  'berat_sampah_ke_tpa'          =>  $beratSampahKeTpa,
