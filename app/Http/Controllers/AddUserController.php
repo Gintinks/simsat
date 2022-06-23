@@ -107,14 +107,15 @@ class AddUserController extends Controller
 
     //pas klik delete ini langsung di eksekusi
     public function destroy($id)
-    {
-        $user = User::findOrFail($id);
-        $user->delete();
-        
-        if ($user) {
-            return redirect()->route('input route disini')->withSuccess(['success' =>'Berhasil menghapus user']);
-        }else{
-            return redirect()->route('input route disini')->withErrors(['errors' =>'Gagal menghapus user']);
+    {   
+        try
+        {
+            $user = User::findOrFail($id);
+            $user->delete();
+        }
+        catch(Exception $e)
+        {
+            Log::error($e);
         }
     }
 
