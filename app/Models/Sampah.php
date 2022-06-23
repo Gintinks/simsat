@@ -11,7 +11,6 @@ class Sampah extends Model
 
     protected $fillable = [
         'id_user',
-        'nama_sampah',
         'jenis_sampah',
         'berat_sampah',
         'berat_sampah_ke_tpa',

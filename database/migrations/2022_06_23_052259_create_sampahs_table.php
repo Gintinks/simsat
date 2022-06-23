@@ -17,7 +17,6 @@ class CreateSampahsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('nama_sampah');
             $table->string('jenis_sampah');
             $table->double('berat_sampah');
             $table->double('berat_sampah_ke_tpa');

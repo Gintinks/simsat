@@ -29,14 +29,12 @@ class SampahController extends Controller
          try
          {
              $idUser = $request->get('idUser');
-             $namaSampah = $request->get('namaSampah');
              $jenisSampah = $request->get('jenisSampah');
              $beratSampah = $request->get('beratSampah');
              $beratSampahKeTpa = $request->get('beratSampahKeTpa');
              $beratSampahDiolah = $request->get('beratSampahDiolah');
  
              Sampah::create([
-                 'nama_sampah'   =>  $namaSampah,
                  'jenis_sampah'          =>  $jenisSampah,
                  'berat_sampah'          =>  $beratSampah,
                  'berat_sampah_ke_tpa'          =>  $beratSampahKeTpa,
@@ -44,7 +42,6 @@ class SampahController extends Controller
              ]);
  
              return response()->json([
-                 'nama_sampah'   =>  $employeeName,
                  'jenis_sampah'          =>  $jenisSampah,
                  'berat_sampah'          =>  $beratSampah,
                  'berat_sampah_ke_tpa'          =>  $beratSampahKeTpa,
@@ -71,7 +68,6 @@ class SampahController extends Controller
         {
             $idSampah = $requet->get('idSampah');
             $idUser = $request->get('idUser');
-             $namaSampah = $request->get('namaSampah');
              $jenisSampah = $request->get('jenisSampah');
              $beratSampah = $request->get('beratSampah');
              $beratSampahKeTpa = $request->get('beratSampahKeTpa');
@@ -80,7 +76,6 @@ class SampahController extends Controller
 
             Sampah::where('id', $idSampah)->update([
                  'user_id'   =>  $idUser,
-                 'nama_sampah'   =>  $employeeName,
                  'jenis_sampah'          =>  $jenisSampah,
                  'berat_sampah'          =>  $beratSampah,
                  'berat_sampah_ke_tpa'          =>  $beratSampahKeTpa,
@@ -89,7 +84,6 @@ class SampahController extends Controller
 
             return response()->json([
                 'user_id'   =>  $idUser,
-                'nama_sampah'   =>  $employeeName,
                 'jenis_sampah'          =>  $jenisSampah,
                 'berat_sampah'          =>  $beratSampah,
                 'berat_sampah_ke_tpa'          =>  $beratSampahKeTpa,
