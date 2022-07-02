@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\LoginCosController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TpsController;
+use App\Http\Controllers\ManagemenDlhController;
 
 
 
@@ -13,11 +18,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom'); 
-Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register'); 
-Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+Route::get('/manajemenDlh', 'PlayerController@index')->name('manajemenDlh')->middleware('manajemnenDlh');
+Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
+Route::get('/tps', 'ScoutController@index')->name('tps')->middleware('tps');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/login', [LoginCosController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginCosController::class, 'authenticate'])->name('login');
+
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+Route::get('/userList', [AdminController::class, 'index'])->name('userList')->middleware('is_admin');
+
+Route::get('/onlyTps', [TpsController::class, 'index'])->name('onlyTps')->middleware('is_tps');
+
+Route::get('/onlyManagemenDlh', [ManagemenDlhController::class, 'index'])->name('onlyManagemenDlh')->middleware('is_managemendlh');
+
+
 
 Route::get('/get/employee/list', 
         [EmployeesController::class, 'getEmployeeList'])->name('employee.list');
