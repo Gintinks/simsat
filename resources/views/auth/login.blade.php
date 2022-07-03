@@ -28,7 +28,7 @@
     <div class="col-lg-4 bg-testing">
         <div style="height: 150px;"></div>
         <div style="height: 600px;" class="container-md col-lg-9 border rounded bg-white">
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="/login">
                 @csrf
 
                 <h1 class="text-center mt-3">Website SIMSAT</h1>
