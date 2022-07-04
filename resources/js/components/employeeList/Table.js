@@ -36,9 +36,12 @@ class Table extends Component {
 
     render() {
         return (
+    
             <div className="container">
                 <ToastContainer />
-                
+                <h1 class="text-2xl font-bold  ml-3 pb-3 text-center md:text-left">
+                    <a href="">Master Data</a>
+                </h1>
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                     <CreateModal/>

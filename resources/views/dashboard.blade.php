@@ -9,25 +9,25 @@
 
 <body class=" text-black font-serif">
     <div class="grid md:grid-cols-7">
-        <div class=" md:col-span-1 sticky" style="background: #17cf67;">
+        <div class=" md:col-span-1 md:h-screen md:sticky md:top-0" style="background: #00923F;">
             <nav class=" text-white ">
-                <div class="flex justify-center pt-7 pb-16">
+                <div class="hidden md:flex justify-center pt-7 pb-16">
                     <img src="{{ asset('img/batu.png') }}" alt="" class=" w-28 h-34">
                 </div>
 
-                <h1 class="text-2xl font-bold  ml-3 pb-3">
+                <h1 class="text-2xl font-bold  ml-3 pb-3 text-center md:text-left">
                     <a href="">Master Data</a>
                 </h1>
 
-                <div class=" mx-10 text-left text-lg">
-                    <p class="py-2 hover:bg-slate-500 rounded transition duration-300 ease-in-out">
-                        <a href="" class="flex pl-3">
+                <div class=" mx-10 text-lg">
+                    <p class="py-2 my-2 md:my-0 bg-orange-300 md:bg-transparent hover:bg-slate-300 rounded transition duration-300 ease-in-out">
+                        <a href="" class="flex justify-center md:justify-start md:pl-3 ">
                             <span class="iconify h-6 w-6 mr-3" data-icon="bx:home-alt"></span>
                             <span>Dashboard</span>
                         </a>
                     </p>
-                    <p class=" py-2 hover:bg-slate-500 rounded transition duration-300 ease-in-out">
-                        <a href="" class="flex pl-3">
+                    <p class="py-2 my-2 md:my-0 bg-black md:bg-transparent hover:bg-slate-500 rounded transition duration-300 ease-in-out">
+                        <a href="" class="flex justify-center md:justify-start md:pl-3">
                             <span class="iconify h-6 w-6 mr-3" data-icon="fa6-solid:trash-can-arrow-up"></span>
                             <span>Input Sampah</span>
                         </a>
@@ -63,7 +63,7 @@
                     <span class="iconify w-16 h-16 self-center"
                         style="color: #17cf67;"data-icon="material-symbols:assistant"></span>
                     <div class="p-3">
-                        <p class=" text-2xl font-semibold">182 KG</p>
+                        <p class=" text-2xl font-semibold opacity-75">182 KG</p>
                         <p>Total Sampah</p>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                 <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg ">
                     <span class="iconify w-16 h-16 self-center" data-icon="mdi:leaf-off" style="color: #17cf67;"></span>
                     <div class="p-3">
-                        <p class=" text-2xl font-semibold">182 KG</p>
+                        <p class=" text-2xl font-semibold opacity-75">182 KG</p>
                         <p>Organik</p>
                     </div>
                 </div>
@@ -79,13 +79,13 @@
                 <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg ">
                     <span class="iconify w-16 h-16 self-center" style="color: #17cf67;"data-icon="mdi:leaf"></span>
                     <div class="p-3">
-                        <p class=" text-2xl font-semibold">182 KG</p>
+                        <p class=" text-2xl font-semibold opacity-75">182 KG</p>
                         <p>Anorganik</p>
                     </div>
                 </div>
 
                 <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg ">
-                    <span class="iconify w-16 h-16 self-center" data-icon="tabler:recycle-off"
+                    <span class="iconify w-16 h-16 self-center opacity-75" data-icon="tabler:recycle-off"
                         style="color: #17cf67;"></span>
                     <div class="p-3">
                         <p class=" text-2xl font-semibold">182 KG</p>
@@ -111,7 +111,7 @@
 
             <div class="shadow-md border border-gray-700 rounded-t-lg mb-4">
                 <div class="flex border border-b-2 border-gray-700 hover:bg-slate-200 transition duration-150 ease-in-out">
-                    <span class=" iconify w-12 h-12 self-center min-w-[48px]" data-icon="eva:checkmark-circle-2-fill"></span>
+                    <span class=" iconify w-12 h-12 self-center min-w-[32px]" data-icon="eva:checkmark-circle-2-fill"></span>
                     <div class="p-3">
                         <p class=" text-lg  font-semibold">EDIT DATA : <span class="font-normal">Management DLH mengedit
                                 data TPSR3 pada input sampah tanggal 10 Juni 2022, 09:00</span></p>
@@ -119,14 +119,14 @@
                     </div>
                 </div>
                 <div class="flex border border-b-2 border-gray-700 ">
-                    <span class="iconify w-12 h-12 self-center min-w-[48px]" data-icon="eva:checkmark-circle-2-fill"></span>
+                    <span class="iconify w-12 h-12 self-center min-w-[32px]" data-icon="eva:checkmark-circle-2-fill"></span>
                     <div class="p-3">
                         <p class=" text-lg  font-semibold">TAMBAH DATA : <span class="font-normal">TPS3R Desa Punten menambahkan 4 Kg Sampah Kertas</span></p>
                         <p class=" text-blue-400 text-base">12 Juni 2022, 09:00</p>
                     </div>
                 </div>
                 <div class="flex border border-b-2 border-gray-700 ">
-                    <span class="iconify w-12 h-12 self-center min-w-[48px]" data-icon="eva:checkmark-circle-2-fill"></span>
+                    <span class="iconify w-12 h-12 self-center min-w-[32px]" data-icon="eva:checkmark-circle-2-fill"></span>
                     <div class="p-3">
                         <p class=" text-lg  font-semibold">EDIT DATA : <span class="font-normal">Management DLH mengedit
                                 data TPSR3 pada input sampah tanggal 10 Juni 2022, 09:00</span></p>
@@ -134,7 +134,7 @@
                     </div>
                 </div>
                 <div class="flex border border-b-2 border-gray-700 ">
-                    <span class="iconify w-12 h-12 self-center min-w-[48px]" data-icon="eva:checkmark-circle-2-fill"></span>
+                    <span class="iconify w-12 h-12 self-center min-w-[32px]" data-icon="eva:checkmark-circle-2-fill"></span>
                     <div class="p-3">
                         <p class=" text-lg  font-semibold">TAMBAH DATA : <span class="font-normal">TPS3R Desa Punten menambahkan 4 Kg Sampah Kertas</span></p>
                         <p class=" text-blue-400 text-base">12 Juni 2022, 09:00</p>

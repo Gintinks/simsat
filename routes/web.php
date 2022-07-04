@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/listsampah', function () {
+    return view('listSampah');
+});
+
 
 Auth::routes();
 
@@ -26,6 +30,7 @@ Route::get('/login', [LoginCosController::class, 'index'])->name('login')->middl
 Route::post('/login', [LoginCosController::class, 'authenticate'])->name('login');
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
 
 Route::get('/userList', [AdminController::class, 'index'])->name('userList')->middleware('is_admin');
 
