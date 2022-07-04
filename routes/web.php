@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TpsController;
 use App\Http\Controllers\ManagemenDlhController;
+use App\Http\Controllers\AdminRegisterController;
 
 
 
@@ -22,12 +23,15 @@ Route::get('/listsampah', function () {
 
 Auth::routes();
 
-Route::get('/manajemenDlh', 'PlayerController@index')->name('manajemenDlh')->middleware('manajemnenDlh');
-Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
-Route::get('/tps', 'ScoutController@index')->name('tps')->middleware('tps');
+//Route::get('/manajemenDlh', 'PlayerController@index')->name('manajemenDlh')->middleware('manajemnenDlh');
+//Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
+//Route::get('/tps', 'ScoutController@index')->name('tps')->middleware('tps');
 
 Route::get('/login', [LoginCosController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginCosController::class, 'authenticate'])->name('login');
+
+Route::get('/register', [AdminRegisterController::class, 'index'])->name('register')->middleware('is_admin');
+Route::post('/register', [AdminRegisterController::class, 'store'])->name('register');
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
