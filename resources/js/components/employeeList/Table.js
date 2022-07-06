@@ -19,13 +19,13 @@ function App() {
         .map((user) => {
             return (
                 <tbody>
-                    <tr>
-                        <th>{user.id}</th>
-                        <td>{user.name}</td>
-                        <td>{user.email}</td>
-                        <td>{user.role}</td>
+                    <tr className="border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                        <th className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r">{user.id}</th>
+                        <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.name}</td>
+                        <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.email}</td>
+                        <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.role}</td>
                         <td>
-                            <TableActionButtons eachRowId={user.id} />
+                            {/* <TableActionButtons eachRowId={user.id} /> */}
                         </td>
                     </tr>
                 </tbody>
@@ -40,46 +40,48 @@ function App() {
     };
 
     return (
-        <div className="overflow-hidden">
+        <div className="">
             <ToastContainer />
 
-            <div className="">
-                <div className="col-md-8">
-                    <CreateModal />
-                    <div className="card">
-                        <table className="table table-hover align-middle text-center">
-                            <thead>
-                                <tr>
-                                    <th scope="col" width="30px">#</th>
-                                    <th scope="col" width="150px">Nama</th>
-                                    <th scope="col" width="150px">Email</th>
-                                    <th scope="col" width="50px">TPS</th>
-                                    <th scope="col" width="100px">Aksi</th>
-                                </tr>
-                            </thead>
-                            {displayUsers}
-                        </table>
+            <CreateModal />
+            <div className="flex flex-col">
+                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                        <div className='overflow-x-auto'>
+                            <table className="min-w-full border text-center">
+                                <thead className="border-b">
+                                    <tr>
+                                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 border-r" >#</th>
+                                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 border-r" >Nama</th>
+                                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 border-r" >Email</th>
+                                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 border-r" >TPS</th>
+                                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 border-r" >Aksi</th>
+                                    </tr>
+                                </thead>
+                                {displayUsers}
+                            </table>
+                        </div>
                     </div>
-                    <ReactPaginate
-                        previousLabel={"Previous"}
-                        breakLabel="..."
-                        nextLabel={"Next"}
-                        pageCount={pageCount}
-                        onPageChange={changePage}
-                        containerClassName={"pagination d-flex justify-content-end mt-2"}
-                        previousLinkClassName={"page-link"}
-                        nextLinkClassName={"page-link"}
-                        disabledClassName={"paginationDisabled"}
-                        activeClassName={"active"}
-                        breakClassName={'page-item'}
-                        breakLinkClassName={'page-link'}
-                        pageClassName={'page-item'}
-                        pageLinkClassName={'page-link'}
-                        previousClassName={'page-item'}
-                        nextClassName={'page-item'}
-                    />
                 </div>
             </div>
+            <ReactPaginate
+                previousLabel={"Previous"}
+                breakLabel="..."
+                nextLabel={"Next"}
+                pageCount={pageCount}
+                onPageChange={changePage}
+                containerClassName={"flex justify-center md:justify-end mt-2 "}
+                previousLinkClassName={"page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"}
+                nextLinkClassName={"page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"}
+                disabledClassName={"page-item disabled"}
+                activeClassName={"page-item active bg-blue-600 rounded text-gray-200 "}
+                breakClassName={'page-item'}
+                breakLinkClassName={'page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none'}
+                pageClassName={'page-item'}
+                pageLinkClassName={'page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none'}
+                previousClassName={'page-item '}
+                nextClassName={'page-item '}
+            />
         </div>
     );
 }
