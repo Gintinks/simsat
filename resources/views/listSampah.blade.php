@@ -54,23 +54,34 @@
             <div class="md:rounded-2xl mx-14" style="background: #EEFBF4">
                 <div class=" px-16">
                     <div class="flex">
-                        <div>
-                            <div>
-                                <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
-                                <div class="mt-1 relative rounded-md shadow-sm">
-                                  
-                                  <input type="text" name="price" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
-                                  <div class="absolute inset-y-0 right-0 flex items-center">
-                                    <label for="currency" class="sr-only">Currency</label>
-                                    <select id="Currency" name="currency" class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md">
-                                      <option>USD</option>
-                                      <option>CAD</option>
-                                      <option>EUR</option>
+                            <div class="flex justify-center">
+                                <div class="mb-3 xl:w-96">
+                                    <select
+                                        class="custom-select appearance-none
+                                        
+                                    block
+                                    w-full
+                                    px-3
+                                    py-1.5
+                                    text-base
+                                    font-normal
+                                    text-gray-700
+                                    bg-white bg-clip-padding bg-no-repeat
+                                    border border-solid border-gray-300
+                                    rounded
+                                    transition
+                                    ease-in-out
+                                    m-0
+                                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                        aria-label="Default select example" >
+                                        <option selected>Default</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
                                     </select>
-                                  </div>
+                                    
                                 </div>
-                              </div>
-                        </div>
+                            </div>
                     </div>
                     <div class="flex flex-col">
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
