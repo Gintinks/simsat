@@ -1,7 +1,7 @@
 @extends('layouts.nav')
 
-@section('content')
-<div class="container">
+@section('main')
+<div class="container" id="employeeeApp">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
