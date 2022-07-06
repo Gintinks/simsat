@@ -1,74 +1,88 @@
-import React, { Component } from 'react';
-import TableRow from './TableRow';
+import React, { useState, useEffect } from 'react';
+import TableActionButtons from './TableActionButtons';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import JsonData from "./MOCK_DATA";
 import CreateModal from "./Modals/CreateModal";
+import ReactPaginate from "react-paginate";
 
 
+function App() {
+    const [users, setUsers] = useState(JsonData.slice(0, 30));
+    const [pageNumber, setPageNumber] = useState(0);
 
-class Table extends Component {
+    const usersPerPage = 10;
+    const pagesVisited = pageNumber * usersPerPage;
 
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            employees: [],
-        }
-    }
-
-
-    // Life cycle method.
-    componentDidMount() {
-        this.getEmployeeList();
-    }
-
-
-    // Get Employee List.
-    getEmployeeList = () => {
-        let self = this;
-        axios.get('/get/employee/list').then(function (response) {
-            self.setState({
-                employees: response.data
-            });
+    const displayUsers = users
+        .slice(pagesVisited, pagesVisited + usersPerPage)
+        .map((user) => {
+            return (
+                <tbody>
+                    <tr>
+                        <th>{user.id}</th>
+                        <td>{user.name}</td>
+                        <td>{user.email}</td>
+                        <td>{user.role}</td>
+                        <td>
+                            <TableActionButtons eachRowId={user.id} />
+                        </td>
+                    </tr>
+                </tbody>
+            );
         });
-    }
 
-    render() {
-        return (
-    
-            <div className="container">
-                <ToastContainer />
-                <h1 class="text-2xl font-bold  ml-3 pb-3 text-center md:text-left">
-                    <a href="">Master Data</a>
-                </h1>
-                <div className="row justify-content-center">
-                    <div className="col-md-8">
-                    <CreateModal/>
-                        <div className="card">
-                        <table className="table table-hover text-center">
+
+    const pageCount = Math.ceil(users.length / usersPerPage);
+
+    const changePage = ({ selected }) => {
+        setPageNumber(selected);
+    };
+
+    return (
+        <div className="overflow-hidden">
+            <ToastContainer />
+
+            <div className="">
+                <div className="col-md-8">
+                    <CreateModal />
+                    <div className="card">
+                        <table className="table table-hover align-middle text-center">
                             <thead>
                                 <tr>
-                                <th scope="col" width="30px">#</th>
-                                <th scope="col" width="150px">Nama</th>
-                                <th scope="col" width="150px">Email</th>
-                                <th scope="col" width="50px">TPS</th>
-                                <th scope="col" width="100px">Aksi</th>
+                                    <th scope="col" width="30px">#</th>
+                                    <th scope="col" width="150px">Nama</th>
+                                    <th scope="col" width="150px">Email</th>
+                                    <th scope="col" width="50px">TPS</th>
+                                    <th scope="col" width="100px">Aksi</th>
                                 </tr>
                             </thead>
-                                <tbody>
-                                    {this.state.employees.map(function (x, i) {
-                                        return <TableRow key={i} data={x} /> 
-                                    })}
-                            </tbody>
+                            {displayUsers}
                         </table>
-                        </div>
                     </div>
+                    <ReactPaginate
+                        previousLabel={"Previous"}
+                        breakLabel="..."
+                        nextLabel={"Next"}
+                        pageCount={pageCount}
+                        onPageChange={changePage}
+                        containerClassName={"pagination d-flex justify-content-end mt-2"}
+                        previousLinkClassName={"page-link"}
+                        nextLinkClassName={"page-link"}
+                        disabledClassName={"paginationDisabled"}
+                        activeClassName={"active"}
+                        breakClassName={'page-item'}
+                        breakLinkClassName={'page-link'}
+                        pageClassName={'page-item'}
+                        pageLinkClassName={'page-link'}
+                        previousClassName={'page-item'}
+                        nextClassName={'page-item'}
+                    />
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
-export default Table;
+export default App;
 

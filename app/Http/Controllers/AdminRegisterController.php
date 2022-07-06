@@ -35,6 +35,8 @@ class AdminRegisterController extends Controller
      */
     public function store(Request $request)
     {
+
+        
         $registerData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',

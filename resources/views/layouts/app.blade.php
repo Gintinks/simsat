@@ -30,6 +30,7 @@
     </div>
     @yield('script')
     <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
 </body>
 
 {{-- </html>
