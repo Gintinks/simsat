@@ -22,9 +22,10 @@ class AdminRegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function viewUser()
     {
-        //
+        $showAllUser = User::all()->get();
+        return response()->json($showAllUser);
     }
 
     /**
@@ -105,8 +106,10 @@ class AdminRegisterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user, $id)
     {
-        //
+        $deleteUser=User::where('id',$id)->get();
+        $deleteUser->delete();
+        return response()->json($showAllUser);
     }
 }

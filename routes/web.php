@@ -32,6 +32,7 @@ Route::post('/login', [LoginCosController::class, 'authenticate'])->name('login'
 
 Route::get('/register', [AdminRegisterController::class, 'index'])->name('register')->middleware('is_admin');
 Route::post('/register', [App\Http\Controllers\AdminRegisterController::class, 'store'])->name('register');
+Route::post('/register', [App\Http\Controllers\AdminRegisterController::class, 'viewUser'])->name('viewUser')->middleware('is_admin');
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
