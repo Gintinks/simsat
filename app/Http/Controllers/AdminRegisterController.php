@@ -24,7 +24,7 @@ class AdminRegisterController extends Controller
      */
     public function viewUser()
     {
-        $showAllUser = User::all()->get();
+        $showAllUser = User::where('priviliges_id', '!=' , 1)->orderBy('id', 'ASC')->get();
         return response()->json($showAllUser);
     }
 
@@ -35,9 +35,7 @@ class AdminRegisterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-
-        
+    {        
         $registerData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',
@@ -106,10 +104,12 @@ class AdminRegisterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user, $id)
+    public function destroy(Request $request)
     {
-        $deleteUser=User::where('id',$id)->get();
-        $deleteUser->delete();
-        return response()->json($showAllUser);
+        
+        // $deleteUser=User::where('id', 9)->get();
+        User::destroy($request->id);
+        // $deleteUser->delete(); 
+        // return;
     }
 }

@@ -12,7 +12,7 @@ class CreateModal extends Component {
             name: null,
             email: null,
             password: null,
-            priviliges: null,
+            priviliges: "managemenDlh",
             TPS: 0,
             isCheckedVisible: false,
         }
@@ -70,6 +70,7 @@ class CreateModal extends Component {
             tps : this.state.TPS,
             role: this.state.priviliges,
         };
+        
         axios.post('/register', packets)
             .then(() => {
                 toast.success("Akun Baru Sudah Dibuat");
@@ -148,7 +149,7 @@ class CreateModal extends Component {
                                             Pilih Role
                                         </p>
                                         <div className="mb-3 ">
-                                            <button type="button" onClick={() => this.setState({ isCheckedVisible: false, priviliges: "managemenDlh", TPS:0})} className={`${this.state.isCheckedVisible ? ' border-yellow-500 text-yellow-500' : 'bg-yellow-500 text-white '} inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>Management DLH</button>
+                                            <button type="button" onClick={() => this.setState({ isCheckedVisible: false, priviliges: "managemenDlh", TPS:"0"})} className={`${this.state.isCheckedVisible ? ' border-yellow-500 text-yellow-500' : 'bg-yellow-500 text-white '} inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>Management DLH</button>
                                             <button type="button" onClick={() => this.setState({ isCheckedVisible: true, priviliges: "tps" })} className={`${this.state.isCheckedVisible ? ' bg-green-500 text-white' : ' border-green-500 text-green-500'} inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>Petugas TPS</button>
                                         </div>
                                     </div>

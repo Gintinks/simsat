@@ -8,24 +8,35 @@ import ReactPaginate from "react-paginate";
 
 
 function App() {
-    const [users, setUsers] = useState(JsonData.slice(0, 30));
+    const [post, setPost] = useState([]);
+    let count = 1;
+    React.useEffect(() => {
+        axios.get('/userList').then((response) => {
+            setPost(response.data);
+        });
+    }, []);
+
+
+    // const [users, setUsers] = useState(post);
     const [pageNumber, setPageNumber] = useState(0);
 
     const usersPerPage = 10;
     const pagesVisited = pageNumber * usersPerPage;
 
-    const displayUsers = users
+    const displayUsers = post
         .slice(pagesVisited, pagesVisited + usersPerPage)
         .map((user) => {
             return (
                 <tbody>
+
                     <tr className="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                        <th className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r">{user.id}</th>
+                        <th className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r">{count++}</th>
                         <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.name}</td>
                         <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.email}</td>
-                        <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.role}</td>
-                        <td>
-                            {/* <TableActionButtons eachRowId={user.id} /> */}
+                        <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.priviliges_id == 2 ? "Manajemen DLH " : "Petugas TPS"}</td>
+                        <td className=' max-h-5 max w-14 px-2'>
+                            <TableActionButtons eachRowId={user.id} />
+                          
                         </td>
                     </tr>
                 </tbody>
@@ -33,7 +44,7 @@ function App() {
         });
 
 
-    const pageCount = Math.ceil(users.length / usersPerPage);
+    const pageCount = Math.ceil(post.length / usersPerPage);
 
     const changePage = ({ selected }) => {
         setPageNumber(selected);
@@ -41,6 +52,7 @@ function App() {
 
     return (
         <div className="">
+
             <ToastContainer />
 
             <CreateModal />

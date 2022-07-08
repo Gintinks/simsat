@@ -5459,7 +5459,7 @@ var CreateModal = /*#__PURE__*/function (_Component) {
       name: null,
       email: null,
       password: null,
-      priviliges: null,
+      priviliges: "managemenDlh",
       TPS: 0,
       isCheckedVisible: false
     };
@@ -5554,7 +5554,7 @@ var CreateModal = /*#__PURE__*/function (_Component) {
                           return _this2.setState({
                             isCheckedVisible: false,
                             priviliges: "managemenDlh",
-                            TPS: 0
+                            TPS: "0"
                           });
                         },
                         className: "".concat(this.state.isCheckedVisible ? ' border-yellow-500 text-yellow-500' : 'bg-yellow-500 text-white ', " inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"),
@@ -5643,125 +5643,79 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
 
 
+var DeleteModal = function DeleteModal(_ref) {
+  var eachRowId = _ref.eachRowId;
 
-var DeleteModal = /*#__PURE__*/function (_Component) {
-  _inherits(DeleteModal, _Component);
-
-  var _super = _createSuper(DeleteModal);
-
-  function DeleteModal(props) {
-    var _this;
-
-    _classCallCheck(this, DeleteModal);
-
-    _this = _super.call(this, props);
-
-    _defineProperty(_assertThisInitialized(_this), "deleteEmployeeData", function (employee) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]('/delete/employee/data/' + employee).then(function () {
-        react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.error("Employee Deleted successfully");
-        setTimeout(function () {
-          location.reload();
-        }, 2500);
-      });
+  var deleteData = function deleteData(eachRowId) {
+    var packets = {
+      id: eachRowId
+    };
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/delete', packets).then(function () {
+      react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.warning("Akun Sudah Terhapust");
+      setTimeout(function () {
+        location.reload();
+      }, 2500);
     });
+  };
 
-    return _this;
-  } // Delete function for employee data.
-
-
-  _createClass(DeleteModal, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "modal fade",
-        id: "deleteModal" + this.props.modalId,
-        tabIndex: "-1",
-        "aria-labelledby": "exampleModalLabel",
-        "aria-hidden": "true",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "modal-dialog",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "modal-content",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-              className: "modal-header",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
-                className: "modal-title",
-                id: "exampleModalLabel",
-                children: "Hapus Akun"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                type: "button",
-                className: "btn-close",
-                "data-bs-dismiss": "modal",
-                "aria-label": "Close"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-              className: "modal-body",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                className: "text-center",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-                  className: "m-0",
-                  children: "Apakah anda yakin ingin menghapus data ini? "
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-                  className: "text-danger m-0",
-                  children: "Data tidak dapat dikembalikan setelah dihapus"
-                })]
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-              className: "modal-footer",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                type: "button",
-                className: "btn btn-danger",
-                "data-bs-dismiss": "modal",
-                onClick: function onClick() {
-                  _this2.deleteEmployeeData(_this2.props.modalId);
-                },
-                children: "Yakin"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                type: "button",
-                className: "btn btn-secondary",
-                "data-bs-dismiss": "modal",
-                children: "Tutup"
-              })]
-            })]
-          })
-        })
-      });
-    }
-  }]);
-
-  return DeleteModal;
-}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    className: "modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto",
+    id: "deleteModal" + eachRowId,
+    tabindex: "-1",
+    "aria-labelledby": "exampleModalCenterTitle",
+    "aria-modal": "true",
+    role: "dialog",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "modal-dialog modal-dialog-centered relative w-auto pointer-events-none",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
+            className: "text-xl font-medium leading-normal text-gray-800",
+            id: "exampleModalScrollableLabel",
+            children: "WARNING"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            type: "button",
+            className: "btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline",
+            "data-bs-dismiss": "modal",
+            "aria-label": "Close"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "modal-body relative p-4 mx-3",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            className: " text-lg",
+            children: "Data akan hilang secara permanen jika dihapus."
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            className: " text-red-500 text-lg font-semibold",
+            children: "Apakah anda yakin mau menghapus akun?"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            type: "button",
+            className: "inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out",
+            "data-bs-dismiss": "modal",
+            children: "Batal"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            type: "button",
+            onClick: function onClick() {
+              deleteData(eachRowId);
+            },
+            "class": "inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out ml-1",
+            children: "Hapus Pengguna"
+          })]
+        })]
+      })
+    })
+  });
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeleteModal);
 
@@ -6113,10 +6067,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function App() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_MOCK_DATA__WEBPACK_IMPORTED_MODULE_4__.slice(0, 30)),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      users = _useState2[0],
-      setUsers = _useState2[1];
+      post = _useState2[0],
+      setPost = _useState2[1];
+
+  var count = 1;
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    axios.get('/userList').then(function (response) {
+      setPost(response.data);
+    });
+  }, []); // const [users, setUsers] = useState(post);
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -6125,13 +6086,13 @@ function App() {
 
   var usersPerPage = 10;
   var pagesVisited = pageNumber * usersPerPage;
-  var displayUsers = users.slice(pagesVisited, pagesVisited + usersPerPage).map(function (user) {
+  var displayUsers = post.slice(pagesVisited, pagesVisited + usersPerPage).map(function (user) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("tbody", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
         className: "border-b transition duration-300 ease-in-out hover:bg-gray-100",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
           className: "px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r",
-          children: user.id
+          children: count++
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
           className: "text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r",
           children: user.name
@@ -6140,12 +6101,17 @@ function App() {
           children: user.email
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
           className: "text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r",
-          children: user.role
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {})]
+          children: user.priviliges_id == 2 ? "Manajemen DLH " : "Petugas TPS"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+          className: " max-h-5 max w-14 px-2",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_TableActionButtons__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            eachRowId: user.id
+          })
+        })]
       })
     });
   });
-  var pageCount = Math.ceil(users.length / usersPerPage);
+  var pageCount = Math.ceil(post.length / usersPerPage);
 
   var changePage = function changePage(_ref) {
     var selected = _ref.selected;
@@ -6233,33 +6199,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Modals_ViewModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Modals/ViewModal */ "./resources/js/components/employeeList/Modals/ViewModal.js");
-/* harmony import */ var _Modals_UpdateModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Modals/UpdateModal */ "./resources/js/components/employeeList/Modals/UpdateModal.js");
-/* harmony import */ var _Modals_DeleteModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Modals/DeleteModal */ "./resources/js/components/employeeList/Modals/DeleteModal.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var _Modals_ViewModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Modals/ViewModal */ "./resources/js/components/employeeList/Modals/ViewModal.js");
+/* harmony import */ var _Modals_UpdateModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Modals/UpdateModal */ "./resources/js/components/employeeList/Modals/UpdateModal.js");
+/* harmony import */ var _Modals_DeleteModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Modals/DeleteModal */ "./resources/js/components/employeeList/Modals/DeleteModal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -6269,90 +6213,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var TableActionButtons = /*#__PURE__*/function (_Component) {
-  _inherits(TableActionButtons, _Component);
-
-  var _super = _createSuper(TableActionButtons);
-
-  function TableActionButtons(props) {
-    var _this;
-
-    _classCallCheck(this, TableActionButtons);
-
-    _this = _super.call(this, props);
-
-    _defineProperty(_assertThisInitialized(_this), "getEmployeeDetails", function (id) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/get/individual/employee/details', {
-        employeeId: id
-      }).then(function (response) {
-        _this.setState({
-          currentEmployeeName: response.data.employee_name,
-          currentEmployeeSalary: response.data.salary
-        });
-
-        console.log(response.data);
-      });
-    });
-
-    _this.state = {
-      currentEmployeeName: null,
-      currentEmployeeSalary: null
-    };
-    return _this;
-  } // Getting Individual employee data.
-
-
-  _createClass(TableActionButtons, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "btn-group",
-        role: "group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-          type: "button",
-          className: "btn btn-primary",
-          "data-bs-toggle": "modal",
-          "data-bs-target": '#viewModal' + this.props.eachRowId,
-          onClick: function onClick() {
-            _this2.getEmployeeDetails(_this2.props.eachRowId);
-          },
-          children: "View"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Modals_ViewModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          modalId: this.props.eachRowId,
-          employeeData: this.state
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-          type: "button",
-          className: "btn btn-info",
-          "data-bs-toggle": "modal",
-          "data-bs-target": '#updateModal' + this.props.eachRowId,
-          onClick: function onClick() {
-            _this2.getEmployeeDetails(_this2.props.eachRowId);
-          },
-          children: "Update"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Modals_UpdateModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          modalId: this.props.eachRowId,
-          employeeData: this.state
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-          type: "button",
-          className: "btn btn-danger",
-          "data-bs-toggle": "modal",
-          "data-bs-target": '#deleteModal' + this.props.eachRowId,
-          onClick: function onClick() {
-            _this2.getEmployeeDetails(_this2.props.eachRowId);
-          },
-          children: "Delete"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Modals_DeleteModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          modalId: this.props.eachRowId,
-          employeeData: this.state
-        })]
-      });
-    }
-  }]);
-
-  return TableActionButtons;
-}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
+var TableActionButtons = function TableActionButtons(_ref) {
+  var eachRowId = _ref.eachRowId;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    className: "flex md:justify-center ",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+      type: "button",
+      className: "  inline-block p-2 mr-2 bg-gray-300  leading-tight uppercase rounded shadow-md hover:bg-yellow-500 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out",
+      "data-bs-toggle": "modal",
+      "data-bs-target": "#exampleModalCenter",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+        "class": "iconify",
+        "data-icon": "el:eye-open"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+      type: "button",
+      className: "inline-block p-2  bg-gray-300  leading-tight uppercase rounded shadow-md hover:bg-red-600 hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out",
+      "data-bs-toggle": "modal",
+      "data-bs-target": '#deleteModal' + eachRowId,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+        "class": "iconify h-5 w-5",
+        "data-icon": "fe:trash"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Modals_DeleteModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      eachRowId: eachRowId
+    })]
+  });
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TableActionButtons);
 
