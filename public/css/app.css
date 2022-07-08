@@ -3996,6 +3996,18 @@ textarea.form-control.is-invalid {
 .mb-0 {
   margin-bottom: 0px;
 }
+.ml-64 {
+  margin-left: 16rem;
+}
+.mr-8 {
+  margin-right: 2rem;
+}
+.mr-12 {
+  margin-right: 3rem;
+}
+.mr-16 {
+  margin-right: 4rem;
+}
 .box-content {
   box-sizing: content-box;
 }
@@ -4041,6 +4053,11 @@ textarea.form-control.is-invalid {
 .h-4 {
   height: 1rem;
 }
+.h-max {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
 .max-h-5 {
   max-height: 1.25rem;
 }
@@ -4076,6 +4093,18 @@ textarea.form-control.is-invalid {
 }
 .w-14 {
   width: 3.5rem;
+}
+.w-9\/12 {
+  width: 75%;
+}
+.w-96 {
+  width: 24rem;
+}
+.w-1\/4 {
+  width: 25%;
+}
+.w-60 {
+  width: 15rem;
 }
 .min-w-\[32px\] {
   min-width: 32px;
@@ -4141,11 +4170,20 @@ textarea.form-control.is-invalid {
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
+.self-auto {
+  align-self: auto;
+}
 .self-center {
   align-self: center;
 }
+.overflow-auto {
+  overflow: auto;
+}
 .overflow-hidden {
   overflow: hidden;
+}
+.overflow-clip {
+  overflow: clip;
 }
 .overflow-x-auto {
   overflow-x: auto;
@@ -4170,6 +4208,12 @@ textarea.form-control.is-invalid {
 }
 .rounded-none {
   border-radius: 0px;
+}
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+.rounded-3xl {
+  border-radius: 1.5rem;
 }
 .rounded-t-lg {
   border-top-left-radius: 0.5rem;
@@ -4295,8 +4339,23 @@ textarea.form-control.is-invalid {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
+.bg-blue-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 197 253 / var(--tw-bg-opacity));
+}
+.bg-blue-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+}
+.bg-blue-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+}
 .bg-clip-padding {
   background-clip: padding-box;
+}
+.bg-clip-content {
+  background-clip: content-box;
 }
 .bg-no-repeat {
   background-repeat: no-repeat;
@@ -4378,6 +4437,18 @@ textarea.form-control.is-invalid {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.py-9 {
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
+}
+.px-14 {
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+}
 .pt-7 {
   padding-top: 1.75rem;
 }
@@ -4404,6 +4475,9 @@ textarea.form-control.is-invalid {
 }
 .pt-10 {
   padding-top: 2.5rem;
+}
+.pl-64 {
+  padding-left: 16rem;
 }
 .text-left {
   text-align: left;
@@ -4440,6 +4514,10 @@ textarea.form-control.is-invalid {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 .font-bold {
   font-weight: 700;
@@ -4889,6 +4967,10 @@ textarea.form-control.is-invalid {
     margin-right: 3rem;
   }
 
+  .md\:mr-16 {
+    margin-right: 4rem;
+  }
+
   .md\:block {
     display: block;
   }
@@ -4905,6 +4987,38 @@ textarea.form-control.is-invalid {
     height: 100vh;
   }
 
+  .md\:h-4\/5 {
+    height: 80%;
+  }
+
+  .md\:w-4\/5 {
+    width: 80%;
+  }
+
+  .md\:w-96 {
+    width: 24rem;
+  }
+
+  .md\:w-1\/4 {
+    width: 25%;
+  }
+
+  .md\:w-1\/3 {
+    width: 33.333333%;
+  }
+
+  .md\:max-w-md {
+    max-width: 28rem;
+  }
+
+  .md\:max-w-2xl {
+    max-width: 42rem;
+  }
+
+  .md\:max-w-3xl {
+    max-width: 48rem;
+  }
+
   .md\:grid-cols-7 {
     grid-template-columns: repeat(7, minmax(0, 1fr));
   }
@@ -4915,6 +5029,10 @@ textarea.form-control.is-invalid {
 
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:flex-wrap {
+    flex-wrap: wrap;
   }
 
   .md\:justify-start {
@@ -4937,6 +5055,10 @@ textarea.form-control.is-invalid {
     border-radius: 1rem;
   }
 
+  .md\:rounded-xl {
+    border-radius: 0.75rem;
+  }
+
   .md\:border-t-0 {
     border-top-width: 0px;
   }
@@ -4947,6 +5069,11 @@ textarea.form-control.is-invalid {
 
   .md\:bg-transparent {
     background-color: transparent;
+  }
+
+  .md\:px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   .md\:pl-3 {
@@ -4960,6 +5087,11 @@ textarea.form-control.is-invalid {
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 @media (min-width: 1024px) {

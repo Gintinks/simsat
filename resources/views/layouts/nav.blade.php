@@ -45,7 +45,7 @@
         </nav>
     </div>
 
-    <main class="px-16 md:col-span-6">
+    <main class="md:px-16 md:col-span-6">
         @yield('main')
     </main>
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

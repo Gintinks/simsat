@@ -16,6 +16,11 @@ class TpsController extends Controller
         return view('onlyTps');
     }
 
+    public function input()
+    {
+        return view('inputSampah');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
