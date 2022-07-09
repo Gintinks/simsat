@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TpsController;
 use App\Http\Controllers\ManagemenDlhController;
 use App\Http\Controllers\AdminRegisterController;
+use App\Http\Controllers\SampahController;
 
 
 
@@ -46,7 +47,10 @@ Route::get('/inputtps', [TpsController::class, 'input'])->name('onlyTps')->middl
 
 Route::get('/onlyManagemenDlh', [ManagemenDlhController::class, 'index'])->name('onlyManagemenDlh')->middleware('is_managemendlh');
 
+Route::get('/sampahList', [SampahController::class, 'showSampahTps'])->name('sampahList')->middleware('is_tps_managementdlh');
 
+Route::get('/sampahInputView', [SampahController::class, 'indexInput'])->name('sampahInputView')->middleware('is_tps');
+Route::get('/sampahInput', [SampahController::class, 'storeSampah'])->name('sampahInput');
 
 Route::get('/get/employee/list', 
         [EmployeesController::class, 'getEmployeeList'])->name('employee.list');

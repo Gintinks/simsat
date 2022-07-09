@@ -12,29 +12,38 @@ use Exception;
 class SampahController extends Controller
 {
      //buat view semua user database
-     public function index()
+     public function indexInput()
      {
-         //
+         return view('sampahInput');
      }
  
      //buat view halaman/form adduser
      public function showSampahTps()
      {
-         $tpsSampah = Sampah::where('user_id', auth()->user()->id)->get();
-         return response()->json($tpsSampah);
+
+        if (auth()->user()->priviliges_id == 2) {
+            $tpsSampah = Sampah::all();
+        }
+        if (auth()->user()->priviliges_id == 3) {
+            $tpsSampah = Sampah::where('user_id', auth()->user()->id)->get();
+        }
+         
+         //return response()->json($tpsSampah);
+         return view('sampahList',['sampahList' => $tpsSampah]);
+
      }
 
      public function storeSampah(Request $request)
      {
         $inputSampah = $request->validate([
-            'kertas' => 'numeric',
-            'kaca' => 'numeric',
-            'karet' => 'numeric',
-            'plastik' => 'numeric',
-            'logam' => 'numeric',
-            'lain_lain' => 'numeric',
-            'sampah_organik' => 'numeric',
-            'diteruskan_ke_tpa' => 'numeric',
+            'kertas' => 'nullable|numeric',
+            'kaca' => 'nullable|numeric',
+            'karet' => 'nullable|numeric',
+            'plastik' => 'nullable|numeric',
+            'logam' => 'nullable|numeric',
+            'lain_lain' => 'nullable|numeric',
+            'sampah_organik' => 'nullable|numeric',
+            'diteruskan_ke_tpa' => 'nullable|numeric',
         ]);
 
         if ($inputSampah['kertas'] == null) {
@@ -64,6 +73,10 @@ class SampahController extends Controller
         if ($inputSampah['sampah_organik'] == null) {
             $inputSampah['sampah_organik'] = 0;
         }
+        
+        if ($inputSampah['diteruskan_ke_tpa'] == null) {
+            $inputSampah['diteruskan_ke_tpa'] = 0;
+        }
 
 
         $inputSampah['user_id'] = auth()->user()->id;
@@ -73,7 +86,7 @@ class SampahController extends Controller
 
         $inputSampah['berat_sampah_total'] = $inputSampah['berat_sampah_diolah'] + $inputSampah['diteruskan_ke_tpa'];
 
-        $saveSampah = User::create([
+        $saveSampah = Sampah::create([
             'user_id' =>  $inputSampah['user_id'],
             'berat_sampah_kaca' =>  $inputSampah['kaca'],
             'berat_sampah_karet' =>  $inputSampah['karet'],
@@ -81,7 +94,7 @@ class SampahController extends Controller
             'berat_sampah_logam' =>  $inputSampah['logam'],
             'berat_sampah_kertas' =>  $inputSampah['kertas'],
             'berat_sampah_lain_lain' =>  $inputSampah['lain_lain'],
-            'berat_sampah_organik' =>  $inputSampah['organik'],
+            'berat_sampah_organik' =>  $inputSampah['sampah_organik'],
             'berat_sampah_ke_tpa' =>  $inputSampah['diteruskan_ke_tpa'],
             'berat_sampah_diolah' =>  $inputSampah['berat_sampah_diolah'],
             'berat_sampah_total' =>  $inputSampah['berat_sampah_total'],

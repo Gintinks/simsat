@@ -17,16 +17,16 @@ class CreateSampahsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->double('berat_sampah_kaca');
-            $table->double('berat_sampah_karet');
-            $table->double('berat_sampah_plastik');
-            $table->double('berat_sampah_logam');
-            $table->double('berat_sampah_kertas');
-            $table->double('berat_sampah_lain_lain');
-            $table->double('berat_sampah_organik');
-            $table->double('berat_sampah_ke_tpa');
-            $table->double('berat_sampah_diolah');  
-            $table->double('berat_sampah_total');  
+            $table->integer('berat_sampah_kaca');
+            $table->integer('berat_sampah_karet');
+            $table->integer('berat_sampah_plastik');
+            $table->integer('berat_sampah_logam');
+            $table->integer('berat_sampah_kertas');
+            $table->integer('berat_sampah_lain_lain');
+            $table->integer('berat_sampah_organik');
+            $table->integer('berat_sampah_ke_tpa');
+            $table->integer('berat_sampah_diolah');  
+            $table->integer('berat_sampah_total');  
             $table->timestamps();
         });
     }

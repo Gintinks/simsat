@@ -9,11 +9,5 @@ class Sampah extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'id_user',
-        'jenis_sampah',
-        'berat_sampah',
-        'berat_sampah_ke_tpa',
-        'berat_sampah_diolah',
-    ];
+    protected $guarded = [];
 }
