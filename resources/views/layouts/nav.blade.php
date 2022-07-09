@@ -1,51 +1,50 @@
 @extends('layouts.app')
 @section('body')
-    <div class=" md:col-span-1 md:h-screen md:sticky md:top-0" style="background: #00923F;">
+    <div class=" md:col-span-1 md:h-screen md:sticky md:top-0 shadow-xl" style="background: #00923F;">
         <nav class=" text-white ">
-            <div class="hidden md:flex justify-center pt-7 pb-16">
-                <img src="{{ asset('img/batu.png') }}" alt="" class=" w-28 h-34">
+            <div class="hidden md:flex  justify-center pt-7 pb-16 align-middle" >            
+                <img src="{{ asset('img/batu.png') }}" alt="" class=" w-1/2">
             </div>
 
-            <h1 class="text-2xl font-bold  ml-3 p-3 text-left flex justify-between items-center">
-                <a href="">Master Data</a>
+            <h1 class="md:hidden text-2xl font-bold  ml-3 p-3 text-left flex justify-between items-center">
+                <a href="" >Master Data</a>
                 <div id="clicker">
                 <span class="iconify cursor-pointer md:hidden h-8 w-8" data-icon="carbon:menu"
                     style="color: white;"></span>
                 </div>
             </h1>
 
-            <div class=" mx-10 py-4 text-lg hidden md:block" id="menu">
-                <p
-                    class="py-2 my-2 md:my-0 bg-orange-300 md:bg-transparent hover:bg-slate-300 rounded transition duration-300 ease-in-out">
-                    <a href="" class="flex justify-center md:justify-start md:pl-3 ">
-                        <span class="iconify h-6 w-6 mr-3 " data-icon="bx:home-alt"></span>
-                        <span>Dashboard</span>
+            <div class=" mx-10 md:mx-0 py-4 text-lg hidden md:block" id="menu">
+                <p class="py-2 my-2 md:my-8  {{'dashboard' == request()->path() ? 'bg-yellow-300': ''}} md:bg-transparent rounded transition duration-300 ease-in-out">
+                    <a href="" class="flex justify-center md:pl-3 ">
+                        <span class="iconify h-12 w-12 mr-3 {{'dashboard' == request()->path() ? 'md:text-yellow-300': ''}} hover:text-yellow-400" data-icon="ic:baseline-space-dashboard"></span>
+                        <span class="md:hidden text-2xl self-center">Dashboard</span>
                     </a>
                 </p>
                 <p
-                    class="py-2 my-2 md:my-0 bg-black md:bg-transparent hover:bg-slate-500 rounded transition duration-300 ease-in-out">
-                    <a href="" class="flex justify-center md:justify-start md:pl-3">
-                        <span class="iconify h-6 w-6 mr-3" data-icon="fa6-solid:trash-can-arrow-up"></span>
-                        <span>Input Sampah</span>
+                    class="py-2 my-2 md:my-8  {{'inputtps' == request()->path() ? 'bg-yellow-300': ''}} md:bg-transparent  rounded transition duration-300 ease-in-out">
+                    <a href="" class="flex justify-center  md:pl-3">
+                        <span class="iconify h-10 w-10 mr-3 {{'inputtps' == request()->path() ? 'md:text-yellow-300': ''}} hover:text-yellow-400" data-icon="fa6-solid:trash-can-arrow-up"></span>
+                        <span class="md:hidden text-2xl self-center">Input Sampah</span>
                     </a>
                 </p>
-                <p class=" py-2 hover:bg-slate-500 rounded transition duration-300 ease-in-out">
-                    <a href="" class="flex  pl-3">
-                        <span class="iconify h-6 w-6 mr-3" data-icon="carbon:report"></span>
-                        <span>Laporan</span>
+                <p class="py-2 my-2 md:my-8  {{'laporan' == request()->path() ? 'bg-yellow-300': ''}} md:bg-transparent  rounded transition duration-300 ease-in-out">
+                    <a href="" class="flex  justify-center  md:pl-3">
+                        <span class="iconify h-10 w-10 mr-3 {{'laporan' == request()->path() ? 'md:text-yellow-300': ''}} hover:text-yellow-400" data-icon="carbon:report"></span>
+                        <span class="md:hidden text-2xl self-center">Laporan</span>
                     </a>
                 </p>
-                <p class=" py-2 hover:bg-slate-500 rounded transition duration-300 ease-in-out">
-                    <a href="" class="flex  pl-3">
-                        <span class="iconify h-6 w-6 mr-3" data-icon="akar-icons:statistic-up"></span>
-                        <span>Statistik</span>
+                <p class="py-2 my-2 md:my-8  {{'statistik' == request()->path() ? 'bg-yellow-300': ''}} md:bg-transparent  rounded transition duration-300 ease-in-out">
+                    <a href="" class="flex  justify-center md:pl-3">
+                        <span class="iconify h-10 w-10 mr-3 {{'statistik' == request()->path() ? 'md:text-yellow-300': ''}} hover:text-yellow-400" data-icon="akar-icons:statistic-up"></span>
+                        <span class="md:hidden text-2xl self-center">Statistik</span>
                     </a>
                 </p>
             </div>
         </nav>
     </div>
 
-    <main class="md:px-16 md:col-span-6">
+    <main class=" px-4 md:px-16 md:col-span-11 bg-slate-100">
         @yield('main')
     </main>
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

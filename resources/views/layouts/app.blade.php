@@ -23,8 +23,8 @@
     @yield('css')
 </head>
 
-<body class=" text-black font-serif">
-    <div class="grid grid-cols-1 md:grid-cols-7" >
+<body class="  text-gray-700 font-serif">
+    <div class="grid grid-cols-1 md:grid-cols-12" >
         @yield('body')
 
     </div>
