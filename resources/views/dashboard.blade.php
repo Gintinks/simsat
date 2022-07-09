@@ -1,150 +1,139 @@
-<!doctype html>
-<html>
+@extends('layouts.nav')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-
-<body class=" text-black font-serif">
-    <div class="grid md:grid-cols-7">
-        <div class=" md:col-span-1 md:h-screen md:sticky md:top-0" style="background: #00923F;">
-            <nav class=" text-white ">
-                <div class="hidden md:flex justify-center pt-7 pb-16">
-                    <img src="{{ asset('img/batu.png') }}" alt="" class=" w-28 h-34">
-                </div>
-
-                <h1 class="text-2xl font-bold  ml-3 pb-3 text-center md:text-left">
-                    <a href="">Master Data</a>
-                </h1>
-
-                <div class=" mx-10 text-lg">
-                    <p class="py-2 my-2 md:my-0 bg-orange-300 md:bg-transparent hover:bg-slate-300 rounded transition duration-300 ease-in-out">
-                        <a href="" class="flex justify-center md:justify-start md:pl-3 ">
-                            <span class="iconify h-6 w-6 mr-3" data-icon="bx:home-alt"></span>
-                            <span>Dashboard</span>
-                        </a>
-                    </p>
-                    <p class="py-2 my-2 md:my-0 bg-black md:bg-transparent hover:bg-slate-500 rounded transition duration-300 ease-in-out">
-                        <a href="" class="flex justify-center md:justify-start md:pl-3">
-                            <span class="iconify h-6 w-6 mr-3" data-icon="fa6-solid:trash-can-arrow-up"></span>
-                            <span>Input Sampah</span>
-                        </a>
-                    </p>
-                    <p class=" py-2 hover:bg-slate-500 rounded transition duration-300 ease-in-out">
-                        <a href="" class="flex  pl-3">
-                            <span class="iconify h-6 w-6 mr-3" data-icon="carbon:report"></span>
-                            <span>Laporan</span>
-                        </a>
-                    </p>
-                    <p class=" py-2 hover:bg-slate-500 rounded transition duration-300 ease-in-out">
-                        <a href="" class="flex  pl-3">
-                            <span class="iconify h-6 w-6 mr-3" data-icon="akar-icons:statistic-up"></span>
-                            <span>Statistik</span>
-                        </a>
-                    </p>
-                </div>
-            </nav>
+@section('main')
+    <div class="md:flex md:justify-between py-6 flex-row-reverse">
+        <div>
+            <div class="dropdown relative mb-2">
+                <button
+                    class="flex text-lg hover:bg-green-500 hover:text-white focus:text-white focus:bg-green-500  border-green-500 text-green-500 px-6 py-2 border-2 font-medium leading-tight rounded focus:ring-0 transition duration-150 ease-in-out"
+                    type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Username
+                    <span class="iconify h-6 w-6 ml-2" data-icon="bxs:user"></span>
+                </button>
+                <ul class="
+                                 w-40
+                                dropdown-menu
+                                min-w-max
+                                absolute
+                                hidden
+                                bg-white
+                                text-base
+                                z-50
+                                float-left
+                                py-2
+                                list-none
+                                text-left
+                                rounded-lg
+                                shadow-lg
+                                mt-1
+                                m-0
+                                bg-clip-padding
+                                border-none
+                            "
+                    aria-labelledby="dropdownMenuButton1">
+                    <li>
+                        <a class="
+                                    dropdown-item
+                                    text-sm
+                                    py-2
+                                    px-4
+                                    font-normal
+                                    block
+                                    w-full
+                                    whitespace-nowrap
+                                    bg-transparent
+                                    text-gray-700
+                                    hover:bg-gray-100
+                                    "
+                            href="#">Log out</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <main class="px-16 md:col-span-6">
-
-            <div class="md:flex md:justify-between py-6">
-                <header>
-                    <h2 class="text-2xl font-bold">DASHBOARD TPSR3</h2>
-                </header>
-                <a href="">Log out</a>
-            </div>
-
-            <div class="grid md:grid-cols-4 gap-12 pb-8">
-
-                <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg ">
-                    <span class="iconify w-16 h-16 self-center"
-                        style="color: #17cf67;"data-icon="material-symbols:assistant"></span>
-                    <div class="p-3">
-                        <p class=" text-2xl font-semibold opacity-75">182 KG</p>
-                        <p>Total Sampah</p>
-                    </div>
-                </div>
-
-                <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg ">
-                    <span class="iconify w-16 h-16 self-center" data-icon="mdi:leaf-off" style="color: #17cf67;"></span>
-                    <div class="p-3">
-                        <p class=" text-2xl font-semibold opacity-75">182 KG</p>
-                        <p>Organik</p>
-                    </div>
-                </div>
-
-                <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg ">
-                    <span class="iconify w-16 h-16 self-center" style="color: #17cf67;"data-icon="mdi:leaf"></span>
-                    <div class="p-3">
-                        <p class=" text-2xl font-semibold opacity-75">182 KG</p>
-                        <p>Anorganik</p>
-                    </div>
-                </div>
-
-                <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg ">
-                    <span class="iconify w-16 h-16 self-center opacity-75" data-icon="tabler:recycle-off"
-                        style="color: #17cf67;"></span>
-                    <div class="p-3">
-                        <p class=" text-2xl font-semibold">182 KG</p>
-                        <p>Tidak Terolah</p>
-                    </div>
-                </div>
-
-            </div>
-            <h2 class="text-xl font-bold">DATA MINGGUAN</h2>
-            <div class="grid md:grid-cols-2 gap-12 pb-5">
-                <div class="shadow-lg rounded-lg overflow-hidden">
-                    <div class="py-3 px-5 bg-gray-50">Line chart</div>
-                    <canvas class="p-10" id="chartLine"></canvas>
-                </div>
-                <div class="shadow-lg rounded-lg overflow-hidden">
-                    <div class="py-3 px-5 bg-gray-50">Bar chart</div>
-                    <canvas class="p-10" id="chartBar"></canvas>
-                </div>
-            </div>
-
-
-            <h2 class="text-xl font-bold">HISTORY UPDATE DATA</h2>
-
-            <div class="shadow-md border border-gray-700 rounded-t-lg mb-4">
-                <div class="flex border border-b-2 border-gray-700 hover:bg-slate-200 transition duration-150 ease-in-out">
-                    <span class=" iconify w-12 h-12 self-center min-w-[32px]" data-icon="eva:checkmark-circle-2-fill"></span>
-                    <div class="p-3">
-                        <p class=" text-lg  font-semibold">EDIT DATA : <span class="font-normal">Management DLH mengedit
-                                data TPSR3 pada input sampah tanggal 10 Juni 2022, 09:00</span></p>
-                        <p class=" text-blue-400 text-base">12 Juni 2022, 09:00</p>
-                    </div>
-                </div>
-                <div class="flex border border-b-2 border-gray-700 ">
-                    <span class="iconify w-12 h-12 self-center min-w-[32px]" data-icon="eva:checkmark-circle-2-fill"></span>
-                    <div class="p-3">
-                        <p class=" text-lg  font-semibold">TAMBAH DATA : <span class="font-normal">TPS3R Desa Punten menambahkan 4 Kg Sampah Kertas</span></p>
-                        <p class=" text-blue-400 text-base">12 Juni 2022, 09:00</p>
-                    </div>
-                </div>
-                <div class="flex border border-b-2 border-gray-700 ">
-                    <span class="iconify w-12 h-12 self-center min-w-[32px]" data-icon="eva:checkmark-circle-2-fill"></span>
-                    <div class="p-3">
-                        <p class=" text-lg  font-semibold">EDIT DATA : <span class="font-normal">Management DLH mengedit
-                                data TPSR3 pada input sampah tanggal 10 Juni 2022, 09:00</span></p>
-                        <p class=" text-blue-400 text-base">12 Juni 2022, 09:00</p>
-                    </div>
-                </div>
-                <div class="flex border border-b-2 border-gray-700 ">
-                    <span class="iconify w-12 h-12 self-center min-w-[32px]" data-icon="eva:checkmark-circle-2-fill"></span>
-                    <div class="p-3">
-                        <p class=" text-lg  font-semibold">TAMBAH DATA : <span class="font-normal">TPS3R Desa Punten menambahkan 4 Kg Sampah Kertas</span></p>
-                        <p class=" text-blue-400 text-base">12 Juni 2022, 09:00</p>
-                    </div>
-                </div>
-            </div>
-
-
-        </main>
+        <header>
+            <h2 class="text-2xl font-bold">DASHBOARD TPSR3</h2>
+        </header>
     </div>
+
+    <div class="grid md:grid-cols-4 gap-12 pb-8">
+
+        <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg bg-white">
+            <span class="iconify w-16 h-16 self-center"
+                style="color: #17cf67;"data-icon="material-symbols:assistant"></span>
+            <div class="p-3">
+                <p class=" text-2xl font-semibold">182 KG</p>
+                <p>Total Sampah</p>
+            </div>
+        </div>
+
+        <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg bg-white">
+            <span class="iconify w-16 h-16 self-center" data-icon="mdi:leaf-off" style="color: #17cf67;"></span>
+            <div class="p-3">
+                <p class=" text-2xl font-semibold">182 KG</p>
+                <p>Organik</p>
+            </div>
+        </div>
+
+        <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg bg-white">
+            <span class="iconify w-16 h-16 self-center" style="color: #17cf67;"data-icon="mdi:leaf"></span>
+            <div class="p-3">
+                <p class=" text-2xl font-semibold">182 KG</p>
+                <p>Anorganik</p>
+            </div>
+        </div>
+
+        <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg bg-white">
+            <span class="iconify w-16 h-16 self-center opacity-75" data-icon="tabler:recycle-off"
+                style="color: #17cf67;"></span>
+            <div class="p-3">
+                <p class=" text-2xl font-semibold">182 KG</p>
+                <p>Tidak Terolah</p>
+            </div>
+        </div>
+
+    </div>
+    <h2 class="text-xl font-bold">DATA MINGGUAN</h2>
+    <div class="grid md:grid-cols-2 gap-12 pb-5">
+        <div class="shadow-lg rounded-lg overflow-hidden bg-white">
+            <div class="py-3 px-5 bg-gray-50">Line chart</div>
+            <canvas class="p-10" id="chartLine"></canvas>
+        </div>
+        <div class="shadow-lg rounded-lg overflow-hidden bg-white">
+            <div class="py-3 px-5 bg-gray-50">Bar chart</div>
+            <canvas class="p-10" id="chartBar"></canvas>
+        </div>
+    </div>
+
+
+    <div class="bg-bro bg-white rounded-2xl mb-3">
+        <div class="p-6 md:w-2/6">
+            <h2 class="text-xl font-bold ">Update Data</h2>
+            <div class="">
+                <div class=" border-b-2 border-gray-400">
+                    <p class=" pb-1 text-gray-400 text-base">12 Juni 2022, 09:00</p>
+                    <p class="pb-1">TPS3R Desa Punten menambahkan 28 Kg Sampah Organik</p>
+                </div>
+
+                <div class=" border-b-2 border-gray-400">
+                    <p class=" pb-1 text-gray-400 text-base">12 Juni 2022, 09:00</p>
+                    <p class="pb-1">TPS3R Desa Punten menambahkan 28 Kg Sampah Organik</p>
+                </div>
+
+                <div class=" border-b-2 border-gray-400">
+                    <p class=" pb-1 text-gray-400 text-base">12 Juni 2022, 09:00</p>
+                    <p class="pb-1">TPS3R Desa Punten menambahkan 28 Kg Sampah Organik</p>
+                </div>
+            </div>
+
+        </div>
+
+        <img src="{{ asset('img/bro.png') }}" class="md:hidden">
+
+        
+    </div>
+
+
     <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
     <!-- Required chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -204,6 +193,4 @@
             configBarChart
         );
     </script>
-</body>
-
-</html>
+@endsection

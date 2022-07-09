@@ -19,6 +19,17 @@
     margin: 0; padding: 0;
 }
 
+@media (min-width: 768px) {
+    .bg-bro {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        background-image: url("../img/bro.png");
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: auto;
+        margin: 0; padding: 0;
+    }
+}
+
 .bg-testing {
     height: 100vh;
     background-color: #00923F;
