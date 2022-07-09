@@ -25,7 +25,8 @@ class CreateSampahsTable extends Migration
             $table->double('berat_sampah_lain_lain');
             $table->double('berat_sampah_organik');
             $table->double('berat_sampah_ke_tpa');
-            $table->double('berat_sampah_diolah');
+            $table->double('berat_sampah_diolah');  
+            $table->double('berat_sampah_total');  
             $table->timestamps();
         });
     }
