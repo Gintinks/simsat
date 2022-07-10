@@ -18,6 +18,10 @@ class SampahController extends Controller
      }
  
      //buat view halaman/form adduser
+     public function showHalamanSampahTps()
+     {
+        return view('sampahList');
+     }
      public function showSampahTps()
      {
 
@@ -28,8 +32,9 @@ class SampahController extends Controller
             $tpsSampah = Sampah::where('user_id', auth()->user()->id)->get();
         }
          
-         //return response()->json($tpsSampah);
-         return view('sampahList',['sampahList' => $tpsSampah]);
+        return response()->json($tpsSampah);
+        //  return view('sampahList',['sampahList' => $tpsSampah]);
+      
 
      }
 
@@ -104,7 +109,9 @@ class SampahController extends Controller
             'berat_sampah_total' =>  $inputSampah['berat_sampah_total'],
         ]);
 
-        //return response()->json($saveSampah);
+        return redirect()
+        ->back()
+        ->with('success', 'Data sampah sudah berhasil dimasukkan ke database!');
 
      }
 
