@@ -34,3 +34,14 @@
     height: 100vh;
     background-color: #00923F;
 }
+
+.bg-blue{
+    background: #EEFBF4;
+}
+.bg-bluer{
+    background: #D0F0F3;
+}
+
+.bg-bluerer{
+    background: #006D77;
+}

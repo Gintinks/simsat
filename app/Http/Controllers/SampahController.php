@@ -18,6 +18,10 @@ class SampahController extends Controller
      }
  
      //buat view halaman/form adduser
+     public function showHalamanSampahTps()
+     {
+        return view('sampahList');
+     }
      public function showSampahTps()
      {
 
@@ -28,8 +32,9 @@ class SampahController extends Controller
             $tpsSampah = Sampah::where('user_id', auth()->user()->id)->get();
         }
          
-         //return response()->json($tpsSampah);
-         return view('sampahList',['sampahList' => $tpsSampah]);
+        return response()->json($tpsSampah);
+        //  return view('sampahList',['sampahList' => $tpsSampah]);
+      
 
      }
 

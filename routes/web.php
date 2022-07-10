@@ -34,7 +34,7 @@ Route::post('/login', [LoginCosController::class, 'authenticate'])->name('login'
 Route::get('/register', [AdminRegisterController::class, 'index'])->name('register')->middleware('is_admin');
 Route::post('/register', [App\Http\Controllers\AdminRegisterController::class, 'store'])->name('register');
 Route::post('/delete', [App\Http\Controllers\AdminRegisterController::class, 'destroy'])->name('delete');
-Route::get('/userList', [AdminRegisterController::class, 'viewUser'])->name('userList3')->middleware('is_admin');
+Route::get('/userList', [AdminRegisterController::class, 'viewUser'])->name('userList')->middleware('is_admin');
 // Route::post('/register', [App\Http\Controllers\AdminRegisterController::class, 'viewUser'])->name('viewUser')->middleware('is_admin');
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -48,6 +48,7 @@ Route::get('/inputtps', [TpsController::class, 'input'])->name('inputtps')->midd
 Route::get('/onlyManagemenDlh', [ManagemenDlhController::class, 'index'])->name('onlyManagemenDlh')->middleware('is_managemendlh');
 
 Route::get('/sampahList', [SampahController::class, 'showSampahTps'])->name('sampahList')->middleware('is_tps_managementdlh');
+Route::get('/sampah-list', [SampahController::class, 'showHalamanSampahTps'])->name('sampahList')->middleware('is_tps_managementdlh');
 
 Route::get('/sampahInputView', [SampahController::class, 'indexInput'])->name('sampahInputView')->middleware('is_tps');
 Route::get('/sampahInput', [SampahController::class, 'storeSampah'])->name('sampahInput');
