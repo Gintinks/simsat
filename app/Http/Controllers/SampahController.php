@@ -100,7 +100,9 @@ class SampahController extends Controller
             'berat_sampah_total' =>  $inputSampah['berat_sampah_total'],
         ]);
 
-        //return response()->json($saveSampah);
+        return redirect()
+        ->back()
+        ->with('success', 'Data sampah sudah berhasil dimasukkan ke database!');
 
      }
 

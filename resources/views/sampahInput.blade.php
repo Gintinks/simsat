@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body> 
     <form action="sampahInput">
         <label for="kertas">kertas:</label><br>
         <input type="text" id="kertas" name="kertas"><br>

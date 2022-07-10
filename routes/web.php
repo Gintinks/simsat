@@ -43,7 +43,7 @@ Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
 // Route::get('/userList', [AdminController::class, 'index'])->name('userList')->middleware('is_admin');
 
 Route::get('/onlyTps', [TpsController::class, 'index'])->name('onlyTps')->middleware('is_tps');
-Route::get('/inputtps', [TpsController::class, 'input'])->name('onlyTps')->middleware('is_tps');
+Route::get('/inputtps', [TpsController::class, 'input'])->name('inputtps')->middleware('is_tps');
 
 Route::get('/onlyManagemenDlh', [ManagemenDlhController::class, 'index'])->name('onlyManagemenDlh')->middleware('is_managemendlh');
 
