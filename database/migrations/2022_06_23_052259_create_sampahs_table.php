@@ -23,6 +23,7 @@ class CreateSampahsTable extends Migration
             $table->integer('berat_sampah_logam');
             $table->integer('berat_sampah_kertas');
             $table->integer('berat_sampah_lain_lain');
+            $table->integer('berat_sampah_anorganik');
             $table->integer('berat_sampah_organik');
             $table->integer('berat_sampah_ke_tpa');
             $table->integer('berat_sampah_diolah');  

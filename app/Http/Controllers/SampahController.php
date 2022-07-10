@@ -81,6 +81,9 @@ class SampahController extends Controller
 
         $inputSampah['user_id'] = auth()->user()->id;
 
+        $inputSampah['berat_sampah_anorganik'] = $inputSampah['kertas'] + $inputSampah['kaca'] + $inputSampah['karet'] + $inputSampah['plastik'] 
+        + $inputSampah['logam'] + $inputSampah['lain_lain'];
+
         $inputSampah['berat_sampah_diolah'] = $inputSampah['kertas'] + $inputSampah['kaca'] + $inputSampah['karet'] + $inputSampah['plastik'] 
         + $inputSampah['logam'] + $inputSampah['lain_lain'] + $inputSampah['sampah_organik'];
 
@@ -94,6 +97,7 @@ class SampahController extends Controller
             'berat_sampah_logam' =>  $inputSampah['logam'],
             'berat_sampah_kertas' =>  $inputSampah['kertas'],
             'berat_sampah_lain_lain' =>  $inputSampah['lain_lain'],
+            'berat_sampah_anorganik' =>  $inputSampah['berat_sampah_anorganik'],
             'berat_sampah_organik' =>  $inputSampah['sampah_organik'],
             'berat_sampah_ke_tpa' =>  $inputSampah['diteruskan_ke_tpa'],
             'berat_sampah_diolah' =>  $inputSampah['berat_sampah_diolah'],
