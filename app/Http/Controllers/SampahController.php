@@ -27,32 +27,15 @@ class SampahController extends Controller
 
         if (auth()->user()->priviliges_id == 2) {
             //$tpsSampah = DB::table('sampahs')->join('users','sampahs.user_id','=','users.id')->select('sampahs.*','users.name');
-            $tpsSampah = Sampah::join('users','sampahs.user_id','=','users.id')->get(['sampahs.*','users.name']);
+            $tpsSampah = Sampah::join('users','sampahs.user_id','=','users.id')->get(['sampahs.*','users.tps']);
             //$tpsSampah = Sampah::rightJoin('users','users.id','=','sampahs.user_id')->select('users.name');
         }
         if (auth()->user()->priviliges_id == 3) {
-            $tpsSampah = Sampah::where('user_id', auth()->user()->id)->get();
+            $tpsSampah = Sampah::where('user_id', auth()->user()->id)->join('users','sampahs.user_id','=','users.id')->get(['sampahs.*','users.tps']);
         }
          
         return response()->json($tpsSampah);
        //   return view('sampahList',['sampahList' => $tpsSampah]);
-      
-
-     }
-
-     public function showSampahTpsTest()
-     {
-
-        if (auth()->user()->priviliges_id == 2) {
-            $tpsSampah = Sampah::join('users','sampahs.user_id','=','users.id')->select('sampahs.*','users.name');
-            //$tpsSampah = Sampah::rightJoin('users','users.id','=','sampahs.user_id')->select('users.name');
-        }
-        if (auth()->user()->priviliges_id == 3) {
-            $tpsSampah = Sampah::where('user_id', auth()->user()->id)->get();
-        }
-         
-       // return response()->json($tpsSampah);
-          return view('sampahList',['sampahList' => $tpsSampah]);
       
 
      }
@@ -121,7 +104,7 @@ class SampahController extends Controller
             'berat_sampah_logam' =>  $inputSampah['logam'],
             'berat_sampah_kertas' =>  $inputSampah['kertas'],
             'berat_sampah_lain_lain' =>  $inputSampah['lain_lain'],
-            'berat_sampah_anorganik' =>  $inputSampah['berat_sampah_anorganik'],
+           // 'berat_sampah_anorganik' =>  $inputSampah['berat_sampah_anorganik'],
             'berat_sampah_organik' =>  $inputSampah['sampah_organik'],
             'berat_sampah_ke_tpa' =>  $inputSampah['diteruskan_ke_tpa'],
             'berat_sampah_diolah' =>  $inputSampah['berat_sampah_diolah'],
