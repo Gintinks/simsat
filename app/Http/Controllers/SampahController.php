@@ -26,14 +26,33 @@ class SampahController extends Controller
      {
 
         if (auth()->user()->priviliges_id == 2) {
-            $tpsSampah = Sampah::all();
+            //$tpsSampah = DB::table('sampahs')->join('users','sampahs.user_id','=','users.id')->select('sampahs.*','users.name');
+            $tpsSampah = Sampah::join('users','sampahs.user_id','=','users.id')->get(['sampahs.*','users.name']);
+            //$tpsSampah = Sampah::rightJoin('users','users.id','=','sampahs.user_id')->select('users.name');
         }
         if (auth()->user()->priviliges_id == 3) {
             $tpsSampah = Sampah::where('user_id', auth()->user()->id)->get();
         }
          
         return response()->json($tpsSampah);
-        //  return view('sampahList',['sampahList' => $tpsSampah]);
+       //   return view('sampahList',['sampahList' => $tpsSampah]);
+      
+
+     }
+
+     public function showSampahTpsTest()
+     {
+
+        if (auth()->user()->priviliges_id == 2) {
+            $tpsSampah = Sampah::join('users','sampahs.user_id','=','users.id')->select('sampahs.*','users.name');
+            //$tpsSampah = Sampah::rightJoin('users','users.id','=','sampahs.user_id')->select('users.name');
+        }
+        if (auth()->user()->priviliges_id == 3) {
+            $tpsSampah = Sampah::where('user_id', auth()->user()->id)->get();
+        }
+         
+       // return response()->json($tpsSampah);
+          return view('sampahList',['sampahList' => $tpsSampah]);
       
 
      }

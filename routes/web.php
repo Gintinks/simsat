@@ -13,9 +13,6 @@ use App\Http\Controllers\SampahController;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/listsampah', function () {
     return view('listSampah');
@@ -28,7 +25,7 @@ Auth::routes();
 //Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
 //Route::get('/tps', 'ScoutController@index')->name('tps')->middleware('tps');
 
-Route::get('/login', [LoginCosController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/', [LoginCosController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginCosController::class, 'authenticate'])->name('login');
 
 Route::get('/register', [AdminRegisterController::class, 'index'])->name('register')->middleware('is_admin');

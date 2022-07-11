@@ -10,4 +10,5 @@ class Sampah extends Model
     use HasFactory;
 
     protected $guarded = [];
+
 }
