@@ -30,7 +30,7 @@ function App() {
                     
                     <tr className={`${count%2 == 0 ? ' bg-white' : ' bg-blue-50 '} border-b transition duration-300 ease-in-out hover:bg-slate-200`}>
                         <th className="text-sm  w-6 py-4   whitespace-nowrap border-r border-gray-300">{count++}</th>
-                        <td className=' w-24 py-4 whitespace-nowrap border-r border-gray-300'>PLACEHOLDER CUZ DATABASE IS S*#T</td>
+                        <td className=' w-24 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.tps}</td>
                         <td className='w-10 py-4 border-r border-gray-300'>{sampah.berat_sampah_organik}</td>
                         <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>0</td>
                         <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_kaca}</td>
