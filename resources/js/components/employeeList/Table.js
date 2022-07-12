@@ -56,11 +56,11 @@ function App() {
             <ToastContainer />
 
             <CreateModal />
-            <div className="flex flex-col">
+            <div className="flex flex-col ">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                         <div className='overflow-x-auto'>
-                            <table className="min-w-full border text-center">
+                            <table className="min-w-full border text-center bg-white">
                                 <thead className="border-b">
                                     <tr>
                                         <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 border-r" >#</th>
@@ -91,8 +91,8 @@ function App() {
                 breakLinkClassName={'page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none'}
                 pageClassName={'page-item'}
                 pageLinkClassName={'page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none'}
-                previousClassName={'page-item '}
-                nextClassName={'page-item '}
+                previousClassName={'page-item bg-white'}
+                nextClassName={'page-item bg-white'}
             />
         </div>
     );
