@@ -40,6 +40,13 @@ class SampahController extends Controller
 
      }
 
+     public function showSampahTpsByID($id)
+     {
+
+        
+
+     }
+
      public function storeSampah(Request $request)
      {
         $inputSampah = $request->validate([

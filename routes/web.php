@@ -27,6 +27,7 @@ Auth::routes();
 
 Route::get('/', [LoginCosController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginCosController::class, 'authenticate'])->name('login');
+Route::get('/logout', [LoginCosController::class, 'logout'])->name('logout');
 
 Route::get('/register', [AdminRegisterController::class, 'index'])->name('register')->middleware('is_admin');
 Route::post('/register', [App\Http\Controllers\AdminRegisterController::class, 'store'])->name('register');

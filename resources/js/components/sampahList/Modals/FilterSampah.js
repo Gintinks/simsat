@@ -4,6 +4,153 @@ import { toast } from 'react-toastify';
 
 
 const FilterSampah = () => {
+    const dataCategory = [
+        {
+            "id": 1,
+            "category": "Kertas",
+            "checked": false
+        },
+        {
+            "id": 2,
+            "category": "Kaca",
+            "checked": false
+        },
+        {
+            "id": 3,
+            "category": "Karet",
+            "checked": false
+        },
+        {
+            "id": 4,
+            "category": "Logam",
+            "checked": false
+        },
+        {
+            "id": 5,
+            "category": "Plastik",
+            "checked": false
+        },
+        {
+            "id": 6,
+            "category": "Lain-lain",
+            "checked": false
+        },
+        {
+            "id": 7,
+            "category": "Organik",
+            "checked": false
+        }
+
+    ]
+
+    const dataTps = [
+        {
+            "id": 1,
+            "category": "Punten",
+            "checked": false
+        },
+        {
+            "id": 2,
+            "category": "Dadaprejo",
+            "checked": false
+        },
+        {
+            "id": 3,
+            "category": "Suimbergondo",
+            "checked": false
+        },
+        {
+            "id": 4,
+            "category": "Pandanrejo",
+            "checked": false
+        },
+        {
+            "id": 5,
+            "category": "Oro-oro Ombo",
+            "checked": false
+        },
+    ]
+
+    const dataRange = [
+        {
+            "id": 1,
+            "category": "7 Hari Terakhir",
+            "checked": false
+        },
+        {
+            "id": 2,
+            "category": "30 Hari Terakhir",
+            "checked": false
+        },
+       
+    ]
+    const [category, setCategory] = useState(dataCategory);
+    const [tps, setTps] = useState(dataTps);
+    const [range, setRange] = useState(dataRange);
+
+    const updateChecked = (id, whichvalue, newvalue) => {
+        var index = category.findIndex(x => x.id === id);
+
+        let g = category[index]
+        g[whichvalue] = newvalue
+
+        setCategory([
+            ...category.slice(0, index),
+            g,
+            ...category.slice(index + 1)
+        ]
+        );
+        /*
+        the first input of the function is the id of the item
+        the second input of the function is the atrribute that you wish to change
+        the third input of the function is the new value for that attribute
+        It's a pleasure :0
+        ~atlas
+        */
+    }
+    const updateCheckedTps = (id, whichvalue, newvalue) => {
+        var index = tps.findIndex(x => x.id === id);
+
+        let g = tps[index]
+        g[whichvalue] = newvalue
+
+        setTps([
+            ...tps.slice(0, index),
+            g,
+            ...tps.slice(index + 1)
+        ]
+        );
+    }
+
+    const updateRange = (id, whichvalue, newvalue) => {
+        var index = range.findIndex(x => x.id === id);
+
+        let g = range[index]
+        g[whichvalue] = newvalue
+
+        setRange([
+            ...range.slice(0, index),
+            g,
+            ...range.slice(index + 1)
+        ]
+        );
+    }
+
+    const displayCategories = category.map((value, index) => {
+        return (
+            <button type="button" onClick={() => { updateChecked(value.id, 'checked', !value.checked) }} className={`${value.checked ? '  bg-green-500 text-white hover:bg-green-400' : ' border-green-500 text-green-500 hover:bg-gray-100'} m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>{value.category}</button>
+        );
+    })
+    const displayTPS = tps.map((value, index) => {
+        return (
+            <button type="button" onClick={() => { updateCheckedTps(value.id, 'checked', !value.checked) }} className={`${value.checked ? '  bg-yellow-500 text-white hover:bg-yellow-400' : ' border-yellow-500 text-yellow-500 hover:bg-gray-100'} m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>{value.category}</button>
+        );
+    })
+    const displayRange = range.map((value, index) => {
+        return (
+            <button type="button" onClick={() => { updateRange(value.id, 'checked', !value.checked) }} className={`${value.checked ? '  bg-blue-500 text-white hover:bg-blue-400' : ' border-blue-500 text-blue-500 hover:bg-gray-100'} m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>{value.category}</button>
+        );
+    })
 
     return (
         <div>
@@ -29,7 +176,27 @@ const FilterSampah = () => {
                                 data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body relative p-4 mx-3">
-                            <p>THIS GONNA BE HARD MAH DUDE</p>
+                            <div className=' border-b-2 border-gray-200 py-3'>
+                                <p className=' font-semibold text-lg'>
+                                    Jenis Sampah
+                                </p>
+                                {displayCategories}
+                            </div>
+
+                            <div className=' border-b-2 border-gray-200 py-3'>
+                                <p className=' font-semibold text-lg'>
+                                    Desa
+                                </p>
+                                {displayTPS}
+                            </div>
+
+                            <div className=' border-b-2 border-gray-200 py-3'>
+                                <p className=' font-semibold text-lg'>
+                                    Rentang
+                                </p>
+                                {displayRange}
+                            </div>
+
                         </div>
                         <div
                             className="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
@@ -40,6 +207,7 @@ const FilterSampah = () => {
                             </button>
                             <button type="button"
                                 value="Save"
+                                data-bs-dismiss="modal"
                                 class="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
                                 Save changes
                             </button>

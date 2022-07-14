@@ -5328,16 +5328,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function App() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "container",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "row justify-content-center",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
-        className: " text-xl md:text-2xl py-3 font-semibold",
-        children: "Selamat Datang di Halaman Admin"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_employeeList_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {})]
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_employeeList_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {})
     })
   });
 }
@@ -5369,7 +5365,7 @@ function SampahData() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "container",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "row justify-content-center",
+      className: "row justify-content-center mb-9",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
         className: " text-xl md:text-2xl py-9 font-semibold ",
         children: "Selamat Datang di Halaman List Sampah"
@@ -5693,7 +5689,7 @@ var DeleteModal = function DeleteModal(_ref) {
       id: eachRowId
     };
     axios__WEBPACK_IMPORTED_MODULE_0___default().post('/delete', packets).then(function () {
-      react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.warning("Akun Sudah Terhapust");
+      react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.error("Akun Sudah Terhapus");
       setTimeout(function () {
         location.reload();
       }, 2500);
@@ -5702,7 +5698,7 @@ var DeleteModal = function DeleteModal(_ref) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto",
-    id: "deleteModal" + eachRowId,
+    id: "deleteModal" + eachRowId.id,
     tabindex: "-1",
     "aria-labelledby": "exampleModalCenterTitle",
     "aria-modal": "true",
@@ -5742,7 +5738,7 @@ var DeleteModal = function DeleteModal(_ref) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             type: "button",
             onClick: function onClick() {
-              deleteData(eachRowId);
+              deleteData(eachRowId.id);
             },
             "class": "inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out ml-1",
             children: "Hapus Pengguna"
@@ -6141,7 +6137,7 @@ function App() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
           className: " max-h-5 max w-14 px-2",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_TableActionButtons__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            eachRowId: user.id
+            eachRowId: user
           })
         })]
       })
@@ -6266,7 +6262,7 @@ var TableActionButtons = function TableActionButtons(_ref) {
       type: "button",
       className: "inline-block p-2  bg-gray-300  leading-tight uppercase rounded shadow-md hover:bg-red-600 hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out",
       "data-bs-toggle": "modal",
-      "data-bs-target": '#deleteModal' + eachRowId,
+      "data-bs-target": '#deleteModal' + eachRowId.id,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
         "class": "iconify h-5 w-5",
         "data-icon": "fe:trash"
@@ -6297,6 +6293,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -6304,6 +6320,145 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var FilterSampah = function FilterSampah() {
+  var dataCategory = [{
+    "id": 1,
+    "category": "Kertas",
+    "checked": false
+  }, {
+    "id": 2,
+    "category": "Kaca",
+    "checked": false
+  }, {
+    "id": 3,
+    "category": "Karet",
+    "checked": false
+  }, {
+    "id": 4,
+    "category": "Logam",
+    "checked": false
+  }, {
+    "id": 5,
+    "category": "Plastik",
+    "checked": false
+  }, {
+    "id": 6,
+    "category": "Lain-lain",
+    "checked": false
+  }, {
+    "id": 7,
+    "category": "Organik",
+    "checked": false
+  }];
+  var dataTps = [{
+    "id": 1,
+    "category": "Punten",
+    "checked": false
+  }, {
+    "id": 2,
+    "category": "Dadaprejo",
+    "checked": false
+  }, {
+    "id": 3,
+    "category": "Suimbergondo",
+    "checked": false
+  }, {
+    "id": 4,
+    "category": "Pandanrejo",
+    "checked": false
+  }, {
+    "id": 5,
+    "category": "Oro-oro Ombo",
+    "checked": false
+  }];
+  var dataRange = [{
+    "id": 1,
+    "category": "7 Hari Terakhir",
+    "checked": false
+  }, {
+    "id": 2,
+    "category": "30 Hari Terakhir",
+    "checked": false
+  }];
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataCategory),
+      _useState2 = _slicedToArray(_useState, 2),
+      category = _useState2[0],
+      setCategory = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataTps),
+      _useState4 = _slicedToArray(_useState3, 2),
+      tps = _useState4[0],
+      setTps = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataRange),
+      _useState6 = _slicedToArray(_useState5, 2),
+      range = _useState6[0],
+      setRange = _useState6[1];
+
+  var updateChecked = function updateChecked(id, whichvalue, newvalue) {
+    var index = category.findIndex(function (x) {
+      return x.id === id;
+    });
+    var g = category[index];
+    g[whichvalue] = newvalue;
+    setCategory([].concat(_toConsumableArray(category.slice(0, index)), [g], _toConsumableArray(category.slice(index + 1))));
+    /*
+    the first input of the function is the id of the item
+    the second input of the function is the atrribute that you wish to change
+    the third input of the function is the new value for that attribute
+    It's a pleasure :0
+    ~atlas
+    */
+  };
+
+  var updateCheckedTps = function updateCheckedTps(id, whichvalue, newvalue) {
+    var index = tps.findIndex(function (x) {
+      return x.id === id;
+    });
+    var g = tps[index];
+    g[whichvalue] = newvalue;
+    setTps([].concat(_toConsumableArray(tps.slice(0, index)), [g], _toConsumableArray(tps.slice(index + 1))));
+  };
+
+  var updateRange = function updateRange(id, whichvalue, newvalue) {
+    var index = range.findIndex(function (x) {
+      return x.id === id;
+    });
+    var g = range[index];
+    g[whichvalue] = newvalue;
+    setRange([].concat(_toConsumableArray(range.slice(0, index)), [g], _toConsumableArray(range.slice(index + 1))));
+  };
+
+  var displayCategories = category.map(function (value, index) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      type: "button",
+      onClick: function onClick() {
+        updateChecked(value.id, 'checked', !value.checked);
+      },
+      className: "".concat(value.checked ? '  bg-green-500 text-white hover:bg-green-400' : ' border-green-500 text-green-500 hover:bg-gray-100', " m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out"),
+      children: value.category
+    });
+  });
+  var displayTPS = tps.map(function (value, index) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      type: "button",
+      onClick: function onClick() {
+        updateCheckedTps(value.id, 'checked', !value.checked);
+      },
+      className: "".concat(value.checked ? '  bg-yellow-500 text-white hover:bg-yellow-400' : ' border-yellow-500 text-yellow-500 hover:bg-gray-100', " m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out"),
+      children: value.category
+    });
+  });
+  var displayRange = range.map(function (value, index) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      type: "button",
+      onClick: function onClick() {
+        updateRange(value.id, 'checked', !value.checked);
+      },
+      className: "".concat(value.checked ? '  bg-blue-500 text-white hover:bg-blue-400' : ' border-blue-500 text-blue-500 hover:bg-gray-100', " m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out"),
+      children: value.category
+    });
+  });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "flex  pb-3",
@@ -6340,11 +6495,27 @@ var FilterSampah = function FilterSampah() {
               "data-bs-dismiss": "modal",
               "aria-label": "Close"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             className: "modal-body relative p-4 mx-3",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-              children: "THIS GONNA BE HARD MAH DUDE"
-            })
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: " border-b-2 border-gray-200 py-3",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: " font-semibold text-lg",
+                children: "Jenis Sampah"
+              }), displayCategories]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: " border-b-2 border-gray-200 py-3",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: " font-semibold text-lg",
+                children: "Desa"
+              }), displayTPS]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: " border-b-2 border-gray-200 py-3",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: " font-semibold text-lg",
+                children: "Rentang"
+              }), displayRange]
+            })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             className: "modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
@@ -6355,6 +6526,7 @@ var FilterSampah = function FilterSampah() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
               type: "button",
               value: "Save",
+              "data-bs-dismiss": "modal",
               "class": "inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out ml-1",
               children: "Save changes"
             })]
@@ -6438,7 +6610,7 @@ function App() {
           children: count++
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
           className: " w-24 py-4 whitespace-nowrap border-r border-gray-300",
-          children: "TPS Karangrejo"
+          children: sampah.tps
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
           className: "w-10 py-4 border-r border-gray-300",
           children: sampah.berat_sampah_organik
@@ -6489,7 +6661,7 @@ function App() {
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-    className: "  bg-blue md:p-20 rounded-3xl",
+    className: "  bg-blue p-20 rounded-3xl",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Modals_FilterSampah__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_1__.ToastContainer, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "flex flex-col",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {

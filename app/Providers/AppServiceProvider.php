@@ -23,14 +23,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Gate::define('admin', function(User $user){
-            $user->priviliges_id === 1;
-        });
-        Gate::define('managementDlh', function(User $user){
-            $user->priviliges_id === 2;
-        });
-        Gate::define('tps', function(User $user){
-            $user->priviliges_id === 3;
-        });
+        // Gate::define('admin', function(User $user){
+        //     $user->priviliges_id === 1;
+        // });
+        // Gate::define('managementDlh', function(User $user){
+        //     $user->priviliges_id === 2;
+        // });
+        // Gate::define('tps', function(User $user){
+        //     $user->priviliges_id === 3;
+        // });
     }
 }

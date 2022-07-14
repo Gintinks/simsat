@@ -35,7 +35,7 @@ function App() {
                         <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.email}</td>
                         <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.priviliges_id == 2 ? "Manajemen DLH " : "Petugas TPS"}</td>
                         <td className=' max-h-5 max w-14 px-2'>
-                            <TableActionButtons eachRowId={user.id} />
+                            <TableActionButtons eachRowId={user}  />
                           
                         </td>
                     </tr>

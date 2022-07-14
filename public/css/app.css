@@ -3937,6 +3937,12 @@ textarea.form-control.is-invalid {
 .m-0 {
   margin: 0px;
 }
+.m-4 {
+  margin: 1rem;
+}
+.m-1 {
+  margin: 0.25rem;
+}
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -3956,6 +3962,10 @@ textarea.form-control.is-invalid {
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
+}
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 .mb-2 {
   margin-bottom: 0.5rem;
@@ -4013,6 +4023,12 @@ textarea.form-control.is-invalid {
 }
 .-ml-16 {
   margin-left: -4rem;
+}
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+.mb-9 {
+  margin-bottom: 2.25rem;
 }
 .box-content {
   box-sizing: content-box;
@@ -4303,6 +4319,10 @@ textarea.form-control.is-invalid {
   --tw-border-opacity: 1;
   border-color: rgb(234 179 8 / var(--tw-border-opacity));
 }
+.border-blue-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(59 130 246 / var(--tw-border-opacity));
+}
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -4373,6 +4393,10 @@ textarea.form-control.is-invalid {
 .bg-red-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
 .bg-clip-padding {
   background-clip: padding-box;
@@ -4650,6 +4674,10 @@ textarea.form-control.is-invalid {
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
+.text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -4783,6 +4811,22 @@ textarea.form-control.is-invalid {
 .hover\:bg-red-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+.hover\:bg-green-300:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
+}
+.hover\:bg-green-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+}
+.hover\:bg-yellow-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 204 21 / var(--tw-bg-opacity));
+}
+.hover\:bg-blue-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
 }
 .hover\:bg-opacity-5:hover {
   --tw-bg-opacity: 0.05;
@@ -5136,10 +5180,6 @@ textarea.form-control.is-invalid {
 
   .md\:bg-transparent {
     background-color: transparent;
-  }
-
-  .md\:p-20 {
-    padding: 5rem;
   }
 
   .md\:px-16 {

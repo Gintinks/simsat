@@ -7,7 +7,7 @@
                 <button
                     class="flex text-lg hover:bg-green-500 hover:text-white focus:text-white focus:bg-green-500  border-green-500 text-green-500 px-6 py-2 border-2 font-medium leading-tight rounded focus:ring-0 transition duration-150 ease-in-out"
                     type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Username
+                    {{ auth()->user()->name }}
                     <span class="iconify h-6 w-6 ml-2" data-icon="bxs:user"></span>
                 </button>
                 <ul class="
@@ -45,15 +45,20 @@
                                     text-gray-700
                                     hover:bg-gray-100
                                     "
-                            href="#">Log out</a>
+                            href="/logout">Log out</a>
                     </li>
                 </ul>
             </div>
         </div>
-
+        @if (auth()->user()->priviliges_id == 3)
+            <header>
+                <h2 class="text-2xl font-bold">DASHBOARD  {{ auth()->user()->tps }}</h2>
+            </header>
+        @else
         <header>
-            <h2 class="text-2xl font-bold">DASHBOARD TPSR3</h2>
+            <h2 class="text-2xl font-bold">DASHBOARD  MANAJEMEN DLH</h2>
         </header>
+        @endif
     </div>
 
     <div class="grid md:grid-cols-4 gap-12 pb-8">
@@ -130,7 +135,7 @@
 
         <img src="{{ asset('img/bro.png') }}" class="md:hidden">
 
-        
+
     </div>
 
 
@@ -149,6 +154,7 @@
                 borderColor: "hsl(252, 82.9%, 67.8%)",
                 data: [0, 10, 5, 2, 20, 30, 45],
             }, ],
+
         };
 
         const configLineChart = {

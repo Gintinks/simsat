@@ -17,7 +17,7 @@ const TableActionButtons = ({eachRowId}) => {
 
             <button type="button" className="inline-block p-2  bg-gray-300  leading-tight uppercase rounded shadow-md hover:bg-red-600 hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out"
                 data-bs-toggle="modal"
-                data-bs-target={'#deleteModal' + eachRowId}>
+                data-bs-target={'#deleteModal' + eachRowId.id}>
                
                 <span class="iconify h-5 w-5" data-icon="fe:trash"></span>
             </button>
