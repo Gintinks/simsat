@@ -119,7 +119,75 @@ class SampahController extends Controller
 
      public function updateSampah(Request $request, $id)
      {
+        $inputUpdateSampah = $request->validate([
+            'kertas' => 'nullable|numeric',
+            'kaca' => 'nullable|numeric',
+            'karet' => 'nullable|numeric',
+            'plastik' => 'nullable|numeric',
+            'logam' => 'nullable|numeric',
+            'lain_lain' => 'nullable|numeric',
+            'sampah_organik' => 'nullable|numeric',
+            'diteruskan_ke_tpa' => 'nullable|numeric',
+        ]);
+
+        if ($inputUpdateSampah['kertas'] == null) {
+            $inputUpdateSampah['kertas'] = 0;
+        }
+
+        if ($inputUpdateSampah['kaca'] == null) {
+            $inputUpdateSampah['kaca'] = 0;
+        }
+
+        if ($inputUpdateSampah['karet'] == null) {
+            $inputUpdateSampah['karet'] = 0;
+        }
+
+        if ($inputUpdateSampah['plastik'] == null) {
+            $inputUpdateSampah['plastik'] = 0;
+        }
+
+        if ($inputUpdateSampah['logam'] == null) {
+            $inputUpdateSampah['logam'] = 0;
+        }
+
+        if ($inputUpdateSampah['lain_lain'] == null) {
+            $inputUpdateSampah['lain_lain'] = 0;
+        }
+
+        if ($inputUpdateSampah['sampah_organik'] == null) {
+            $inputUpdateSampah['sampah_organik'] = 0;
+        }
         
+        if ($inputUpdateSampah['diteruskan_ke_tpa'] == null) {
+            $inputUpdateSampah['diteruskan_ke_tpa'] = 0;
+        }
+
+
+        $inputUpdateSampah['user_id'] = auth()->user()->id;
+
+        $inputUpdateSampah['berat_sampah_anorganik'] = $inputUpdateSampah['kertas'] + $inputUpdateSampah['kaca'] + $inputUpdateSampah['karet'] + $inputUpdateSampah['plastik'] 
+        + $inputUpdateSampah['logam'] + $inputUpdateSampah['lain_lain'];
+
+        $inputUpdateSampah['berat_sampah_diolah'] = $inputUpdateSampah['kertas'] + $inputUpdateSampah['kaca'] + $inputUpdateSampah['karet'] + $inputUpdateSampah['plastik'] 
+        + $inputUpdateSampah['logam'] + $inputUpdateSampah['lain_lain'] + $inputUpdateSampah['sampah_organik'];
+
+        $inputUpdateSampah['berat_sampah_total'] = $inputUpdateSampah['berat_sampah_diolah'] + $inputUpdateSampah['diteruskan_ke_tpa'];
+
+        $updateSampah = Sampah::where('id',$id)->update([
+            'user_id' =>  $inputUpdateSampah['user_id'],
+            'berat_sampah_kaca' =>  $inputUpdateSampah['kaca'],
+            'berat_sampah_karet' =>  $inputUpdateSampah['karet'],
+            'berat_sampah_plastik' =>  $inputUpdateSampah['plastik'],
+            'berat_sampah_logam' =>  $inputUpdateSampah['logam'],
+            'berat_sampah_kertas' =>  $inputUpdateSampah['kertas'],
+            'berat_sampah_lain_lain' =>  $inputUpdateSampah['lain_lain'],
+           // 'berat_sampah_anorganik' =>  $inputUpdateSampah['berat_sampah_anorganik'],
+            'berat_sampah_organik' =>  $inputUpdateSampah['sampah_organik'],
+            'berat_sampah_ke_tpa' =>  $inputUpdateSampah['diteruskan_ke_tpa'],
+            'berat_sampah_diolah' =>  $inputUpdateSampah['berat_sampah_diolah'],
+            'berat_sampah_total' =>  $inputUpdateSampah['berat_sampah_total'],
+        ]);
+
      }
 
      public function destroy(Request $request)
