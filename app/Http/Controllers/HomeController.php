@@ -42,6 +42,7 @@ class HomeController extends Controller
         //$sumTotalBeratHariAnorganikArray = 0;
         $beratPerhariOrganikArray = [];
         $days=[];
+        $dates=[];
         $sumTotalBeratPerhariOrganikArray = 0;
 
 
@@ -63,6 +64,7 @@ class HomeController extends Controller
                 $nowDate = Carbon::now()->format('d-m-Y');
                 $day = Carbon::createFromFormat('d-m-Y', $nowDate)->format('l');
                 $days[] = $day;
+                $dates[] = $nowDate;
             }
 
             // foreach ($days as $day) { 
@@ -125,7 +127,7 @@ class HomeController extends Controller
                 'beratTotalPermingguOrganik' => $sumTotalBeratPerhariOrganikArray,
                 'beratTotalPermingguTakTerolah' => $totalTakTerolah,
                 'days' => $days,
-                'day' => $day,
+                'dates' => $dates,
                 // 'sampahBulanDesember' => $totalBeratDesember,
                 // 'sampahBulanNovember' => $totalBeratNovember,
                 // 'sampahBulanOktober' => $totalBeratOktober,
@@ -177,6 +179,7 @@ class HomeController extends Controller
             $nowDate = Carbon::now()->subDays($i)->format('d-m-Y');
             $day = Carbon::createFromFormat('d-m-Y', $nowDate)->format('l');
             $days[] = $day;
+            $dates[] = $nowDate;
         }
 
         $totalTakTerolah = Sampah::where('user_id', auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subWeek(0)->startOfWeek(), Carbon::now()->subWeek(0)->endOfWeek()])->sum('berat_sampah_ke_tpa');
@@ -211,7 +214,7 @@ class HomeController extends Controller
             'beratTotalPermingguOrganik' => $sumTotalBeratPerhariOrganikArray,
             'beratTotalPermingguTakTerolah' => $totalTakTerolah,
             'days' => $days,
-            'day' => $day,
+            'dates' => $dates,
 
             // 'sampahBulanDesember' => $totalBeratDesember,
             // 'sampahBulanNovember' => $totalBeratNovember,
