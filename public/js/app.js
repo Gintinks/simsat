@@ -5617,14 +5617,14 @@ var CreateModal = /*#__PURE__*/function (_Component) {
                           selected: true,
                           children: "Tekan Untuk Pilih TPS"
                         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                          value: "1",
-                          children: "1"
+                          value: "Punten",
+                          children: "Punten"
                         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                          value: "2",
-                          children: "2"
+                          value: "Pandanrejo",
+                          children: "Pandanrejo"
                         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                          value: "3",
-                          children: "3"
+                          value: "Dadaprejo",
+                          children: "Dadaprejo"
                         })]
                       })
                     })]
@@ -6349,36 +6349,42 @@ var FilterSampah = function FilterSampah() {
     "category": "Organik",
     "checked": false
   }];
-  var dataTps = [{
-    "id": 1,
-    "category": "Punten",
-    "checked": false
-  }, {
-    "id": 2,
-    "category": "Dadaprejo",
-    "checked": false
-  }, {
-    "id": 3,
-    "category": "Suimbergondo",
-    "checked": false
-  }, {
-    "id": 4,
-    "category": "Pandanrejo",
-    "checked": false
-  }, {
-    "id": 5,
-    "category": "Oro-oro Ombo",
-    "checked": false
-  }];
-  var dataRange = [{
-    "id": 1,
-    "category": "7 Hari Terakhir",
-    "checked": false
-  }, {
-    "id": 2,
-    "category": "30 Hari Terakhir",
-    "checked": false
-  }];
+
+  var dataTps = function dataTps() {
+    return [{
+      "id": 1,
+      "category": "Punten",
+      "checked": false
+    }, {
+      "id": 2,
+      "category": "Dadaprejo",
+      "checked": false
+    }, {
+      "id": 3,
+      "category": "Suimbergondo",
+      "checked": false
+    }, {
+      "id": 4,
+      "category": "Pandanrejo",
+      "checked": false
+    }, {
+      "id": 5,
+      "category": "Oro-oro Ombo",
+      "checked": false
+    }];
+  };
+
+  var dataRange = function dataRange() {
+    return [{
+      "id": 1,
+      "category": "7 Hari Terakhir",
+      "checked": false
+    }, {
+      "id": 2,
+      "category": "30 Hari Terakhir",
+      "checked": false
+    }];
+  };
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataCategory),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6435,7 +6441,7 @@ var FilterSampah = function FilterSampah() {
       onClick: function onClick() {
         updateChecked(value.id, 'checked', !value.checked);
       },
-      className: "".concat(value.checked ? '  bg-green-500 text-white hover:bg-green-400' : ' border-green-500 text-green-500 hover:bg-gray-100', " m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out"),
+      className: "".concat(value.checked ? '  bg-yellow-500 text-white hover:bg-yellow-400' : ' border-yellow-500 text-yellow-500 hover:bg-gray-100', " m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out"),
       children: value.category
     });
   });
@@ -6445,7 +6451,7 @@ var FilterSampah = function FilterSampah() {
       onClick: function onClick() {
         updateCheckedTps(value.id, 'checked', !value.checked);
       },
-      className: "".concat(value.checked ? '  bg-yellow-500 text-white hover:bg-yellow-400' : ' border-yellow-500 text-yellow-500 hover:bg-gray-100', " m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out"),
+      className: "".concat(value.checked ? '  bg-green-500 text-white hover:bg-green-400' : ' border-green-500 text-green-500 hover:bg-gray-100', " m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out"),
       children: value.category
     });
   });
@@ -6661,7 +6667,7 @@ function App() {
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-    className: "  bg-blue p-20 rounded-3xl",
+    className: "  bg-blue p-3 md:p-20 rounded-3xl",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Modals_FilterSampah__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_1__.ToastContainer, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "flex flex-col",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
@@ -6677,7 +6683,7 @@ function App() {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "  border-r border-gray-300",
+                    className: " w-3  border-r border-gray-300",
                     children: "#"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
@@ -6795,7 +6801,7 @@ var SampahTableActionButtons = function SampahTableActionButtons(_ref) {
         type: "button",
         className: "  inline-block p-2 mr-2 bg-gray-300  leading-tight uppercase rounded shadow-md hover:bg-yellow-500 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out",
         "data-bs-toggle": "modal",
-        "data-bs-target": "#exampleModalCenter",
+        "data-bs-target": '#updateModal' + eachRowId,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
           "class": "tooltip-text border border-black bg-white p-3 -mt-12 -ml-16 rounded hidden group-hover:block absolute text-center py-2 px-6 z-50",
           children: "Edit Data"

@@ -3937,9 +3937,6 @@ textarea.form-control.is-invalid {
 .m-0 {
   margin: 0px;
 }
-.m-4 {
-  margin: 1rem;
-}
 .m-1 {
   margin: 0.25rem;
 }
@@ -3962,10 +3959,6 @@ textarea.form-control.is-invalid {
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
-}
-.my-3 {
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
 }
 .mb-2 {
   margin-bottom: 0.5rem;
@@ -4012,6 +4005,9 @@ textarea.form-control.is-invalid {
 .-mt-px {
   margin-top: -1px;
 }
+.mb-9 {
+  margin-bottom: 2.25rem;
+}
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -4023,12 +4019,6 @@ textarea.form-control.is-invalid {
 }
 .-ml-16 {
   margin-left: -4rem;
-}
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-.mb-9 {
-  margin-bottom: 2.25rem;
 }
 .box-content {
   box-sizing: content-box;
@@ -4122,17 +4112,20 @@ textarea.form-control.is-invalid {
 .w-1\/2 {
   width: 50%;
 }
-.w-12 {
-  width: 3rem;
-}
 .w-10 {
   width: 2.5rem;
+}
+.w-12 {
+  width: 3rem;
 }
 .w-14 {
   width: 3.5rem;
 }
 .w-24 {
   width: 6rem;
+}
+.w-3 {
+  width: 0.75rem;
 }
 .min-w-max {
   min-width: -webkit-max-content;
@@ -4425,9 +4418,6 @@ textarea.form-control.is-invalid {
 .p-2 {
   padding: 0.5rem;
 }
-.p-20 {
-  padding: 5rem;
-}
 .p-4 {
   padding: 1rem;
 }
@@ -4655,10 +4645,6 @@ textarea.form-control.is-invalid {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
 }
-.text-yellow-300 {
-  --tw-text-opacity: 1;
-  color: rgb(253 224 71 / var(--tw-text-opacity));
-}
 .text-gray-800 {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
@@ -4812,17 +4798,13 @@ textarea.form-control.is-invalid {
   --tw-bg-opacity: 1;
   background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
-.hover\:bg-green-300:hover {
+.hover\:bg-yellow-400:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
+  background-color: rgb(250 204 21 / var(--tw-bg-opacity));
 }
 .hover\:bg-green-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(74 222 128 / var(--tw-bg-opacity));
-}
-.hover\:bg-yellow-400:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 204 21 / var(--tw-bg-opacity));
 }
 .hover\:bg-blue-400:hover {
   --tw-bg-opacity: 1;
@@ -5180,6 +5162,10 @@ textarea.form-control.is-invalid {
 
   .md\:bg-transparent {
     background-color: transparent;
+  }
+
+  .md\:p-20 {
+    padding: 5rem;
   }
 
   .md\:px-16 {

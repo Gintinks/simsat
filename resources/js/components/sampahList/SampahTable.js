@@ -60,7 +60,7 @@ function App() {
     };
 
     return (
-        <div className="  bg-blue p-20 rounded-3xl" >
+        <div className="  bg-blue p-3 md:p-20 rounded-3xl" >
             <FilterSampah/>
             <ToastContainer />
 
@@ -72,7 +72,7 @@ function App() {
                             <table className="min-w-full border text-center table-fixed">
                                 <thead className="border-b bg-bluer border-gray-300">
                                     <tr>
-                                        <th scope="col" className="  border-r border-gray-300" >#</th>
+                                        <th scope="col" className=" w-3  border-r border-gray-300" >#</th>
                                         <th scope="col" className=" border-r border-gray-300" >Nama TPS3R</th>
                                         <th scope="col" className="w-10 py-4 border-r border-gray-300" >Organik (Kg)</th>
                                         <th scope="col" className="w-10 py-4  border-r border-gray-300" >Anorganik (Kg)</th>

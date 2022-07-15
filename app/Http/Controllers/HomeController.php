@@ -26,36 +26,43 @@ class HomeController extends Controller
     public function index()
     {
 
-            // $oneDayAgp = Sampah::whereBetween('created_at', [Carbon::now()->subDays(0)->startOfDay(),Carbon::now()->subDays(0)->endOfDay()]);
-            // $twoDaysAgo = $senin->copy()->addDay();
-            // $threeDaysAgo = $selasa->copy()->addDay();
-            // $fourDaysAgo = $rabu->copy()->addDay();
-            // $fiveDaysAgo = $kamis->copy()->addDay();
-            // $sixDaysAgo = $jumat->copy()->addDay();
-            // $sevenDaysAgo = $sabtu->copy()->addDay();
+        // $oneDayAgp = Sampah::whereBetween('created_at', [Carbon::now()->subDays(0)->startOfDay(),Carbon::now()->subDays(0)->endOfDay()]);
+        // $twoDaysAgo = $senin->copy()->addDay();
+        // $threeDaysAgo = $selasa->copy()->addDay();
+        // $fourDaysAgo = $rabu->copy()->addDay();
+        // $fiveDaysAgo = $kamis->copy()->addDay();
+        // $sixDaysAgo = $jumat->copy()->addDay();
+        // $sevenDaysAgo = $sabtu->copy()->addDay();
 
-            // $days = [$senin, $selasa, $rabu, $kamis, $jumat, $sabtu, $minggu];
+        // $days = [$senin, $selasa, $rabu, $kamis, $jumat, $sabtu, $minggu];
 
-            $beratPerhariArray = [];
-            $sumTotalBeratPerhariArray = 0;
-            //$BeratHariAnorganik = [];
-            //$sumTotalBeratHariAnorganikArray = 0;
-            $beratPerhariOrganikArray = [];
-            $sumTotalBeratPerhariOrganikArray = 0;
+        $beratPerhariArray = [];
+        $sumTotalBeratPerhariArray = 0;
+        //$BeratHariAnorganik = [];
+        //$sumTotalBeratHariAnorganikArray = 0;
+        $beratPerhariOrganikArray = [];
+        $days=[];
+        $sumTotalBeratPerhariOrganikArray = 0;
 
-           
+
 
         if (auth()->user()->priviliges_id == 3) {
             //$tpsSampah = Sampah::where('user_id','=',auth()->user()->id);
             // $totalBerat=$tpsSampah->where('created_at','>', Carbon::now()->subDays(7))->sum('berat_sampah_total');
 
-            for ($i=0; $i < 7; $i++) { 
-                $beratPerhari = Sampah::where('user_id',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subDays($i)->startOfDay(),Carbon::now()->subDays($i)->endOfDay()])->sum('berat_sampah_total')->latest('created_at');
-                $beratPerhariOrganik = Sampah::where('user_id',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subDays($i)->startOfDay(),Carbon::now()->subDays($i)->endOfDay()])->sum('berat_sampah_organik')->latest('created_at');
+            for ($i = 6; $i > -1; $i--) {
+                $beratPerhari = Sampah::where('user_id', auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subDays($i)->startOfDay(), Carbon::now()->subDays($i)->endOfDay()])->sum('berat_sampah_total');
+                $beratPerhariOrganik = Sampah::where('user_id', auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subDays($i)->startOfDay(), Carbon::now()->subDays($i)->endOfDay()])->sum('berat_sampah_organik');
                 //$beratPerhariAnorganik = Sampah::where('user_id',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subDays($i)->startOfDay(),Carbon::now()->subDays($i)->endOfDay()]);
                 $beratPerhariArray[] = $beratPerhari;
                 //$totalBeratHariAnorganikArray[] = $totalBeratHariOrganik;
                 $beratPerhariOrganikArray[] = $beratPerhariOrganik;
+            }
+
+            for ($i = 6; $i > -1; $i--) {
+                $nowDate = Carbon::now()->format('d-m-Y');
+                $day = Carbon::createFromFormat('d-m-Y', $nowDate)->format('l');
+                $days[] = $day;
             }
 
             // foreach ($days as $day) { 
@@ -70,12 +77,12 @@ class HomeController extends Controller
             foreach ($beratPerhariArray as $sumTotal) {
                 $sumTotalBeratPerhariArray += $sumTotal;
             }
-            
+
             foreach ($beratPerhariOrganikArray as $sumTotalOrganik) {
                 $sumTotalBeratPerhariOrganikArray += $sumTotalOrganik;
             }
 
-            $totalTakTerolah=Sampah::where('user_id',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subWeek(0)->startOfWeek(),Carbon::now()->subWeek(0)->endOfWeek()])->sum('berat_sampah_ke_tpa');
+            $totalTakTerolah = Sampah::where('user_id', auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subWeek(0)->startOfWeek(), Carbon::now()->subWeek(0)->endOfWeek()])->sum('berat_sampah_ke_tpa');
 
 
             // $totalHariSenin = Sampah::where('user_id',auth()->user()->id)->whereDay('created_at',$senin)->sum('berat_sampah_total');
@@ -85,13 +92,13 @@ class HomeController extends Controller
             // $totalHariJumat = Sampah::where('user_id',auth()->user()->id)->whereDay('created_at',$jumat)->sum('berat_sampah_total');
             // $totalHariSabtu = Sampah::where('user_id',auth()->user()->id)->whereDay('created_at',$sabtu)->sum('berat_sampah_total');
             // $totalHariMinggu = Sampah::where('user_id',auth()->user()->id)->whereDay('created_at',$minggu)->sum('berat_sampah_total');
-            
+
             // $totalBeratMingguIni = Sampah::where('user_id',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subWeek(0)->startOfWeek(),Carbon::now()->subWeek(0)->endOfWeek()])->sum('berat_sampah_total');
             // $totalSatuMingguLalu = Sampah::where('user_id',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subWeek(1)->startOfWeek(),Carbon::now()->subWeek(1)->endOfWeek()])->sum('berat_sampah_total');
             // $totalDuaMingguLalu = Sampah::where('user_id',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subWeek(2)->startOfWeek(),Carbon::now()->subWeek(2)->endOfWeek()])->sum('berat_sampah_total');
             // $totalTigaMingguLalu = Sampah::where('user_id',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subWeek(3)->startOfWeek(),Carbon::now()->subWeek(3)->endOfWeek()])->sum('berat_sampah_total');
             // $totalEmpatMingguLalu = Sampah::where('user_id',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subWeek(4)->startOfWeek(),Carbon::now()->subWeek(4)->endOfWeek()])->sum('berat_sampah_total');
-            
+
             //$totalBeratBulanIni = Sampah::where('user_id','=',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subMonth(0)->startOfMonth(),Carbon::now()->subMonth(0)->endOfMonth()])->sum('berat_sampah_total');
             // $totalBeratJanuari = Sampah::where('user_id',auth()->user()->id)->whereMonth('created_at', '01')->whereYear('created_at',Carbon::now()->subYear(0))->sum('berat_sampah_total');
             // $totalBeratFebruari = Sampah::where('user_id',auth()->user()->id)->whereMonth('created_at', '02')->whereYear('created_at',Carbon::now()->subYear(0))->sum('berat_sampah_total');
@@ -105,13 +112,13 @@ class HomeController extends Controller
             // $totalBeratOktober = Sampah::where('user_id',auth()->user()->id)->whereMonth('created_at', '10')->whereYear('created_at',Carbon::now()->subYear(0))->sum('berat_sampah_total');
             // $totalBeratNovember = Sampah::where('user_id',auth()->user()->id)->whereMonth('created_at', '11')->whereYear('created_at',Carbon::now()->subYear(0))->sum('berat_sampah_total');
             // $totalBeratDesember = Sampah::where('user_id',auth()->user()->id)->whereMonth('created_at', '12')->whereYear('created_at',Carbon::now()->subYear(0))->sum('berat_sampah_total');
-    
+
             //$totalBerat=Sampah::where('user_id','=',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subDays(7)->startOfDay(),Carbon::now()->subDays(0)->endOfDay()])->sum('berat_sampah_total');
             // $totalOrganik=Sampah::where('user_id',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subDays(7)->startOfDay(),Carbon::now()->subDays(0)->endOfDay()])->sum('berat_sampah_organik');
-    
 
-            return view('dashboard',[
-                'BeratPerhari'=>$beratPerhariArray,
+
+            return view('dashboard', [
+                'BeratPerhari' => $beratPerhariArray,
                 //'totalBeratHariAnorganik' => $totalBeratHariAnorganik,
                 'BeratPerhariOrganik' => $beratPerhariOrganikArray,
                 'beratTotalPerminggu' => $sumTotalBeratPerhariArray,
@@ -140,9 +147,9 @@ class HomeController extends Controller
         }
 
 
-        for ($i=0; $i < 7; $i++) { 
-            $beratPerhari = Sampah::whereBetween('created_at', [Carbon::now()->subDays($i)->startOfDay(),Carbon::now()->subDays($i)->endOfDay()])->sum('berat_sampah_total')->latest('created_at');
-            $beratPerhariOrganik = Sampah::whereBetween('created_at', [Carbon::now()->subDays($i)->startOfDay(),Carbon::now()->subDays($i)->endOfDay()])->sum('berat_sampah_organik')->latest('created_at');
+        for ($i = 6; $i > -1; $i--) {
+            $beratPerhari = Sampah::whereBetween('created_at', [Carbon::now()->subDays($i)->startOfDay(), Carbon::now()->subDays($i)->endOfDay()])->sum('berat_sampah_total');
+            $beratPerhariOrganik = Sampah::whereBetween('created_at', [Carbon::now()->subDays($i)->startOfDay(), Carbon::now()->subDays($i)->endOfDay()])->sum('berat_sampah_organik');
             //$beratPerhariAnorganik = Sampah::where('user_id',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subDays($i)->startOfDay(),Carbon::now()->subDays($i)->endOfDay()]);
             $beratPerhariArray[] = $beratPerhari;
             //$totalBeratHariAnorganikArray[] = $totalBeratHariOrganik;
@@ -161,14 +168,19 @@ class HomeController extends Controller
         foreach ($beratPerhariArray as $sumTotal) {
             $sumTotalBeratPerhariArray += $sumTotal;
         }
-        
+
         foreach ($beratPerhariOrganikArray as $sumTotalOrganik) {
             $sumTotalBeratPerhariOrganikArray += $sumTotalOrganik;
         }
+        for ($i = 6; $i > -1; $i--) {
+            $nowDate = Carbon::now()->subDays($i)->format('d-m-Y');
+            $day = Carbon::createFromFormat('d-m-Y', $nowDate)->format('l');
+            $days[] = $day;
+        }
 
-        $totalTakTerolah=Sampah::where('user_id',auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subWeek(0)->startOfWeek(),Carbon::now()->subWeek(0)->endOfWeek()])->sum('berat_sampah_ke_tpa');
+        $totalTakTerolah = Sampah::where('user_id', auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subWeek(0)->startOfWeek(), Carbon::now()->subWeek(0)->endOfWeek()])->sum('berat_sampah_ke_tpa');
 
-         //$totalBeratMingguIni = Sampah::whereBetween('created_at', [Carbon::now()->subWeek(0)->startOfWeek(),Carbon::now()->subWeek(0)->endOfWeek()])->sum('berat_sampah_total');
+        //$totalBeratMingguIni = Sampah::whereBetween('created_at', [Carbon::now()->subWeek(0)->startOfWeek(),Carbon::now()->subWeek(0)->endOfWeek()])->sum('berat_sampah_total');
         // $totalSatuMingguLalu = Sampah::whereBetween('created_at', [Carbon::now()->subWeek(1)->startOfWeek(),Carbon::now()->subWeek(1)->endOfWeek()])->sum('berat_sampah_total');
         // $totalDuaMingguLalu = Sampah::whereBetween('created_at', [Carbon::now()->subWeek(2)->startOfWeek(),Carbon::now()->subWeek(2)->endOfWeek()])->sum('berat_sampah_total');
         // $totalTigaMingguLalu = Sampah::whereBetween('created_at', [Carbon::now()->subWeek(3)->startOfWeek(),Carbon::now()->subWeek(3)->endOfWeek()])->sum('berat_sampah_total');
@@ -190,13 +202,14 @@ class HomeController extends Controller
         //$totalBerat=Sampah::whereBetween('created_at', [Carbon::now()->subDays(7)->startOfDay(),Carbon::now()->subDays(0)->endOfDay()])->sum('berat_sampah_total');
         // $totalOrganik=Sampah::whereBetween('created_at', [Carbon::now()->subDays(7)->startOfDay(),Carbon::now()->subDays(0)->endOfDay()])->sum('berat_sampah_organik');
         // $totalTakTerolah=Sampah::whereBetween('created_at', [Carbon::now()->subDays(7)->startOfDay(),Carbon::now()->subDays(0)->endOfDay()])->sum('berat_sampah_ke_tpa');
-        return view('dashboard',[
-            'BeratPerhari'=>$beratPerhariArray,
+        return view('dashboard', [
+            'BeratPerhari' => $beratPerhariArray,
             //'totalBeratHariAnorganik' => $totalBeratHariAnorganik,
             'BeratPerhariOrganik' => $beratPerhariOrganikArray,
             'beratTotalPerminggu' => $sumTotalBeratPerhariArray,
             'beratTotalPermingguOrganik' => $sumTotalBeratPerhariOrganikArray,
             'beratTotalPermingguTakTerolah' => $totalTakTerolah,
+            'days' => $days
 
             // 'sampahBulanDesember' => $totalBeratDesember,
             // 'sampahBulanNovember' => $totalBeratNovember,
@@ -218,8 +231,8 @@ class HomeController extends Controller
             // 'sampahOneWeekOrganikTotal' => $totalOrganik,
         ]);
 
-    //     $myQuantity = 5;
-    // return view('dashboard', ['sampahOneWeek' => $myQuantity]);
+        //     $myQuantity = 5;
+        // return view('dashboard', ['sampahOneWeek' => $myQuantity]);
 
     }
 

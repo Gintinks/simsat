@@ -43,7 +43,7 @@ const FilterSampah = () => {
 
     ]
 
-    const dataTps = [
+    const dataTps = () => [
         {
             "id": 1,
             "category": "Punten",
@@ -71,7 +71,7 @@ const FilterSampah = () => {
         },
     ]
 
-    const dataRange = [
+    const dataRange = () => [
         {
             "id": 1,
             "category": "7 Hari Terakhir",
@@ -138,12 +138,12 @@ const FilterSampah = () => {
 
     const displayCategories = category.map((value, index) => {
         return (
-            <button type="button" onClick={() => { updateChecked(value.id, 'checked', !value.checked) }} className={`${value.checked ? '  bg-green-500 text-white hover:bg-green-400' : ' border-green-500 text-green-500 hover:bg-gray-100'} m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>{value.category}</button>
+            <button type="button" onClick={() => { updateChecked(value.id, 'checked', !value.checked) }} className={`${value.checked ? '  bg-yellow-500 text-white hover:bg-yellow-400' : ' border-yellow-500 text-yellow-500 hover:bg-gray-100'} m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>{value.category}</button>
         );
     })
     const displayTPS = tps.map((value, index) => {
         return (
-            <button type="button" onClick={() => { updateCheckedTps(value.id, 'checked', !value.checked) }} className={`${value.checked ? '  bg-yellow-500 text-white hover:bg-yellow-400' : ' border-yellow-500 text-yellow-500 hover:bg-gray-100'} m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>{value.category}</button>
+            <button type="button" onClick={() => { updateCheckedTps(value.id, 'checked', !value.checked) }} className={`${value.checked ? '  bg-green-500 text-white hover:bg-green-400' : ' border-green-500 text-green-500 hover:bg-gray-100'} m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>{value.category}</button>
         );
     })
     const displayRange = range.map((value, index) => {

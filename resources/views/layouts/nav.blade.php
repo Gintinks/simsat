@@ -17,11 +17,11 @@
             <div class=" mx-10 md:mx-0 py-4 text-lg hidden md:block" id="menu">
                 @if (auth()->user()->priviliges_id == 1)
                     <p
-                        class="py-2 my-2 md:my-8  {{ 'statistik' == request()->path() ? 'bg-yellow-300' : '' }} md:bg-transparent  rounded transition duration-300 ease-in-out">
-                        <a href="" class="flex  justify-center md:pl-3">
+                        class="py-2 my-2 md:my-8  {{ 'register' == request()->path() ? 'bg-yellow-300' : '' }} md:bg-transparent  rounded transition duration-300 ease-in-out">
+                        <a href="/register" class="flex  justify-center md:pl-3">
                             <span
-                                class="iconify h-10 w-10 mr-3 {{ 'statistik' == request()->path() ? 'md:text-yellow-300' : '' }} hover:text-yellow-400"
-                                data-icon="akar-icons:statistic-up"></span>
+                                class="iconify h-10 w-10 mr-3 {{ 'register' == request()->path() ? 'md:text-yellow-300' : '' }} hover:text-yellow-400"
+                                data-icon="clarity:administrator-solid"></span>
                             <span class="md:hidden text-2xl self-center">Statistik</span>
                         </a>
                     </p>

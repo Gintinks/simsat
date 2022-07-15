@@ -175,9 +175,9 @@ class CreateModal extends Component {
                                                             m-0
                                                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                                                 <option selected>Tekan Untuk Pilih TPS</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
+                                                <option value="Punten">Punten</option>
+                                                <option value="Pandanrejo">Pandanrejo</option>
+                                                <option value="Dadaprejo">Dadaprejo</option>
                                             </select>
                                         </div>
                                     </div>: null

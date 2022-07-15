@@ -145,20 +145,26 @@
 
     <!-- Chart line -->
     <script>
-        const labels = ["1", "2", "3", "4", "5","6","7"];
+        const labels = {!! json_encode($days) !!};
         const data = {
             labels: labels,
             datasets: [{
-                label: "Berat Total Sampah Perminggu(Kg)",
-                backgroundColor: "hsl(252, 82.9%, 67.8%)",
-                borderColor: "hsl(252, 82.9%, 67.8%)",
-                data: getLineData(),
+                label: "Berat Sampah Anorganik",
+                backgroundColor: "#17cf67 ",
+                borderColor: "#17cf67",
+                data: {!! json_encode($BeratPerhari) !!},
+            },
+            {
+                label: "Berat Sampah Organik",
+                backgroundColor: "#F5CD3F",
+                borderColor: "#F5CD3F",
+                data: {!! json_encode($BeratPerhariOrganik) !!},
             }, ],
-
+            borderWidth: 1
         };
 
         const configLineChart = {
-            type: "line",
+            type: "bar",
             data,
             options: {},
         };
@@ -168,15 +174,6 @@
             configLineChart
         );
 
-        // function getLineData() {
-        //     var getBeratArray = @json($BeratPerhari);
-        //     let data = [];
-    
-        //     for (let index = 0; index < getBeratArray.length; index++) {
-        //         data.push(getBeratArray);
-        //     }
-        //     return data;
-        // }
 
     </script>
 
