@@ -145,6 +145,7 @@
 
     <!-- Chart line -->
     <script>
+        console.log(@json($lableDay));
         const labels = ["1", "2", "3", "4", "5","6","7"];
         const data = {
             labels: labels,
