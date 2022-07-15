@@ -182,7 +182,7 @@ class HomeController extends Controller
             $dates[] = $nowDate;
         }
 
-        $totalTakTerolah = Sampah::where('user_id', auth()->user()->id)->whereBetween('created_at', [Carbon::now()->subWeek(0)->startOfWeek(), Carbon::now()->subWeek(0)->endOfWeek()])->sum('berat_sampah_ke_tpa');
+        $totalTakTerolah = Sampah::whereBetween('created_at', [Carbon::now()->subWeek(0)->startOfWeek(), Carbon::now()->subWeek(0)->endOfWeek()])->sum('berat_sampah_ke_tpa');
 
         //$totalBeratMingguIni = Sampah::whereBetween('created_at', [Carbon::now()->subWeek(0)->startOfWeek(),Carbon::now()->subWeek(0)->endOfWeek()])->sum('berat_sampah_total');
         // $totalSatuMingguLalu = Sampah::whereBetween('created_at', [Carbon::now()->subWeek(1)->startOfWeek(),Carbon::now()->subWeek(1)->endOfWeek()])->sum('berat_sampah_total');
