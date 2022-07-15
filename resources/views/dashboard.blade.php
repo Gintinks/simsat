@@ -67,7 +67,7 @@
             <span class="iconify w-16 h-16 self-center"
                 style="color: #17cf67;"data-icon="material-symbols:assistant"></span>
             <div class="p-3">
-                <p class=" text-2xl font-semibold">{{$sampahMingguIniTotal}}</p>
+                <p class=" text-2xl font-semibold">{{$beratTotalPerminggu}}</p>
                 <p>Total Sampah</p>
             </div>
         </div>
@@ -75,7 +75,7 @@
         <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg bg-white">
             <span class="iconify w-16 h-16 self-center" data-icon="mdi:leaf-off" style="color: #17cf67;"></span>
             <div class="p-3">
-                <p class=" text-2xl font-semibold">{{$sampahOneWeekOrganikTotal}}</p>
+                <p class=" text-2xl font-semibold">{{$beratTotalPermingguOrganik}}</p>
                 <p>Organik</p>
             </div>
         </div>
@@ -92,7 +92,7 @@
             <span class="iconify w-16 h-16 self-center opacity-75" data-icon="tabler:recycle-off"
                 style="color: #17cf67;"></span>
             <div class="p-3">
-                <p class=" text-2xl font-semibold">{{$sampahOneWeekTakTerolahTotal}}</p>
+                <p class=" text-2xl font-semibold">{{$beratTotalPermingguTakTerolah}}</p>
                 <p>Tidak Terolah</p>
             </div>
         </div>
@@ -145,14 +145,14 @@
 
     <!-- Chart line -->
     <script>
-        const labels = ["4 Minggu lalu", "3 Minggu lalu", "2 Minggu lalu", "1 Minggu lalu", "Minggu ini"];
+        const labels = ["1", "2", "3", "4", "5","6","7"];
         const data = {
             labels: labels,
             datasets: [{
                 label: "Berat Total Sampah Perminggu(Kg)",
                 backgroundColor: "hsl(252, 82.9%, 67.8%)",
                 borderColor: "hsl(252, 82.9%, 67.8%)",
-                data: [{{$sampahEmpatMingguLaluTotal}}, {{$sampahTigaMingguLaluTotal}}, {{$sampahDuaMingguLaluTotal}}, {{$sampahSatuMingguLaluTotal}}, {{$sampahMingguIniTotal}} ],
+                data: getLineData(),
             }, ],
 
         };
@@ -167,6 +167,17 @@
             document.getElementById("chartLine"),
             configLineChart
         );
+
+        // function getLineData() {
+        //     var getBeratArray = @json($BeratPerhari);
+        //     let data = [];
+    
+        //     for (let index = 0; index < getBeratArray.length; index++) {
+        //         data.push(getBeratArray);
+        //     }
+        //     return data;
+        // }
+
     </script>
 
     <script>
@@ -190,8 +201,7 @@
                 label: "Berat Total Sampah Perbulan(Kg)",
                 backgroundColor: "hsl(252, 82.9%, 67.8%)",
                 borderColor: "hsl(252, 82.9%, 67.8%)",
-                data: [{{$sampahBulanJanuari}}, {{$sampahBulanFebruari}}, {{$sampahBulanMaret}}, {{$sampahBulanApril}}, {{$sampahBulanMei}}, {{$sampahBulanJuni}}, {{$sampahBulanJuli}},
-                {{$sampahBulanAgustus}},{{$sampahBulanSeptember}},{{$sampahBulanOktober}},{{$sampahBulanNovember}},{{$sampahBulanDesember}}],
+                data: [0],
             }, ],
         };
 
