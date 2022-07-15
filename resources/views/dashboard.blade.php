@@ -67,7 +67,7 @@
             <span class="iconify w-16 h-16 self-center"
                 style="color: #17cf67;"data-icon="material-symbols:assistant"></span>
             <div class="p-3">
-                <p class=" text-2xl font-semibold">182 KG</p>
+                <p class=" text-2xl font-semibold">{{$sampahMingguIniTotal}}</p>
                 <p>Total Sampah</p>
             </div>
         </div>
@@ -75,7 +75,7 @@
         <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg bg-white">
             <span class="iconify w-16 h-16 self-center" data-icon="mdi:leaf-off" style="color: #17cf67;"></span>
             <div class="p-3">
-                <p class=" text-2xl font-semibold">182 KG</p>
+                <p class=" text-2xl font-semibold">{{$sampahOneWeekOrganikTotal}}</p>
                 <p>Organik</p>
             </div>
         </div>
@@ -92,7 +92,7 @@
             <span class="iconify w-16 h-16 self-center opacity-75" data-icon="tabler:recycle-off"
                 style="color: #17cf67;"></span>
             <div class="p-3">
-                <p class=" text-2xl font-semibold">182 KG</p>
+                <p class=" text-2xl font-semibold">{{$sampahOneWeekTakTerolahTotal}}</p>
                 <p>Tidak Terolah</p>
             </div>
         </div>
@@ -101,11 +101,11 @@
     <h2 class="text-xl font-bold">DATA MINGGUAN</h2>
     <div class="grid md:grid-cols-2 gap-12 pb-5">
         <div class="shadow-lg rounded-lg overflow-hidden bg-white">
-            <div class="py-3 px-5 bg-gray-50">Line chart</div>
+            <div class="py-3 px-5 bg-gray-50">Data Mingguan</div>
             <canvas class="p-10" id="chartLine"></canvas>
         </div>
         <div class="shadow-lg rounded-lg overflow-hidden bg-white">
-            <div class="py-3 px-5 bg-gray-50">Bar chart</div>
+            <div class="py-3 px-5 bg-gray-50">Data Bulanan Tahun Ini</div>
             <canvas class="p-10" id="chartBar"></canvas>
         </div>
     </div>
@@ -145,14 +145,14 @@
 
     <!-- Chart line -->
     <script>
-        const labels = ["January", "February", "March", "April", "May", "June"];
+        const labels = ["4 Minggu lalu", "3 Minggu lalu", "2 Minggu lalu", "1 Minggu lalu", "Minggu ini"];
         const data = {
             labels: labels,
             datasets: [{
-                label: "My First dataset",
+                label: "Berat Total Sampah Perminggu(Kg)",
                 backgroundColor: "hsl(252, 82.9%, 67.8%)",
                 borderColor: "hsl(252, 82.9%, 67.8%)",
-                data: [0, 10, 5, 2, 20, 30, 45],
+                data: [{{$sampahEmpatMingguLaluTotal}}, {{$sampahTigaMingguLaluTotal}}, {{$sampahDuaMingguLaluTotal}}, {{$sampahSatuMingguLaluTotal}}, {{$sampahMingguIniTotal}} ],
             }, ],
 
         };
@@ -177,14 +177,21 @@
             "April",
             "May",
             "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "Desember",
         ];
         const dataBarChart = {
             labels: labelsBarChart,
             datasets: [{
-                label: "My First dataset",
+                label: "Berat Total Sampah Perbulan(Kg)",
                 backgroundColor: "hsl(252, 82.9%, 67.8%)",
                 borderColor: "hsl(252, 82.9%, 67.8%)",
-                data: [0, 10, 5, 2, 20, 30, 45],
+                data: [{{$sampahBulanJanuari}}, {{$sampahBulanFebruari}}, {{$sampahBulanMaret}}, {{$sampahBulanApril}}, {{$sampahBulanMei}}, {{$sampahBulanJuni}}, {{$sampahBulanJuli}},
+                {{$sampahBulanAgustus}},{{$sampahBulanSeptember}},{{$sampahBulanOktober}},{{$sampahBulanNovember}},{{$sampahBulanDesember}}],
             }, ],
         };
 
