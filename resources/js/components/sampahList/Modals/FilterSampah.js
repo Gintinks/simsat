@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 
-const FilterSampah = () => {
+const FilterSampah = (props) => {
     const dataCategory = [
         {
             "id": 1,
@@ -152,6 +152,10 @@ const FilterSampah = () => {
         );
     })
 
+    const handleFilter = () =>{
+        props.filterData(category)
+    }
+
     return (
         <div>
             <div className='flex  pb-3'>
@@ -208,6 +212,7 @@ const FilterSampah = () => {
                             <button type="button"
                                 value="Save"
                                 data-bs-dismiss="modal"
+                                onClick={() => { handleFilter() }}
                                 class="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
                                 Save changes
                             </button>

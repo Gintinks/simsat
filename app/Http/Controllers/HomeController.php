@@ -64,7 +64,7 @@ class HomeController extends Controller
             }
 
             for ($i = 6; $i > -1; $i--) {
-                $nowDate = Carbon::now()->format('d-m-Y');
+                $nowDate = Carbon::now()->subDays($i)->format('d-m-Y');
                 $day = Carbon::createFromFormat('d-m-Y', $nowDate)->format('l');
                 $days[] = $day;
             }
@@ -128,6 +128,7 @@ class HomeController extends Controller
                 'beratTotalPerminggu' => $sumTotalBeratPerhariArray,
                 'beratTotalPermingguOrganik' => $sumTotalBeratPerhariOrganikArray,
                 'beratTotalPermingguTakTerolah' => $totalTakTerolah,
+                'days' => $days
 
                 // 'sampahBulanDesember' => $totalBeratDesember,
                 // 'sampahBulanNovember' => $totalBeratNovember,

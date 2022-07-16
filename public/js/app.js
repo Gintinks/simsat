@@ -6319,7 +6319,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var FilterSampah = function FilterSampah() {
+var FilterSampah = function FilterSampah(props) {
   var dataCategory = [{
     "id": 1,
     "category": "Kertas",
@@ -6465,6 +6465,11 @@ var FilterSampah = function FilterSampah() {
       children: value.category
     });
   });
+
+  var handleFilter = function handleFilter() {
+    props.filterData(category);
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "flex  pb-3",
@@ -6533,6 +6538,9 @@ var FilterSampah = function FilterSampah() {
               type: "button",
               value: "Save",
               "data-bs-dismiss": "modal",
+              onClick: function onClick() {
+                handleFilter();
+              },
               "class": "inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out ml-1",
               children: "Save changes"
             })]
@@ -6593,17 +6601,26 @@ function App() {
       post = _useState2[0],
       setPost = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      filterPost = _useState4[0],
+      filterSetPost = _useState4[1];
+
   var count = 1;
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     axios.get('/sampahList').then(function (response) {
+      // const dataFilter = response.data.filter((curData) => {
+      //     return curData.berat_sampah_karet === 0
+      // })
       setPost(response.data);
+      filterSetPost(response.data);
     });
   }, []); // const [users, setUsers] = useState(post);
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-      _useState4 = _slicedToArray(_useState3, 2),
-      pageNumber = _useState4[0],
-      setPageNumber = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState6 = _slicedToArray(_useState5, 2),
+      pageNumber = _useState6[0],
+      setPageNumber = _useState6[1];
 
   var usersPerPage = 10;
   var pagesVisited = pageNumber * usersPerPage;
@@ -6659,7 +6676,57 @@ function App() {
       })
     });
   });
-  var pageCount = Math.ceil(post.length / usersPerPage);
+  var pageCount = Math.ceil(post.length / usersPerPage); //Performance Killer
+  //This shit pretty much doubles the
+  //data that is being handled by REACT
+
+  var handleFilter = function handleFilter(data) {
+    var filtered = filterPost;
+    data.map(function (value) {
+      if (value.checked == true) {
+        switch (value.category) {
+          case "Karet":
+            filtered = filtered.filter(function (curData) {
+              return curData.berat_sampah_karet !== 0;
+            });
+            break;
+
+          case "Kaca":
+            filtered = filtered.filter(function (curData) {
+              return curData.berat_sampah_karet !== 0;
+            });
+            break;
+
+          case "Kertas":
+            filtered = filtered.filter(function (curData) {
+              return curData.berat_sampah_kertas !== 0;
+            });
+            break;
+
+          case "Plastik":
+            filtered = filtered.filter(function (curData) {
+              return curData.berat_sampah_plastik !== 0;
+            });
+            break;
+
+          case "Lain-lain":
+            filtered = filtered.filter(function (curData) {
+              return curData.berat_sampah_lain_lain !== 0;
+            });
+            break;
+
+          case "Organik":
+            filtered = filtered.filter(function (curData) {
+              return curData.berat_sampah_organik !== 0;
+            });
+            break;
+
+          default:
+        }
+      }
+    });
+    setPost(filtered);
+  };
 
   var changePage = function changePage(_ref) {
     var selected = _ref.selected;
@@ -6668,7 +6735,9 @@ function App() {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "  bg-blue p-3 md:p-20 rounded-3xl",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Modals_FilterSampah__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_1__.ToastContainer, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Modals_FilterSampah__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      filterData: handleFilter
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_1__.ToastContainer, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "flex flex-col",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "overflow-x-auto sm:-mx-6 lg:-mx-8",
