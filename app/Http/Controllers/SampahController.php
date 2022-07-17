@@ -117,6 +117,22 @@ class SampahController extends Controller
                             // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
                             $query->where('berat_sampah_karet', '!=', 0);
                             break;
+                        case 'kaca':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
+                            $query->where('berat_sampah_kaca', '!=', 0);
+                            break;
+                        case 'plastik':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
+                            $query->where('berat_sampah_plastik', '!=', 0);
+                            break;
+                        case 'lainlain':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
+                            $query->where('berat_sampah_lain_lain', '!=', 0);
+                            break;
+                        case 'organik':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
+                            $query->where('berat_sampah_organik', '!=', 0);
+                            break;
                         default:
                             break;
                     }
