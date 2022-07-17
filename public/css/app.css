@@ -4194,9 +4194,6 @@ textarea.form-control.is-invalid {
 .justify-evenly {
   justify-content: space-evenly;
 }
-.justify-items-end {
-  justify-items: end;
-}
 .gap-12 {
   gap: 3rem;
 }
@@ -4406,8 +4403,8 @@ textarea.form-control.is-invalid {
 .p-3 {
   padding: 0.75rem;
 }
-.p-10 {
-  padding: 2.5rem;
+.p-2 {
+  padding: 0.5rem;
 }
 .p-6 {
   padding: 1.5rem;
@@ -4417,9 +4414,6 @@ textarea.form-control.is-invalid {
 }
 .p-0 {
   padding: 0px;
-}
-.p-2 {
-  padding: 0.5rem;
 }
 .p-4 {
   padding: 1rem;
@@ -5170,12 +5164,12 @@ textarea.form-control.is-invalid {
     background-color: transparent;
   }
 
-  .md\:p-20 {
-    padding: 5rem;
-  }
-
   .md\:p-10 {
     padding: 2.5rem;
+  }
+
+  .md\:p-20 {
+    padding: 5rem;
   }
 
   .md\:px-16 {
@@ -5219,10 +5213,6 @@ textarea.form-control.is-invalid {
 
   .lg\:w-full {
     width: 100%;
-  }
-
-  .lg\:p-10 {
-    padding: 2.5rem;
   }
 
   .lg\:px-8 {

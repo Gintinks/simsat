@@ -65,46 +65,46 @@ function App() {
     //data that is being handled by REACT
     const handleFilter = (data) => {
         
-        let filtered = filterPost;
-        data.map((value) => {
-            if (value.checked == true) {
-                switch (value.category) {
-                    case "Karet":
-                        filtered = filtered.filter((curData) => {
-                            return curData.berat_sampah_karet !== 0
-                        })
-                        break;
-                    case "Kaca":
-                        filtered = filtered.filter((curData) => {
-                            return curData.berat_sampah_karet !== 0
-                        })
-                        break;
-                    case "Kertas":
-                        filtered = filtered.filter((curData) => {
-                            return curData.berat_sampah_kertas !== 0
-                        })
-                        break;
-                    case "Plastik":
-                        filtered = filtered.filter((curData) => {
-                            return curData.berat_sampah_plastik !== 0
-                        })
-                        break;
-                    case "Lain-lain":
-                        filtered = filtered.filter((curData) => {
-                            return curData.berat_sampah_lain_lain !== 0
-                        })
-                        break;
-                    case "Organik":
-                        filtered = filtered.filter((curData) => {
-                            return curData.berat_sampah_organik !== 0
-                        })
-                        break;
-                    default:
+        // let filtered = filterPost;
+        // data.map((value) => {
+        //     if (value.checked == true) {
+        //         switch (value.category) {
+        //             case "Karet":
+        //                 filtered = filtered.filter((curData) => {
+        //                     return curData.berat_sampah_karet !== 0
+        //                 })
+        //                 break;
+        //             case "Kaca":
+        //                 filtered = filtered.filter((curData) => {
+        //                     return curData.berat_sampah_karet !== 0
+        //                 })
+        //                 break;
+        //             case "Kertas":
+        //                 filtered = filtered.filter((curData) => {
+        //                     return curData.berat_sampah_kertas !== 0
+        //                 })
+        //                 break;
+        //             case "Plastik":
+        //                 filtered = filtered.filter((curData) => {
+        //                     return curData.berat_sampah_plastik !== 0
+        //                 })
+        //                 break;
+        //             case "Lain-lain":
+        //                 filtered = filtered.filter((curData) => {
+        //                     return curData.berat_sampah_lain_lain !== 0
+        //                 })
+        //                 break;
+        //             case "Organik":
+        //                 filtered = filtered.filter((curData) => {
+        //                     return curData.berat_sampah_organik !== 0
+        //                 })
+        //                 break;
+        //             default:
 
-                }
-            }
-        })
-        setPost(filtered);
+        //         }
+        //     }
+        // })
+        setPost(data);
     }
 
     const changePage = ({ selected }) => {

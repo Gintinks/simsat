@@ -6384,25 +6384,32 @@ var FilterSampah = function FilterSampah(props) {
     }];
   };
 
+  var packets = [];
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataCategory),
       _useState2 = _slicedToArray(_useState, 2),
       category = _useState2[0],
       setCategory = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataTps),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
-      tps = _useState4[0],
-      setTps = _useState4[1];
+      categoryFilter = _useState4[0],
+      setCategoryFilter = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataRange),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataTps),
       _useState6 = _slicedToArray(_useState5, 2),
-      range = _useState6[0],
-      setRange = _useState6[1];
+      tps = _useState6[0],
+      setTps = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataRange),
       _useState8 = _slicedToArray(_useState7, 2),
-      filterPost = _useState8[0],
-      filterSetPost = _useState8[1];
+      range = _useState8[0],
+      setRange = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      filterPost = _useState10[0],
+      filterSetPost = _useState10[1];
 
   var updateChecked = function updateChecked(id, whichvalue, newvalue) {
     var index = category.findIndex(function (x) {
@@ -6470,11 +6477,15 @@ var FilterSampah = function FilterSampah(props) {
   });
 
   var handleFilter = function handleFilter() {
-    var packets = {
-      jenis: "Kaca",
-      rentang: "tigaPuluhHariTerakhir"
-    };
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/sampah-filter', packets).then(function (response) {
+    // setCategoryFilter = category.filter((curData) => {
+    //     return curData.checked === true
+    // })
+    category.map(function (value) {
+      if (value.checked === true) {
+        packets.push(value.category);
+      }
+    });
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/sampah-filter', category).then(function (response) {
       // const dataFilter = response.data.filter((curData) => {
       //     return curData.berat_sampah_karet === 0
       // })
@@ -6692,51 +6703,45 @@ function App() {
   //data that is being handled by REACT
 
   var handleFilter = function handleFilter(data) {
-    var filtered = filterPost;
-    data.map(function (value) {
-      if (value.checked == true) {
-        switch (value.category) {
-          case "Karet":
-            filtered = filtered.filter(function (curData) {
-              return curData.berat_sampah_karet !== 0;
-            });
-            break;
-
-          case "Kaca":
-            filtered = filtered.filter(function (curData) {
-              return curData.berat_sampah_karet !== 0;
-            });
-            break;
-
-          case "Kertas":
-            filtered = filtered.filter(function (curData) {
-              return curData.berat_sampah_kertas !== 0;
-            });
-            break;
-
-          case "Plastik":
-            filtered = filtered.filter(function (curData) {
-              return curData.berat_sampah_plastik !== 0;
-            });
-            break;
-
-          case "Lain-lain":
-            filtered = filtered.filter(function (curData) {
-              return curData.berat_sampah_lain_lain !== 0;
-            });
-            break;
-
-          case "Organik":
-            filtered = filtered.filter(function (curData) {
-              return curData.berat_sampah_organik !== 0;
-            });
-            break;
-
-          default:
-        }
-      }
-    });
-    setPost(filtered);
+    // let filtered = filterPost;
+    // data.map((value) => {
+    //     if (value.checked == true) {
+    //         switch (value.category) {
+    //             case "Karet":
+    //                 filtered = filtered.filter((curData) => {
+    //                     return curData.berat_sampah_karet !== 0
+    //                 })
+    //                 break;
+    //             case "Kaca":
+    //                 filtered = filtered.filter((curData) => {
+    //                     return curData.berat_sampah_karet !== 0
+    //                 })
+    //                 break;
+    //             case "Kertas":
+    //                 filtered = filtered.filter((curData) => {
+    //                     return curData.berat_sampah_kertas !== 0
+    //                 })
+    //                 break;
+    //             case "Plastik":
+    //                 filtered = filtered.filter((curData) => {
+    //                     return curData.berat_sampah_plastik !== 0
+    //                 })
+    //                 break;
+    //             case "Lain-lain":
+    //                 filtered = filtered.filter((curData) => {
+    //                     return curData.berat_sampah_lain_lain !== 0
+    //                 })
+    //                 break;
+    //             case "Organik":
+    //                 filtered = filtered.filter((curData) => {
+    //                     return curData.berat_sampah_organik !== 0
+    //                 })
+    //                 break;
+    //             default:
+    //         }
+    //     }
+    // })
+    setPost(data);
   };
 
   var changePage = function changePage(_ref) {

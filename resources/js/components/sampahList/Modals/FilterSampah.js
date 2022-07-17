@@ -82,9 +82,11 @@ const FilterSampah = (props) => {
             "category": "30 Hari Terakhir",
             "checked": false
         },
-       
+
     ]
+    let packets = [];
     const [category, setCategory] = useState(dataCategory);
+    const [categoryFilter, setCategoryFilter] = useState([]);
     const [tps, setTps] = useState(dataTps);
     const [range, setRange] = useState(dataRange);
     const [filterPost, filterSetPost] = useState([]);
@@ -153,12 +155,18 @@ const FilterSampah = (props) => {
         );
     })
 
-    const handleFilter = () =>{
-        const packets = {
-            jenis: "Kaca",
-            rentang: "tigaPuluhHariTerakhir",
-        };
-        axios.post('/sampah-filter', packets).then((response) => {
+    const handleFilter = () => {
+        // setCategoryFilter = category.filter((curData) => {
+        //     return curData.checked === true
+        // })
+        category.map((value) => {
+            if (value.checked === true) {
+                packets.push(value.category)
+            }
+        })
+
+
+        axios.post('/sampah-filter', category).then((response) => {
             // const dataFilter = response.data.filter((curData) => {
             //     return curData.berat_sampah_karet === 0
             // })

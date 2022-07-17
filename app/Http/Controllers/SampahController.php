@@ -58,9 +58,10 @@ class SampahController extends Controller
         return view('testFilter');
     }
 
-    public function sampahFilter($kertas = true, $karet=true, $logam = true)
+    public function sampahFilter(Request $request)
     {
-        // $data = $request->all();
+        // $names = ['Karet'];
+        $data = $request->all();
         $query = Sampah::query();
 
         if (auth()->user()->priviliges_id == 2) {
@@ -88,21 +89,45 @@ class SampahController extends Controller
         }
         if (auth()->user()->priviliges_id == 3) {
             $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->where('user_id', auth()->user()->id)->join('users', 'sampahs.user_id', '=', 'users.id');
-            $showFiltered = [];
-                if ($logam == true) {
-                    $showFiltered=$tpsSampah->where('berat_sampah_logam', '!=',0)->get();
+            $showFiltered = $tpsSampah;
+
+            $query = Sampah::query();
+            $query->select('sampahs.*', 'users.tps')->where('user_id', auth()->user()->id)->join('users', 'sampahs.user_id', '=', 'users.id');
+            // if ($logam == true) {
+            //     $showFiltered=$tpsSampah->where('berat_sampah_logam', '!=',0)->get();
+            // }
+            // if ($kertas == true) {
+            //     $showFiltered=$tpsSampah->where('berat_sampah_kertas', '!=',0)->get();
+            // }
+            // if ($karet == true) {
+            //     $showFiltered=$tpsSampah->where('berat_sampah_karet', '!=',0)->get();
+            // }
+            foreach ($request->input() as $item) {
+                if ($item['checked'] == true) {
+                    switch ($item['category']) {
+                        case 'Logam':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_logam', '!=', 0)->get();
+                            $query->where('berat_sampah_logam', '!=', 0);
+                            break;
+                        case 'Kertas':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_kertas', '!=', 0)->get();
+                            $query->where('berat_sampah_kertas', '!=', 0);
+                            break;
+                        case 'Karet':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
+                            $query->where('berat_sampah_karet', '!=', 0);
+                            break;
+                        default:
+                            break;
+                    }
                 }
-                if ($kertas == true) {
-                    $showFiltered=$tpsSampah->where('berat_sampah_kertas', '!=',0)->get();
-                }
-                if ($karet == true) {
-                    $showFiltered=$tpsSampah->where('berat_sampah_karet', '!=',0)->get();
-                }
-            return response()->json($showFiltered);
-                
-                
-            
-            
+            }
+            $test = $query->get();
+            return response()->json($test);
+
+
+
+
 
             // switch ($data['desa']) {
             //     case '30HariTerakhir':
@@ -121,7 +146,7 @@ class SampahController extends Controller
             // }
         }
 
-       
+
 
         // $allData = "";
         // switch ($data['rentang']) {
@@ -140,7 +165,7 @@ class SampahController extends Controller
         // switch ($data['jenis']) {
         //     case 'Kertas':
         //         $allData = collect($allData)->where('', 1)->all();
-                
+
         //         break;
         //     case 'Kaca':
         //         $kaca = $tpsSampah;
