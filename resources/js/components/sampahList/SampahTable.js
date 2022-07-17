@@ -9,7 +9,6 @@ import FilterSampah from './Modals/FilterSampah';
 function App() {
     const [post, setPost] = useState([]);
     const [filterPost, filterSetPost] = useState([]);
-    let count = 1;
     React.useEffect(() => {
         axios.get('/sampahList').then((response) => {
             // const dataFilter = response.data.filter((curData) => {
@@ -34,20 +33,20 @@ function App() {
                 <tbody>
 
                     <tr className={`${count % 2 == 0 ? ' bg-white' : ' bg-blue-50 '} border-b transition duration-300 ease-in-out hover:bg-slate-200`}>
-                        <th className="text-sm  w-6 py-4   whitespace-nowrap border-r border-gray-300">{count++}</th>
-                        <td className=' w-24 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.tps}</td>
-                        <td className='w-10 py-4 border-r border-gray-300'>{sampah.berat_sampah_organik}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>0</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_kaca}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_karet}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_plastik}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_logam}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_kertas}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_lain_lain}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300 '>{sampah.berat_sampah_diolah}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_ke_tpa}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_total}</td>
-                        <td className='w-16 py-4   whitespace-nowrap border-r border-gray-300'>
+                        <th className="text-sm  w-6 py-2   whitespace-nowrap border-r border-gray-300">{sampah.created_at.split('T')[0]}</th>
+                        <td className=' w-24 py-2 whitespace-nowrap border-r border-gray-300'>Desa Sumberbrantas</td>
+                        <td className='w-10 py-2 border-r border-gray-300'>{sampah.berat_sampah_organik}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>0</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_kaca}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_karet}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_plastik}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_logam}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_kertas}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_lain_lain}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300 '>{sampah.berat_sampah_diolah}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_ke_tpa}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_total}</td>
+                        <td className='w-16 py-2   whitespace-nowrap border-r border-gray-300'>
                             {/* <TableActionButtons eachRowId={sampah.id} /> */}
                             <SampahTableActionButtons eachRowId={sampah.id} />
 
@@ -64,6 +63,7 @@ function App() {
     //This shit pretty much doubles the
     //data that is being handled by REACT
     const handleFilter = (data) => {
+        
         let filtered = filterPost;
         data.map((value) => {
             if (value.checked == true) {
@@ -113,7 +113,7 @@ function App() {
     return (
 
         <div className="  bg-blue p-3 md:p-20 rounded-3xl" >
-            <FilterSampah filterData={handleFilter} />
+            <FilterSampah filterData={handleFilter} filterDataNama/>
             <ToastContainer />
 
             {/* <CreateModal /> */}
@@ -124,20 +124,20 @@ function App() {
                             <table className="min-w-full border text-center table-fixed">
                                 <thead className="border-b bg-bluer border-gray-300">
                                     <tr>
-                                        <th scope="col" className=" w-3  border-r border-gray-300" >#</th>
+                                        <th scope="col" className=" w-3  border-r border-gray-300" >Tanggal</th>
                                         <th scope="col" className=" border-r border-gray-300" >Nama TPS3R</th>
-                                        <th scope="col" className="w-10 py-4 border-r border-gray-300" >Organik (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Anorganik (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Kaca (Kg)</th>
-                                        <th scope="col" className="w-10 py-4 border-r border-gray-300" >Karet (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Plastik (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Logam (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Kertas (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Lain-lain (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Sampah Terolah (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Sampah TPA (Kg)</th>
-                                        <th scope="col" className="w-10 py-4 border-r border-gray-300" >Total (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Aksi</th>
+                                        <th scope="col" className="w-10 py-1 border-r border-gray-300" >Organik (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Anorganik (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Kaca (Kg)</th>
+                                        <th scope="col" className="w-10 py-2 border-r border-gray-300" >Karet (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Plastik (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Logam (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Kertas (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Lain-lain (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Sampah Terolah (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Sampah TPA (Kg)</th>
+                                        <th scope="col" className="w-10 py-2 border-r border-gray-300" >Total (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Aksi</th>
                                     </tr>
                                 </thead>
                                 {displayUsers}

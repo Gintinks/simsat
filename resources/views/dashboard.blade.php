@@ -67,24 +67,24 @@
             <span class="iconify w-16 h-16 self-center"
                 style="color: #17cf67;"data-icon="material-symbols:assistant"></span>
             <div class="p-3">
-                <p class=" text-2xl font-semibold">{{$beratTotalPerminggu}}</p>
-                <p>Total Sampah</p>
+                <p class="text-end text-2xl font-semibold">{{$beratTotalPerminggu}} Kg</p>
+                <p class="text-end">Total Sampah</p>
             </div>
         </div>
 
         <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg bg-white">
             <span class="iconify w-16 h-16 self-center" data-icon="mdi:leaf-off" style="color: #17cf67;"></span>
             <div class="p-3">
-                <p class=" text-2xl font-semibold">{{$beratTotalPermingguOrganik}}</p>
-                <p>Organik</p>
+                <p class="text-end text-2xl font-semibold">{{$beratTotalPermingguOrganik}} Kg</p>
+                <p class="text-end">Organik</p>
             </div>
         </div>
 
         <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg bg-white">
             <span class="iconify w-16 h-16 self-center" style="color: #17cf67;"data-icon="mdi:leaf"></span>
             <div class="p-3">
-                <p class=" text-2xl font-semibold">182 KG</p>
-                <p>Anorganik</p>
+                <p class=" text-end text-2xl font-semibold">182 Kg</p>
+                <p class="text-end">Anorganik</p>
             </div>
         </div>
 
@@ -92,21 +92,21 @@
             <span class="iconify w-16 h-16 self-center opacity-75" data-icon="tabler:recycle-off"
                 style="color: #17cf67;"></span>
             <div class="p-3">
-                <p class=" text-2xl font-semibold">{{$beratTotalPermingguTakTerolah}}</p>
-                <p>Tidak Terolah</p>
+                <p class="text-end text-2xl font-semibold">{{$beratTotalPermingguTakTerolah}} Kg</p>
+                <p class="text-end">Tidak Terolah</p>
             </div>
         </div>
 
     </div>
-    <h2 class="text-xl font-bold">DATA MINGGUAN</h2>
+ 
     <div class="grid md:grid-cols-2 gap-12 pb-5">
         <div class="shadow-lg rounded-lg overflow-hidden bg-white">
-            <div class="py-3 px-5 bg-gray-50">Data Mingguan</div>
-            <canvas class="p-10" id="chartLine"></canvas>
+            <div class="py-3 px-5 bg-gray-50 text-center">Pembagian Sampah Berdasarkan Organik/Anorganik</div>
+            <canvas class="p-2 md:p-10" id="chartLine"></canvas>
         </div>
         <div class="shadow-lg rounded-lg overflow-hidden bg-white">
-            <div class="py-3 px-5 bg-gray-50">Data Bulanan Tahun Ini</div>
-            <canvas class="p-10" id="chartBar"></canvas>
+            <div class="py-3 px-5 text-center bg-gray-50">Data Sampah Total</div>
+            <canvas class="p-2 md:p-10" id="chartBar"></canvas>
         </div>
     </div>
 
@@ -178,27 +178,14 @@
     </script>
 
     <script>
-        const labelsBarChart = [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "Desember",
-        ];
+        const labelsBarChart = {!! json_encode($days) !!};
         const dataBarChart = {
             labels: labelsBarChart,
             datasets: [{
                 label: "Berat Total Sampah Perbulan(Kg)",
                 backgroundColor: "hsl(252, 82.9%, 67.8%)",
                 borderColor: "hsl(252, 82.9%, 67.8%)",
-                data: [0],
+                data: {!! json_encode($BeratPerhari) !!},
             }, ],
         };
 

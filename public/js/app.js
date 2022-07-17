@@ -6468,6 +6468,7 @@ var FilterSampah = function FilterSampah(props) {
 
   var handleFilter = function handleFilter() {
     props.filterData(category);
+    props.FilterDataNama(tps);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -6606,7 +6607,6 @@ function App() {
       filterPost = _useState4[0],
       filterSetPost = _useState4[1];
 
-  var count = 1;
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     axios.get('/sampahList').then(function (response) {
       // const dataFilter = response.data.filter((curData) => {
@@ -6629,46 +6629,46 @@ function App() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
         className: "".concat(count % 2 == 0 ? ' bg-white' : ' bg-blue-50 ', " border-b transition duration-300 ease-in-out hover:bg-slate-200"),
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
-          className: "text-sm  w-6 py-4   whitespace-nowrap border-r border-gray-300",
-          children: count++
+          className: "text-sm  w-6 py-2   whitespace-nowrap border-r border-gray-300",
+          children: sampah.created_at.split('T')[0]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: " w-24 py-4 whitespace-nowrap border-r border-gray-300",
-          children: sampah.tps
+          className: " w-24 py-2 whitespace-nowrap border-r border-gray-300",
+          children: "Desa Sumberbrantas"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 border-r border-gray-300",
+          className: "w-10 py-2 border-r border-gray-300",
           children: sampah.berat_sampah_organik
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: "0"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_kaca
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_karet
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_plastik
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_logam
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_kertas
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_lain_lain
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300 ",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300 ",
           children: sampah.berat_sampah_diolah
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_ke_tpa
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_total
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-16 py-4   whitespace-nowrap border-r border-gray-300",
+          className: "w-16 py-2   whitespace-nowrap border-r border-gray-300",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SampahTableActionButtons__WEBPACK_IMPORTED_MODULE_4__["default"], {
             eachRowId: sampah.id
           })
@@ -6736,7 +6736,8 @@ function App() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "  bg-blue p-3 md:p-20 rounded-3xl",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Modals_FilterSampah__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      filterData: handleFilter
+      filterData: handleFilter,
+      filterDataNama: true
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_1__.ToastContainer, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "flex flex-col",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
@@ -6753,58 +6754,58 @@ function App() {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
                     className: " w-3  border-r border-gray-300",
-                    children: "#"
+                    children: "Tanggal"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
                     className: " border-r border-gray-300",
                     children: "Nama TPS3R"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4 border-r border-gray-300",
+                    className: "w-10 py-1 border-r border-gray-300",
                     children: "Organik (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Anorganik (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Kaca (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4 border-r border-gray-300",
+                    className: "w-10 py-2 border-r border-gray-300",
                     children: "Karet (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Plastik (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Logam (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Kertas (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Lain-lain (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Sampah Terolah (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Sampah TPA (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4 border-r border-gray-300",
+                    className: "w-10 py-2 border-r border-gray-300",
                     children: "Total (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Aksi"
                   })]
                 })
