@@ -51,6 +51,8 @@ Route::get('/sampah-list', [SampahController::class, 'showHalamanSampahTps'])->n
 Route::get('/sampahInputView', [SampahController::class, 'indexInput'])->name('sampahInputView')->middleware('is_tps');
 Route::get('/sampahInput', [SampahController::class, 'storeSampah'])->name('sampahInput');
 
+Route::post('/sampah-filter', [SampahController::class, 'sampahFilter'])->name('sampahFilter')->middleware('is_tps_managementdlh');
+
 Route::get('/get/employee/list', 
         [EmployeesController::class, 'getEmployeeList'])->name('employee.list');
 

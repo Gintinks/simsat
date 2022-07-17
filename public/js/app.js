@@ -6401,6 +6401,11 @@ var FilterSampah = function FilterSampah(props) {
       range = _useState6[0],
       setRange = _useState6[1];
 
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState8 = _slicedToArray(_useState7, 2),
+      filterPost = _useState8[0],
+      filterSetPost = _useState8[1];
+
   var updateChecked = function updateChecked(id, whichvalue, newvalue) {
     var index = category.findIndex(function (x) {
       return x.id === id;
@@ -6467,7 +6472,16 @@ var FilterSampah = function FilterSampah(props) {
   });
 
   var handleFilter = function handleFilter() {
-    props.filterData(category);
+    var packets = {
+      jenis: "Kaca",
+      rentang: "tigaPuluhHariTerakhir"
+    };
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/sampah-filter', packets).then(function (response) {
+      // const dataFilter = response.data.filter((curData) => {
+      //     return curData.berat_sampah_karet === 0
+      // })
+      props.filterData(response.data);
+    });
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -6612,8 +6626,7 @@ function App() {
       // const dataFilter = response.data.filter((curData) => {
       //     return curData.berat_sampah_karet === 0
       // })
-      setPost(response.data);
-      filterSetPost(response.data);
+      setPost(response.data); // filterSetPost(response.data);
     });
   }, []); // const [users, setUsers] = useState(post);
 
@@ -6629,46 +6642,46 @@ function App() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
         className: "".concat(count % 2 == 0 ? ' bg-white' : ' bg-blue-50 ', " border-b transition duration-300 ease-in-out hover:bg-slate-200"),
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
-          className: "text-sm  w-6 py-4   whitespace-nowrap border-r border-gray-300",
-          children: count++
+          className: "text-sm  w-6 py-2   whitespace-nowrap border-r border-gray-300",
+          children: sampah.created_at.split('T')[0]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: " w-24 py-4 whitespace-nowrap border-r border-gray-300",
-          children: sampah.tps
+          className: " w-24 py-2 whitespace-nowrap border-r border-gray-300",
+          children: "Desa Sumberbrantas"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 border-r border-gray-300",
+          className: "w-10 py-2 border-r border-gray-300",
           children: sampah.berat_sampah_organik
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: "0"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_kaca
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_karet
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_plastik
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_logam
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_kertas
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_lain_lain
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300 ",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300 ",
           children: sampah.berat_sampah_diolah
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_ke_tpa
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-10 py-4 whitespace-nowrap border-r border-gray-300",
+          className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_total
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "w-16 py-4   whitespace-nowrap border-r border-gray-300",
+          className: "w-16 py-2   whitespace-nowrap border-r border-gray-300",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SampahTableActionButtons__WEBPACK_IMPORTED_MODULE_4__["default"], {
             eachRowId: sampah.id
           })
@@ -6681,51 +6694,45 @@ function App() {
   //data that is being handled by REACT
 
   var handleFilter = function handleFilter(data) {
-    var filtered = filterPost;
-    data.map(function (value) {
-      if (value.checked == true) {
-        switch (value.category) {
-          case "Karet":
-            filtered = filtered.filter(function (curData) {
-              return curData.berat_sampah_karet !== 0;
-            });
-            break;
-
-          case "Kaca":
-            filtered = filtered.filter(function (curData) {
-              return curData.berat_sampah_karet !== 0;
-            });
-            break;
-
-          case "Kertas":
-            filtered = filtered.filter(function (curData) {
-              return curData.berat_sampah_kertas !== 0;
-            });
-            break;
-
-          case "Plastik":
-            filtered = filtered.filter(function (curData) {
-              return curData.berat_sampah_plastik !== 0;
-            });
-            break;
-
-          case "Lain-lain":
-            filtered = filtered.filter(function (curData) {
-              return curData.berat_sampah_lain_lain !== 0;
-            });
-            break;
-
-          case "Organik":
-            filtered = filtered.filter(function (curData) {
-              return curData.berat_sampah_organik !== 0;
-            });
-            break;
-
-          default:
-        }
-      }
-    });
-    setPost(filtered);
+    // let filtered = filterPost;
+    // data.map((value) => {
+    //     if (value.checked == true) {
+    //         switch (value.category) {
+    //             case "Karet":
+    //                 filtered = filtered.filter((curData) => {
+    //                     return curData.berat_sampah_karet !== 0
+    //                 })
+    //                 break;
+    //             case "Kaca":
+    //                 filtered = filtered.filter((curData) => {
+    //                     return curData.berat_sampah_kaca !== 0
+    //                 })
+    //                 break;
+    //             case "Kertas":
+    //                 filtered = filtered.filter((curData) => {
+    //                     return curData.berat_sampah_kertas !== 0
+    //                 })
+    //                 break;
+    //             case "Plastik":
+    //                 filtered = filtered.filter((curData) => {
+    //                     return curData.berat_sampah_plastik !== 0
+    //                 })
+    //                 break;
+    //             case "Lain-lain":
+    //                 filtered = filtered.filter((curData) => {
+    //                     return curData.berat_sampah_lain_lain !== 0
+    //                 })
+    //                 break;
+    //             case "Organik":
+    //                 filtered = filtered.filter((curData) => {
+    //                     return curData.berat_sampah_organik !== 0
+    //                 })
+    //                 break;
+    //             default:
+    //         }
+    //     }
+    // })
+    setPost(data);
   };
 
   var changePage = function changePage(_ref) {
@@ -6736,7 +6743,8 @@ function App() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "  bg-blue p-3 md:p-20 rounded-3xl",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Modals_FilterSampah__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      filterData: handleFilter
+      filterData: handleFilter,
+      filterDataNama: true
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_1__.ToastContainer, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "flex flex-col",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {

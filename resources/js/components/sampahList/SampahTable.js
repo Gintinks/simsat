@@ -16,7 +16,7 @@ function App() {
             //     return curData.berat_sampah_karet === 0
             // })
             setPost(response.data);
-            filterSetPost(response.data);
+            // filterSetPost(response.data);
         });
     }, []);
 
@@ -34,20 +34,20 @@ function App() {
                 <tbody>
 
                     <tr className={`${count % 2 == 0 ? ' bg-white' : ' bg-blue-50 '} border-b transition duration-300 ease-in-out hover:bg-slate-200`}>
-                        <th className="text-sm  w-6 py-4   whitespace-nowrap border-r border-gray-300">{count++}</th>
-                        <td className=' w-24 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.tps}</td>
-                        <td className='w-10 py-4 border-r border-gray-300'>{sampah.berat_sampah_organik}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>0</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_kaca}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_karet}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_plastik}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_logam}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_kertas}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_lain_lain}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300 '>{sampah.berat_sampah_diolah}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_ke_tpa}</td>
-                        <td className='w-10 py-4 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_total}</td>
-                        <td className='w-16 py-4   whitespace-nowrap border-r border-gray-300'>
+                    <th className="text-sm  w-6 py-2   whitespace-nowrap border-r border-gray-300">{sampah.created_at.split('T')[0]}</th>
+                        <td className=' w-24 py-2 whitespace-nowrap border-r border-gray-300'>Desa Sumberbrantas</td>
+                        <td className='w-10 py-2 border-r border-gray-300'>{sampah.berat_sampah_organik}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>0</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_kaca}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_karet}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_plastik}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_logam}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_kertas}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_lain_lain}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300 '>{sampah.berat_sampah_diolah}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_ke_tpa}</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_total}</td>
+                        <td className='w-16 py-2   whitespace-nowrap border-r border-gray-300'>
                             {/* <TableActionButtons eachRowId={sampah.id} /> */}
                             <SampahTableActionButtons eachRowId={sampah.id} />
 
@@ -64,46 +64,46 @@ function App() {
     //This shit pretty much doubles the
     //data that is being handled by REACT
     const handleFilter = (data) => {
-        let filtered = filterPost;
-        data.map((value) => {
-            if (value.checked == true) {
-                switch (value.category) {
-                    case "Karet":
-                        filtered = filtered.filter((curData) => {
-                            return curData.berat_sampah_karet !== 0
-                        })
-                        break;
-                    case "Kaca":
-                        filtered = filtered.filter((curData) => {
-                            return curData.berat_sampah_karet !== 0
-                        })
-                        break;
-                    case "Kertas":
-                        filtered = filtered.filter((curData) => {
-                            return curData.berat_sampah_kertas !== 0
-                        })
-                        break;
-                    case "Plastik":
-                        filtered = filtered.filter((curData) => {
-                            return curData.berat_sampah_plastik !== 0
-                        })
-                        break;
-                    case "Lain-lain":
-                        filtered = filtered.filter((curData) => {
-                            return curData.berat_sampah_lain_lain !== 0
-                        })
-                        break;
-                    case "Organik":
-                        filtered = filtered.filter((curData) => {
-                            return curData.berat_sampah_organik !== 0
-                        })
-                        break;
-                    default:
+        // let filtered = filterPost;
+        // data.map((value) => {
+        //     if (value.checked == true) {
+        //         switch (value.category) {
+        //             case "Karet":
+        //                 filtered = filtered.filter((curData) => {
+        //                     return curData.berat_sampah_karet !== 0
+        //                 })
+        //                 break;
+        //             case "Kaca":
+        //                 filtered = filtered.filter((curData) => {
+        //                     return curData.berat_sampah_kaca !== 0
+        //                 })
+        //                 break;
+        //             case "Kertas":
+        //                 filtered = filtered.filter((curData) => {
+        //                     return curData.berat_sampah_kertas !== 0
+        //                 })
+        //                 break;
+        //             case "Plastik":
+        //                 filtered = filtered.filter((curData) => {
+        //                     return curData.berat_sampah_plastik !== 0
+        //                 })
+        //                 break;
+        //             case "Lain-lain":
+        //                 filtered = filtered.filter((curData) => {
+        //                     return curData.berat_sampah_lain_lain !== 0
+        //                 })
+        //                 break;
+        //             case "Organik":
+        //                 filtered = filtered.filter((curData) => {
+        //                     return curData.berat_sampah_organik !== 0
+        //                 })
+        //                 break;
+        //             default:
 
-                }
-            }
-        })
-        setPost(filtered);
+        //         }
+        //     }
+        // })
+        setPost(data);
     }
 
     const changePage = ({ selected }) => {
@@ -113,7 +113,7 @@ function App() {
     return (
 
         <div className="  bg-blue p-3 md:p-20 rounded-3xl" >
-            <FilterSampah filterData={handleFilter} />
+            <FilterSampah filterData={handleFilter} filterDataNama/>
             <ToastContainer />
 
             {/* <CreateModal /> */}
@@ -138,6 +138,7 @@ function App() {
                                         <th scope="col" className="w-10 py-4  border-r border-gray-300" >Sampah TPA (Kg)</th>
                                         <th scope="col" className="w-10 py-4 border-r border-gray-300" >Total (Kg)</th>
                                         <th scope="col" className="w-10 py-4  border-r border-gray-300" >Aksi</th>
+                                        
                                     </tr>
                                 </thead>
                                 {displayUsers}

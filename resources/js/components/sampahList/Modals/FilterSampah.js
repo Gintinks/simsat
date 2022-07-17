@@ -87,6 +87,7 @@ const FilterSampah = (props) => {
     const [category, setCategory] = useState(dataCategory);
     const [tps, setTps] = useState(dataTps);
     const [range, setRange] = useState(dataRange);
+    const [filterPost, filterSetPost] = useState([]);
 
     const updateChecked = (id, whichvalue, newvalue) => {
         var index = category.findIndex(x => x.id === id);
@@ -153,7 +154,17 @@ const FilterSampah = (props) => {
     })
 
     const handleFilter = () =>{
-        props.filterData(category)
+        const packets = {
+            jenis: "Kaca",
+            rentang: "tigaPuluhHariTerakhir",
+        };
+        axios.post('/sampah-filter', packets).then((response) => {
+            // const dataFilter = response.data.filter((curData) => {
+            //     return curData.berat_sampah_karet === 0
+            // })
+            props.filterData(response.data)
+        });
+
     }
 
     return (
