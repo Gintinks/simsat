@@ -9,7 +9,7 @@ import FilterSampah from './Modals/FilterSampah';
 function App() {
     const [post, setPost] = useState([]);
     const [filterPost, filterSetPost] = useState([]);
-    let count = 1;
+    let count=1;
     React.useEffect(() => {
         axios.get('/sampahList').then((response) => {
             // const dataFilter = response.data.filter((curData) => {
@@ -64,46 +64,47 @@ function App() {
     //This shit pretty much doubles the
     //data that is being handled by REACT
     const handleFilter = (data) => {
-        // let filtered = filterPost;
-        // data.map((value) => {
-        //     if (value.checked == true) {
-        //         switch (value.category) {
-        //             case "Karet":
-        //                 filtered = filtered.filter((curData) => {
-        //                     return curData.berat_sampah_karet !== 0
-        //                 })
-        //                 break;
-        //             case "Kaca":
-        //                 filtered = filtered.filter((curData) => {
-        //                     return curData.berat_sampah_kaca !== 0
-        //                 })
-        //                 break;
-        //             case "Kertas":
-        //                 filtered = filtered.filter((curData) => {
-        //                     return curData.berat_sampah_kertas !== 0
-        //                 })
-        //                 break;
-        //             case "Plastik":
-        //                 filtered = filtered.filter((curData) => {
-        //                     return curData.berat_sampah_plastik !== 0
-        //                 })
-        //                 break;
-        //             case "Lain-lain":
-        //                 filtered = filtered.filter((curData) => {
-        //                     return curData.berat_sampah_lain_lain !== 0
-        //                 })
-        //                 break;
-        //             case "Organik":
-        //                 filtered = filtered.filter((curData) => {
-        //                     return curData.berat_sampah_organik !== 0
-        //                 })
-        //                 break;
-        //             default:
+        
+        let filtered = filterPost;
+        data.map((value) => {
+            if (value.checked == true) {
+                switch (value.category) {
+                    case "Karet":
+                        filtered = filtered.filter((curData) => {
+                            return curData.berat_sampah_karet !== 0
+                        })
+                        break;
+                    case "Kaca":
+                        filtered = filtered.filter((curData) => {
+                            return curData.berat_sampah_karet !== 0
+                        })
+                        break;
+                    case "Kertas":
+                        filtered = filtered.filter((curData) => {
+                            return curData.berat_sampah_kertas !== 0
+                        })
+                        break;
+                    case "Plastik":
+                        filtered = filtered.filter((curData) => {
+                            return curData.berat_sampah_plastik !== 0
+                        })
+                        break;
+                    case "Lain-lain":
+                        filtered = filtered.filter((curData) => {
+                            return curData.berat_sampah_lain_lain !== 0
+                        })
+                        break;
+                    case "Organik":
+                        filtered = filtered.filter((curData) => {
+                            return curData.berat_sampah_organik !== 0
+                        })
+                        break;
+                    default:
 
-        //         }
-        //     }
-        // })
-        setPost(data);
+                }
+            }
+        })
+        setPost(filtered);
     }
 
     const changePage = ({ selected }) => {
@@ -124,21 +125,20 @@ function App() {
                             <table className="min-w-full border text-center table-fixed">
                                 <thead className="border-b bg-bluer border-gray-300">
                                     <tr>
-                                        <th scope="col" className=" w-3  border-r border-gray-300" >#</th>
+                                        <th scope="col" className=" w-3  border-r border-gray-300" >Tanggal</th>
                                         <th scope="col" className=" border-r border-gray-300" >Nama TPS3R</th>
-                                        <th scope="col" className="w-10 py-4 border-r border-gray-300" >Organik (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Anorganik (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Kaca (Kg)</th>
-                                        <th scope="col" className="w-10 py-4 border-r border-gray-300" >Karet (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Plastik (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Logam (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Kertas (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Lain-lain (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Sampah Terolah (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Sampah TPA (Kg)</th>
-                                        <th scope="col" className="w-10 py-4 border-r border-gray-300" >Total (Kg)</th>
-                                        <th scope="col" className="w-10 py-4  border-r border-gray-300" >Aksi</th>
-                                        
+                                        <th scope="col" className="w-10 py-1 border-r border-gray-300" >Organik (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Anorganik (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Kaca (Kg)</th>
+                                        <th scope="col" className="w-10 py-2 border-r border-gray-300" >Karet (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Plastik (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Logam (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Kertas (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Lain-lain (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Sampah Terolah (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Sampah TPA (Kg)</th>
+                                        <th scope="col" className="w-10 py-2 border-r border-gray-300" >Total (Kg)</th>
+                                        <th scope="col" className="w-10 py-2  border-r border-gray-300" >Aksi</th>
                                     </tr>
                                 </thead>
                                 {displayUsers}

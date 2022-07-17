@@ -41,6 +41,7 @@ class SampahController extends Controller
             //$tpsSampah = DB::table('sampahs')->join('users','sampahs.user_id','=','users.id')->select('sampahs.*','users.name');
             $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->join('users', 'sampahs.user_id', '=', 'users.id')->get();
             //$tpsSampah = Sampah::rightJoin('users','users.id','=','sampahs.user_id')->select('users.name');
+            return response()->json($tpsSampah);
         }
         if (auth()->user()->priviliges_id == 3) {
             $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->where('user_id', auth()->user()->id)->join('users', 'sampahs.user_id', '=', 'users.id')->get();

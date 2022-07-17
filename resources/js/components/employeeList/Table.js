@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import TableActionButtons from './TableActionButtons';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import JsonData from "./MOCK_DATA";
 import CreateModal from "./Modals/CreateModal";
 import ReactPaginate from "react-paginate";
 

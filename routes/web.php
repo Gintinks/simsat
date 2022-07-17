@@ -48,6 +48,8 @@ Route::get('/onlyManagemenDlh', [ManagemenDlhController::class, 'index'])->name(
 Route::get('/sampahList', [SampahController::class, 'showSampahTps'])->name('sampahList')->middleware('is_tps_managementdlh');
 Route::get('/sampah-list', [SampahController::class, 'showHalamanSampahTps'])->name('sampahList')->middleware('is_tps_managementdlh');
 
+Route::get('/sampah-filter', [SampahController::class, 'sampahFilter'])->name('sampahFilter')->middleware('is_tps_managementdlh');
+
 Route::get('/sampahInputView', [SampahController::class, 'indexInput'])->name('sampahInputView')->middleware('is_tps');
 Route::get('/sampahInput', [SampahController::class, 'storeSampah'])->name('sampahInput');
 

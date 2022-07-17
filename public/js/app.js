@@ -6071,11 +6071,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TableActionButtons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TableActionButtons */ "./resources/js/components/employeeList/TableActionButtons.js");
 /* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
 /* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
-/* harmony import */ var _MOCK_DATA__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MOCK_DATA */ "./resources/js/components/employeeList/MOCK_DATA.json");
-/* harmony import */ var _Modals_CreateModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Modals/CreateModal */ "./resources/js/components/employeeList/Modals/CreateModal.js");
-/* harmony import */ var react_paginate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-paginate */ "./node_modules/react-paginate/dist/react-paginate.js");
-/* harmony import */ var react_paginate__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_paginate__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Modals_CreateModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Modals/CreateModal */ "./resources/js/components/employeeList/Modals/CreateModal.js");
+/* harmony import */ var react_paginate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-paginate */ "./node_modules/react-paginate/dist/react-paginate.js");
+/* harmony import */ var react_paginate__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_paginate__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6087,7 +6086,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -6119,24 +6117,24 @@ function App() {
   var usersPerPage = 10;
   var pagesVisited = pageNumber * usersPerPage;
   var displayUsers = post.slice(pagesVisited, pagesVisited + usersPerPage).map(function (user) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("tbody", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tbody", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
         className: "border-b transition duration-300 ease-in-out hover:bg-gray-100",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
           className: "px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r",
           children: count++
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
           className: "text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r",
           children: user.name
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
           className: "text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r",
           children: user.email
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
           className: "text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r",
           children: user.priviliges_id == 2 ? "Manajemen DLH " : "Petugas TPS"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
           className: " max-h-5 max w-14 px-2",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_TableActionButtons__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_TableActionButtons__WEBPACK_IMPORTED_MODULE_1__["default"], {
             eachRowId: user
           })
         })]
@@ -6150,38 +6148,38 @@ function App() {
     setPageNumber(selected);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_2__.ToastContainer, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Modals_CreateModal__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_2__.ToastContainer, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Modals_CreateModal__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "flex flex-col ",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "overflow-x-auto sm:-mx-6 lg:-mx-8",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
           className: "py-2 inline-block min-w-full sm:px-6 lg:px-8",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
             className: "overflow-x-auto",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("table", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("table", {
               className: "min-w-full border text-center bg-white",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("thead", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("thead", {
                 className: "border-b",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
                     className: "text-sm font-medium text-gray-900 px-6 py-4 border-r",
                     children: "#"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
                     className: "text-sm font-medium text-gray-900 px-6 py-4 border-r",
                     children: "Nama"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
                     className: "text-sm font-medium text-gray-900 px-6 py-4 border-r",
                     children: "Email"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
                     className: "text-sm font-medium text-gray-900 px-6 py-4 border-r",
                     children: "TPS"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
                     className: "text-sm font-medium text-gray-900 px-6 py-4 border-r",
                     children: "Aksi"
@@ -6192,7 +6190,7 @@ function App() {
           })
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)((react_paginate__WEBPACK_IMPORTED_MODULE_6___default()), {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)((react_paginate__WEBPACK_IMPORTED_MODULE_5___default()), {
       previousLabel: "Previous",
       breakLabel: "...",
       nextLabel: "Next",
@@ -6694,45 +6692,51 @@ function App() {
   //data that is being handled by REACT
 
   var handleFilter = function handleFilter(data) {
-    // let filtered = filterPost;
-    // data.map((value) => {
-    //     if (value.checked == true) {
-    //         switch (value.category) {
-    //             case "Karet":
-    //                 filtered = filtered.filter((curData) => {
-    //                     return curData.berat_sampah_karet !== 0
-    //                 })
-    //                 break;
-    //             case "Kaca":
-    //                 filtered = filtered.filter((curData) => {
-    //                     return curData.berat_sampah_kaca !== 0
-    //                 })
-    //                 break;
-    //             case "Kertas":
-    //                 filtered = filtered.filter((curData) => {
-    //                     return curData.berat_sampah_kertas !== 0
-    //                 })
-    //                 break;
-    //             case "Plastik":
-    //                 filtered = filtered.filter((curData) => {
-    //                     return curData.berat_sampah_plastik !== 0
-    //                 })
-    //                 break;
-    //             case "Lain-lain":
-    //                 filtered = filtered.filter((curData) => {
-    //                     return curData.berat_sampah_lain_lain !== 0
-    //                 })
-    //                 break;
-    //             case "Organik":
-    //                 filtered = filtered.filter((curData) => {
-    //                     return curData.berat_sampah_organik !== 0
-    //                 })
-    //                 break;
-    //             default:
-    //         }
-    //     }
-    // })
-    setPost(data);
+    var filtered = filterPost;
+    data.map(function (value) {
+      if (value.checked == true) {
+        switch (value.category) {
+          case "Karet":
+            filtered = filtered.filter(function (curData) {
+              return curData.berat_sampah_karet !== 0;
+            });
+            break;
+
+          case "Kaca":
+            filtered = filtered.filter(function (curData) {
+              return curData.berat_sampah_karet !== 0;
+            });
+            break;
+
+          case "Kertas":
+            filtered = filtered.filter(function (curData) {
+              return curData.berat_sampah_kertas !== 0;
+            });
+            break;
+
+          case "Plastik":
+            filtered = filtered.filter(function (curData) {
+              return curData.berat_sampah_plastik !== 0;
+            });
+            break;
+
+          case "Lain-lain":
+            filtered = filtered.filter(function (curData) {
+              return curData.berat_sampah_lain_lain !== 0;
+            });
+            break;
+
+          case "Organik":
+            filtered = filtered.filter(function (curData) {
+              return curData.berat_sampah_organik !== 0;
+            });
+            break;
+
+          default:
+        }
+      }
+    });
+    setPost(filtered);
   };
 
   var changePage = function changePage(_ref) {
@@ -6761,58 +6765,58 @@ function App() {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
                     className: " w-3  border-r border-gray-300",
-                    children: "#"
+                    children: "Tanggal"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
                     className: " border-r border-gray-300",
                     children: "Nama TPS3R"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4 border-r border-gray-300",
+                    className: "w-10 py-1 border-r border-gray-300",
                     children: "Organik (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Anorganik (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Kaca (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4 border-r border-gray-300",
+                    className: "w-10 py-2 border-r border-gray-300",
                     children: "Karet (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Plastik (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Logam (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Kertas (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Lain-lain (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Sampah Terolah (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Sampah TPA (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4 border-r border-gray-300",
+                    className: "w-10 py-2 border-r border-gray-300",
                     children: "Total (Kg)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     scope: "col",
-                    className: "w-10 py-4  border-r border-gray-300",
+                    className: "w-10 py-2  border-r border-gray-300",
                     children: "Aksi"
                   })]
                 })
@@ -62421,17 +62425,6 @@ module.exports = function (list, options) {
 
 "use strict";
 module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
-
-/***/ }),
-
-/***/ "./resources/js/components/employeeList/MOCK_DATA.json":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/employeeList/MOCK_DATA.json ***!
-  \*************************************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('[{"id":1,"name":"Kyle","email":"test1@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":2,"name":"Linwood Burke","email":"test3@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":4,"name":"Katie Henson","email":"test4@gmail.com","password":"11223344","role":"Petugas TPS","tps":null},{"id":5,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":6,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":7,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":8,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":9,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":10,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":11,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":12,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":13,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":14,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":15,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":16,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":17,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":18,"name":"Anna Nunez Northumbria","email":"test6@gmail.com","password":"11223344","role":"Petugas TPS","tps":null},{"id":8,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":9,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":10,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":11,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":12,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":13,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":14,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":15,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":16,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":17,"name":"Ofelia Gallagher","email":"test5@gmail.com","password":"11223344","role":"Management DLH","tps":null},{"id":18,"name":"Anna Nunez Northumbria","email":"test6@gmail.com","password":"11223344","role":"Petugas TPS","tps":null}]');
 
 /***/ })
 
