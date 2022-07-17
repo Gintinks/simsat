@@ -27,23 +27,187 @@ class SampahController extends Controller
 
         if (auth()->user()->priviliges_id == 2) {
             //$tpsSampah = DB::table('sampahs')->join('users','sampahs.user_id','=','users.id')->select('sampahs.*','users.name');
-            $tpsSampah = Sampah::join('users','sampahs.user_id','=','users.id')->get(['sampahs.*','users.tps']);
+            $tpsSampah = Sampah::select('sampahs.*','users.tps')->join('users','sampahs.user_id','=','users.id')->get();
             //$tpsSampah = Sampah::rightJoin('users','users.id','=','sampahs.user_id')->select('users.name');
+            return response()->json($tpsSampah);
         }
         if (auth()->user()->priviliges_id == 3) {
-            $tpsSampah = Sampah::where('user_id', auth()->user()->id)->join('users','sampahs.user_id','=','users.id')->get(['sampahs.*','users.tps']);
+            $tpsSampah = Sampah::select('sampahs.*','users.tps')->where('user_id', auth()->user()->id)->join('users','sampahs.user_id','=','users.id')->get();
+            return response()->json($tpsSampah);
         }
          
-        return response()->json($tpsSampah);
+        
        //   return view('sampahList',['sampahList' => $tpsSampah]);
       
 
      }
 
-     public function showSampahTpsByID($id)
-     {
 
+     public function testFilterView()
+     {
+        return view('testFilter');
+     }
+
+     public function sampahFilter(Request $request)
+     {
+        $data = $request->all();
         
+        if (auth()->user()->priviliges_id == 2) {
+            //$tpsSampah = DB::table('sampahs')->join('users','sampahs.user_id','=','users.id')->select('sampahs.*','users.name');
+            $tpsSampah = Sampah::select('sampahs.*','users.name')->join('users','sampahs.user_id','=','users.id');
+            //$dataTps = Sampah::where('tps.name',$data['desa'])->join('tps','sampahs.tps_id','=','tps.id');
+            $allData = [];
+            
+                
+            switch ($data['jenis']) {
+                case 'kertas':
+                    $kertas = $tpsSampah->where('berat_sampah_kertas','!=', 0)->get();
+                    $allData = $kertas;
+                    break;
+                case 'kaca':
+                    $kaca = $tpsSampah->where('berat_sampah_kaca','!=', 0)->get();
+                    $allData = $kaca;
+                    break;
+                case 'karet':
+                    $karet = $tpsSampah->where('berat_sampah_karet','!=', 0)->get();
+                    $allData = $karet;
+                    break;        
+                case 'logam':
+                    $logam = $tpsSampah->where('berat_sampah_logam','!=', 0)->get();
+                    $allData = $logam;
+                    break;        
+                case 'plastik':
+                    $plastik = $tpsSampah->where('berat_sampah_plastik','!=', 0)->get();
+                    $allData = $plastik;
+                    break;        
+                case 'lainlain':
+                    $lainlain = $tpsSampah->where('berat_sampah_lain_lain','!=', 0)->get();
+                    $allData = $lainlain;
+                    break;        
+                case 'organik':
+                    $organik = $tpsSampah->where('berat_sampah_organik','!=', 0)->get();
+                    $allData = $organik;
+                    break;                          
+                default:
+                $isNull = $tpsSampah->get();
+                $allData = $isNull;
+                    break;
+            }
+
+            switch ($data['rentang']) {
+                case 'tigaPuluhHariTerakhir':
+                    $last30Days = $tpsSampah->whereBetween('created_at', [Carbon::now()->subDays(30)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()])->get();
+                    $allData = $last30Days;
+                    break;
+                case 'tujuhHariTerakhir':
+                    $last7Days = $tpsSampah->whereBetween('created_at', [Carbon::now()->subDays(7)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()])->get();
+                    $allData = $last7Days;
+                    break;
+                
+                default:
+                $isNull = $tpsSampah->get();
+                $allData = $isNull;
+                    break;
+            }
+
+            return response()->json($allData);
+
+            // switch ($data['desa']) {
+            //     case '30HariTerakhir':
+            //         $last30Days = $tpsSampah->whereBetween('created_at', [Carbon::now()->subDays(30)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
+            //         return response()->json($last30Days);
+            //         break;
+            //     case '7HariTerakhir':
+            //         $last7Days = $tpsSampah->whereBetween('created_at', [Carbon::now()->subDays(7)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
+            //         return response()->json($last7Days);
+            //         break;
+                
+            //     default:
+            //         $isNull = $tpsSampah->get();
+            //         return response()->json($tpsSampah);
+            //         break;
+            // }
+            //$tpsSampah = Sampah::rightJoin('users','users.id','=','sampahs.user_id')->select('users.name');
+        }
+        if (auth()->user()->priviliges_id == 3) {
+            $tpsSampah = Sampah::select('sampah.*','users.tps')->where('user_id', auth()->user()->id)->join('users','sampahs.user_id','=','users.id');
+            
+            $allData = [];
+            
+                
+            switch ($data['jenis']) {
+                case 'kertas':
+                    $kertas = $tpsSampah->where('berat_sampah_kertas','!=', 0)->get();
+                    $allData = $kertas;
+                    break;
+                case 'kaca':
+                    $kaca = $tpsSampah->where('berat_sampah_kaca','!=', 0)->get();
+                    $allData = $kaca;
+                    break;
+                case 'karet':
+                    $karet = $tpsSampah->where('berat_sampah_karet','!=', 0)->get();
+                    $allData = $karet;
+                    break;        
+                case 'logam':
+                    $logam = $tpsSampah->where('berat_sampah_logam','!=', 0)->get();
+                    $allData = $logam;
+                    break;        
+                case 'plastik':
+                    $plastik = $tpsSampah->where('berat_sampah_plastik','!=', 0)->get();
+                    $allData = $plastik;
+                    break;        
+                case 'lainlain':
+                    $lainlain = $tpsSampah->where('berat_sampah_lain_lain','!=', 0)->get();
+                    $allData = $lainlain;
+                    break;        
+                case 'organik':
+                    $organik = $tpsSampah->where('berat_sampah_organik','!=', 0)->get();
+                    $allData = $organik;
+                    break;                          
+                default:
+                $isNull = $tpsSampah->get();
+                $allData = $isNull;
+                    break;
+            }
+
+            switch ($data['rentang']) {
+                case 'tigaPuluhHariTerakhir':
+                    $last30Days = $tpsSampah->whereBetween('created_at', [Carbon::now()->subDays(30)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()])->get();
+                    $allData = $last30Days;
+                    break;
+                case 'tujuhHariTerakhir':
+                    $last7Days = $tpsSampah->whereBetween('created_at', [Carbon::now()->subDays(7)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()])->get();
+                    $allData = $last7Days;
+                    break;
+                
+                default:
+                $isNull = $tpsSampah->get();
+                $allData = $isNull;
+                    break;
+            }
+
+            return response()->json($allData);
+
+            // switch ($data['desa']) {
+            //     case '30HariTerakhir':
+            //         $last30Days = $tpsSampah->whereBetween('created_at', [Carbon::now()->subDays(30)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
+            //         return response()->json($last30Days);
+            //         break;
+            //     case '7HariTerakhir':
+            //         $last7Days = $tpsSampah->whereBetween('created_at', [Carbon::now()->subDays(7)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
+            //         return response()->json($last7Days);
+            //         break;
+                
+            //     default:
+            //         $isNull = $tpsSampah->get();
+            //         return response()->json($tpsSampah);
+            //         break;
+            // }
+        }
+         
+        //return response()->json($tpsSampah);
+         return view('testFilterPost',['sampahList' => $tpsSampah]);
+      
 
      }
 
