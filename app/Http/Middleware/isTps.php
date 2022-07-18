@@ -17,7 +17,7 @@ class isTps
     public function handle(Request $request, Closure $next)
     {
         if (!auth()->check() || auth()->user()->priviliges_id !== 3) {
-            abort(403);
+            return redirect()->back();
         }
         return $next($request);
     }

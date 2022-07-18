@@ -16,11 +16,11 @@ class isTpsAndManagementDlh
      */
     public function handle(Request $request, Closure $next)
     {
+        if (!auth()->check() || auth()->user()->priviliges_id == 1) {
+            return redirect('/register');
+        }    
         if (!auth()->check() || auth()->user()->priviliges_id !== 1) {
             return $next($request);
-        }
-        if (!auth()->check() || auth()->user()->priviliges_id == 1) {
-            abort(403);
         }
         
     }
