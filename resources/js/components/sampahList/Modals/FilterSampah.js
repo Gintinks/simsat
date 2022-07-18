@@ -86,10 +86,9 @@ const FilterSampah = (props) => {
     ]
     let packets = [];
     const [category, setCategory] = useState(dataCategory);
-    const [categoryFilter, setCategoryFilter] = useState([]);
     const [tps, setTps] = useState(dataTps);
     const [range, setRange] = useState(dataRange);
-    const [filterPost, filterSetPost] = useState([]);
+    const [filterPost, filterSetPost] = useState({ category: category, tps: tps, range: range });
 
     const updateChecked = (id, whichvalue, newvalue) => {
         var index = category.findIndex(x => x.id === id);
@@ -156,17 +155,9 @@ const FilterSampah = (props) => {
     })
 
     const handleFilter = () => {
-        // setCategoryFilter = category.filter((curData) => {
-        //     return curData.checked === true
-        // })
-        category.map((value) => {
-            if (value.checked === true) {
-                packets.push(value.category)
-            }
-        })
-
-
-        axios.post('/sampah-filter', category).then((response) => {
+        
+        filterSetPost({ category: category, tps: tps, range: range });
+        axios.post('/sampah-filter', filterPost).then((response) => {
             // const dataFilter = response.data.filter((curData) => {
             //     return curData.berat_sampah_karet === 0
             // })

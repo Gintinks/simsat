@@ -58,7 +58,7 @@ class SampahController extends Controller
         return view('testFilter');
     }
 
-    public function sampahFilter(Request $request, $rentang=7)
+    public function sampahFilter(Request $request, $rentang = 7)
     {
         // $names = ['Karet'];
         $data = $request->all();
@@ -119,19 +119,34 @@ class SampahController extends Controller
                     }
                 }
             }
-            
+
             //filter rentang
 
-                //$query->whereBetween('sampahs.created_at', [Carbon::now()->subDays($request->category)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
+            foreach ($request->input('range') as $item) {
+                if ($item['checked'] == true) {
+                    switch ($item['category']) {
+                        case 'tigaPuluhHari':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_logam', '!=', 0)->get();
+                            $query->whereBetween('sampahs.created_at', [Carbon::now()->subDays(30)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
+                            break;
+                        case 'tujuhHari':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_kertas', '!=', 0)->get();
+                            $query->whereBetween('sampahs.created_at', [Carbon::now()->subDays(7)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
 
 
 
-                $filterTps = $query->where('users.tps','=','2')->get();
-            
+            $filterTps = $query->where('users.tps', '=', '2')->get();
+
 
             return response()->json($filterTps);
 
-            
+
             $test = $query->get();
             return response()->json($test);
         }
@@ -150,7 +165,7 @@ class SampahController extends Controller
             // if ($karet == true) {
             //     $showFiltered=$tpsSampah->where('berat_sampah_karet', '!=',0)->get();
             // }
-            foreach ($request->input() as $item) {
+            foreach ($request->input('category') as $item) {
                 if ($item['checked'] == true) {
                     switch ($item['category']) {
                         case 'Logam':
@@ -183,30 +198,17 @@ class SampahController extends Controller
                             break;
                         default:
                             break;
-                    
-                }
-                if ($item['checked'] == true) {
-                    switch ($item['category']) {
-                        case 'tps1':
-                            // $showFiltered = $tpsSampah->where('berat_sampah_logam', '!=', 0)->get();
-                            $query->where('users.tps','=','tps1');
-                            break;
-                        case 'tps2':
-                            // $showFiltered = $tpsSampah->where('berat_sampah_kertas', '!=', 0)->get();
-                            $query->where('users.tps','=','tps2');
-                            break;
-                        case 'tps3':
-                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
-                            $query->where('users.tps','=','tps3');
-                            break;
-                        case 'tps4':
-                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
-                            $query->where('users.tps','=','tps4');
-                            break;
-                        default:
-                            break;
                     }
                 }
+            }
+
+            foreach ($request->input('tps') as $item) {
+                if ($item['checked'] == true) {
+                    $query->where('users.tps', '=', $item['category']);
+                }
+            }
+
+            foreach ($request->input('range') as $item) {
                 if ($item['checked'] == true) {
                     switch ($item['category']) {
                         case 'tigaPuluhHari':
@@ -223,16 +225,15 @@ class SampahController extends Controller
                 }
             }
 
-            }
 
-            
+
             //filter rentang
 
-               //$filterRentang = $query->whereBetween('sampahs.created_at', [Carbon::now()->subDays($request->category)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
-                //$filterTps = $query->where('users.tps','=',$request->tps)->get();
-            
+            //$filterRentang = $query->whereBetween('sampahs.created_at', [Carbon::now()->subDays($request->category)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
+            //$filterTps = $query->where('users.tps','=',$request->tps)->get();
 
-            
+
+
             $test = $query->latest()->get();
             return response()->json($test);
         }

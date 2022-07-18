@@ -6391,25 +6391,24 @@ var FilterSampah = function FilterSampah(props) {
       category = _useState2[0],
       setCategory = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataTps),
       _useState4 = _slicedToArray(_useState3, 2),
-      categoryFilter = _useState4[0],
-      setCategoryFilter = _useState4[1];
+      tps = _useState4[0],
+      setTps = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataTps),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataRange),
       _useState6 = _slicedToArray(_useState5, 2),
-      tps = _useState6[0],
-      setTps = _useState6[1];
+      range = _useState6[0],
+      setRange = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataRange),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
+    category: category,
+    tps: tps,
+    range: range
+  }),
       _useState8 = _slicedToArray(_useState7, 2),
-      range = _useState8[0],
-      setRange = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState10 = _slicedToArray(_useState9, 2),
-      filterPost = _useState10[0],
-      filterSetPost = _useState10[1];
+      filterPost = _useState8[0],
+      filterSetPost = _useState8[1];
 
   var updateChecked = function updateChecked(id, whichvalue, newvalue) {
     var index = category.findIndex(function (x) {
@@ -6477,15 +6476,12 @@ var FilterSampah = function FilterSampah(props) {
   });
 
   var handleFilter = function handleFilter() {
-    // setCategoryFilter = category.filter((curData) => {
-    //     return curData.checked === true
-    // })
-    category.map(function (value) {
-      if (value.checked === true) {
-        packets.push(value.category);
-      }
+    filterSetPost({
+      category: category,
+      tps: tps,
+      range: range
     });
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/sampah-filter', category).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/sampah-filter', filterPost).then(function (response) {
       // const dataFilter = response.data.filter((curData) => {
       //     return curData.berat_sampah_karet === 0
       // })
