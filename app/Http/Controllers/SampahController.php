@@ -39,12 +39,12 @@ class SampahController extends Controller
         //   return view('sampahList',['sampahList' => $tpsSampah]);
         if (auth()->user()->priviliges_id == 2) {
             //$tpsSampah = DB::table('sampahs')->join('users','sampahs.user_id','=','users.id')->select('sampahs.*','users.name');
-            $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->join('users', 'sampahs.user_id', '=', 'users.id')->get();
+            $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->join('users', 'sampahs.user_id', '=', 'users.id')->latest()->get();
             //$tpsSampah = Sampah::rightJoin('users','users.id','=','sampahs.user_id')->select('users.name');
             return response()->json($tpsSampah);
         }
         if (auth()->user()->priviliges_id == 3) {
-            $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->where('user_id', auth()->user()->id)->join('users', 'sampahs.user_id', '=', 'users.id')->get();
+            $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->where('user_id', auth()->user()->id)->join('users', 'sampahs.user_id', '=', 'users.id')->latest()->get();
         }
         return response()->json($tpsSampah);
     }
@@ -58,41 +58,18 @@ class SampahController extends Controller
         return view('testFilter');
     }
 
-    public function sampahFilter(Request $request)
+    public function sampahFilter(Request $request, $rentang=7)
     {
         // $names = ['Karet'];
         $data = $request->all();
         $query = Sampah::query();
 
         if (auth()->user()->priviliges_id == 2) {
-            //$tpsSampah = DB::table('sampahs')->join('users','sampahs.user_id','=','users.id')->select('sampahs.*','users.name');
-            $tpsSampah = Sampah::select('sampahs.*', 'users.name')->join('users', 'sampahs.user_id', '=', 'users.id')->get();
-            //$dataTps = Sampah::where('tps.name',$data['desa'])->join('tps','sampahs.tps_id','=','tps.id');
-
-
-            // switch ($data['desa']) {
-            //     case '30HariTerakhir':
-            //         $last30Days = $tpsSampah->whereBetween('created_at', [Carbon::now()->subDays(30)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
-            //         return response()->json($last30Days);
-            //         break;
-            //     case '7HariTerakhir':
-            //         $last7Days = $tpsSampah->whereBetween('created_at', [Carbon::now()->subDays(7)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
-            //         return response()->json($last7Days);
-            //         break;
-
-            //     default:
-            //         $isNull = $tpsSampah->get();
-            //         return response()->json($tpsSampah);
-            //         break;
-            // }
-            //$tpsSampah = Sampah::rightJoin('users','users.id','=','sampahs.user_id')->select('users.name');
-        }
-        if (auth()->user()->priviliges_id == 3) {
-            $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->where('user_id', auth()->user()->id)->join('users', 'sampahs.user_id', '=', 'users.id');
+            $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->join('users', 'sampahs.user_id', '=', 'users.id');
             $showFiltered = $tpsSampah;
 
             $query = Sampah::query();
-            $query->select('sampahs.*', 'users.tps')->where('user_id', auth()->user()->id)->join('users', 'sampahs.user_id', '=', 'users.id');
+            $query->select('sampahs.*', 'users.tps')->join('users', 'sampahs.user_id', '=', 'users.id');
             // if ($logam == true) {
             //     $showFiltered=$tpsSampah->where('berat_sampah_logam', '!=',0)->get();
             // }
@@ -133,33 +110,130 @@ class SampahController extends Controller
                             // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
                             $query->where('berat_sampah_organik', '!=', 0);
                             break;
+                        case 'organik':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
+                            $query->where('berat_sampah_organik', '!=', 0);
+                            break;
                         default:
                             break;
                     }
                 }
             }
+            
+            //filter rentang
+
+                //$query->whereBetween('sampahs.created_at', [Carbon::now()->subDays($request->category)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
+
+
+
+                $filterTps = $query->where('users.tps','=','2')->get();
+            
+
+            return response()->json($filterTps);
+
+            
             $test = $query->get();
             return response()->json($test);
+        }
+        if (auth()->user()->priviliges_id == 3) {
+            $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->where('user_id', auth()->user()->id)->join('users', 'sampahs.user_id', '=', 'users.id');
+            $showFiltered = $tpsSampah;
 
-
-
-
-
-            // switch ($data['desa']) {
-            //     case '30HariTerakhir':
-            //         $last30Days = $tpsSampah->whereBetween('created_at', [Carbon::now()->subDays(30)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
-            //         return response()->json($last30Days);
-            //         break;
-            //     case '7HariTerakhir':
-            //         $last7Days = $tpsSampah->whereBetween('created_at', [Carbon::now()->subDays(7)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
-            //         return response()->json($last7Days);
-            //         break;
-
-            //     default:
-            //         $isNull = $tpsSampah->get();
-            //         return response()->json($tpsSampah);
-            //         break;
+            $query = Sampah::query();
+            $query->select('sampahs.*', 'users.tps')->where('user_id', auth()->user()->id)->join('users', 'sampahs.user_id', '=', 'users.id');
+            // if ($logam == true) {
+            //     $showFiltered=$tpsSampah->where('berat_sampah_logam', '!=',0)->get();
             // }
+            // if ($kertas == true) {
+            //     $showFiltered=$tpsSampah->where('berat_sampah_kertas', '!=',0)->get();
+            // }
+            // if ($karet == true) {
+            //     $showFiltered=$tpsSampah->where('berat_sampah_karet', '!=',0)->get();
+            // }
+            foreach ($request->input() as $item) {
+                if ($item['checked'] == true) {
+                    switch ($item['category']) {
+                        case 'Logam':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_logam', '!=', 0)->get();
+                            $query->where('berat_sampah_logam', '!=', 0);
+                            break;
+                        case 'Kertas':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_kertas', '!=', 0)->get();
+                            $query->where('berat_sampah_kertas', '!=', 0);
+                            break;
+                        case 'Karet':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
+                            $query->where('berat_sampah_karet', '!=', 0);
+                            break;
+                        case 'Kaca':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
+                            $query->where('berat_sampah_kaca', '!=', 0);
+                            break;
+                        case 'Plastik':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
+                            $query->where('berat_sampah_plastik', '!=', 0);
+                            break;
+                        case 'Lainlain':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
+                            $query->where('berat_sampah_lain_lain', '!=', 0);
+                            break;
+                        case 'Organik':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
+                            $query->where('berat_sampah_organik', '!=', 0);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if ($item['checked'] == true) {
+                    switch ($item['category']) {
+                        case 'tps1':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_logam', '!=', 0)->get();
+                            $query->where('users.tps','=','tps1');
+                            break;
+                        case 'tps2':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_kertas', '!=', 0)->get();
+                            $query->where('users.tps','=','tps2');
+                            break;
+                        case 'tps3':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
+                            $query->where('users.tps','=','tps3');
+                            break;
+                        case 'tps4':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
+                            $query->where('users.tps','=','tps4');
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if ($item['checked'] == true) {
+                    switch ($item['category']) {
+                        case 'tigaPuluhHari':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_logam', '!=', 0)->get();
+                            $query->whereBetween('sampahs.created_at', [Carbon::now()->subDays(30)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
+                            break;
+                        case 'tujuhHari':
+                            // $showFiltered = $tpsSampah->where('berat_sampah_kertas', '!=', 0)->get();
+                            $query->whereBetween('sampahs.created_at', [Carbon::now()->subDays(7)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+            }
+
+            
+            //filter rentang
+
+               //$filterRentang = $query->whereBetween('sampahs.created_at', [Carbon::now()->subDays($request->category)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
+                //$filterTps = $query->where('users.tps','=',$request->tps)->get();
+            
+
+            
+            $test = $query->latest()->get();
+            return response()->json($test);
         }
 
 
