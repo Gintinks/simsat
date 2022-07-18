@@ -183,7 +183,7 @@ class SampahController extends Controller
                             break;
                         default:
                             break;
-                    }
+                    
                 }
                 if ($item['checked'] == true) {
                     switch ($item['category']) {
@@ -221,6 +221,7 @@ class SampahController extends Controller
                             break;
                     }
                 }
+            }
 
             }
 
