@@ -136,6 +136,11 @@ const FilterSampah = (props) => {
             ...range.slice(index + 1)
         ]
         );
+        if(id ===1 && newvalue){
+            updateRange(2, 'checked', false)
+        }else if(id === 2 && newvalue){
+            updateRange(1, 'checked', false)
+        }
     }
 
     const displayCategories = category.map((value, index) => {

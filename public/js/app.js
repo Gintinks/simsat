@@ -5330,9 +5330,9 @@ __webpack_require__.r(__webpack_exports__);
 
 function App() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-    className: "container",
+    className: "h-screen",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "row justify-content-center",
+      className: "",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_employeeList_Table__WEBPACK_IMPORTED_MODULE_1__["default"], {})
     })
   });
@@ -6442,6 +6442,12 @@ var FilterSampah = function FilterSampah(props) {
     var g = range[index];
     g[whichvalue] = newvalue;
     setRange([].concat(_toConsumableArray(range.slice(0, index)), [g], _toConsumableArray(range.slice(index + 1))));
+
+    if (id === 1 && newvalue) {
+      updateRange(2, 'checked', false);
+    } else if (id === 2 && newvalue) {
+      updateRange(1, 'checked', false);
+    }
   };
 
   var displayCategories = category.map(function (value, index) {
