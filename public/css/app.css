@@ -3960,10 +3960,6 @@ textarea.form-control.is-invalid {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
 }
-.mx-20 {
-  margin-left: 5rem;
-  margin-right: 5rem;
-}
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -4014,9 +4010,6 @@ textarea.form-control.is-invalid {
 }
 .mt-3 {
   margin-top: 0.75rem;
-}
-.mb-40 {
-  margin-bottom: 10rem;
 }
 .mb-0 {
   margin-bottom: 0px;
@@ -4074,14 +4067,14 @@ textarea.form-control.is-invalid {
 .h-8 {
   height: 2rem;
 }
+.h-screen {
+  height: 100vh;
+}
 .h-10 {
   height: 2.5rem;
 }
 .h-full {
   height: 100%;
-}
-.h-screen {
-  height: 100vh;
 }
 .max-h-5 {
   max-height: 1.25rem;
@@ -4150,6 +4143,21 @@ textarea.form-control.is-invalid {
 }
 .flex-shrink-0 {
   flex-shrink: 0;
+}
+.basis-11 {
+  flex-basis: 2.75rem;
+}
+.basis-16 {
+  flex-basis: 4rem;
+}
+.basis-48 {
+  flex-basis: 12rem;
+}
+.basis-32 {
+  flex-basis: 8rem;
+}
+.basis-28 {
+  flex-basis: 7rem;
 }
 .table-fixed {
   table-layout: fixed;

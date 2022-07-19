@@ -277,16 +277,18 @@ class SampahController extends Controller
 
     public function updateSampah(Request $request)
     {
-        $inputUpdateSampah = $request->validate([
-            'kertas' => 'nullable|numeric',
-            'kaca' => 'nullable|numeric',
-            'karet' => 'nullable|numeric',
-            'plastik' => 'nullable|numeric',
-            'logam' => 'nullable|numeric',
-            'lain_lain' => 'nullable|numeric',
-            'sampah_organik' => 'nullable|numeric',
-            'diteruskan_ke_tpa' => 'nullable|numeric',
-        ]);
+        $inputUpdateSampah = $request->input()
+        // ->validate([
+        //     'kertas' => 'nullable|numeric',
+        //     'kaca' => 'nullable|numeric',
+        //     'karet' => 'nullable|numeric',
+        //     'plastik' => 'nullable|numeric',
+        //     'logam' => 'nullable|numeric',
+        //     'lain_lain' => 'nullable|numeric',
+        //     'sampah_organik' => 'nullable|numeric',
+        //     'diteruskan_ke_tpa' => 'nullable|numeric',
+        // ])
+        ;
 
         if ($inputUpdateSampah['kertas'] == null) {
             $inputUpdateSampah['kertas'] = 0;
@@ -321,8 +323,6 @@ class SampahController extends Controller
         }
 
 
-        $inputUpdateSampah['user_id'] = auth()->user()->id;
-
         $inputUpdateSampah['berat_sampah_anorganik'] = $inputUpdateSampah['kertas'] + $inputUpdateSampah['kaca'] + $inputUpdateSampah['karet'] + $inputUpdateSampah['plastik']
             + $inputUpdateSampah['logam'] + $inputUpdateSampah['lain_lain'];
 
@@ -331,8 +331,7 @@ class SampahController extends Controller
 
         $inputUpdateSampah['berat_sampah_total'] = $inputUpdateSampah['berat_sampah_diolah'] + $inputUpdateSampah['diteruskan_ke_tpa'];
 
-        $updateSampah = Sampah::where('id', $request->id)->update([
-            'user_id' =>  $inputUpdateSampah['user_id'],
+        $updateSampah = Sampah::where('id', $inputUpdateSampah['id'])->update([
             'berat_sampah_kaca' =>  $inputUpdateSampah['kaca'],
             'berat_sampah_karet' =>  $inputUpdateSampah['karet'],
             'berat_sampah_plastik' =>  $inputUpdateSampah['plastik'],
@@ -346,9 +345,6 @@ class SampahController extends Controller
             'berat_sampah_total' =>  $inputUpdateSampah['berat_sampah_total'],
         ]);
 
-        return redirect()
-        ->back()
-        ->with('success', 'Data sampah berhasil diupdate!');
 
     }
 
