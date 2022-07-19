@@ -60,7 +60,7 @@ class AdminRegisterController extends Controller
             'name' => $registerData['name'],
             'email' => $registerData['email'],
             'password' => $registerData['password'],
-            'tps_id' => 2,
+            'tps_id' => $registerData['tps'],
             'priviliges_id' => $registerData['role'],
         ]);
         return view('auth.register');
