@@ -19,7 +19,7 @@ class TpsController extends Controller
 
     public function viewTps()
     {
-        $showAllListedTps = Tps::where('id','!=',0)->get();
+        $showAllListedTps = Tps::All()->where('id','!=',0);
         return response()->json($showAllListedTps);
     }
 
