@@ -110,7 +110,7 @@ class SampahController extends Controller
 
             foreach ($request->input('tps') as $item) {
                 if ($item['checked'] == true) {
-                    $query->where('users.tps', '=', $item['category']);
+                    $query->where('tps.name', '=', $item['category']);
                 }
             }
 
