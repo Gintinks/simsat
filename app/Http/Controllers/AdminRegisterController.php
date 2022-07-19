@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Tps;
 
 class AdminRegisterController extends Controller
 {
@@ -14,9 +15,10 @@ class AdminRegisterController extends Controller
      */
     public function index()
     {
+        $findAllTps = Tps::select('*')->where('id', '!=', 0)->get();
         return view('auth.register');
-    }
 
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -40,7 +42,7 @@ class AdminRegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:8|max:255',
-            'tps' => 'required|max:255',
+            'tps' => 'required|numeric',
             'role' => 'required|max:255',
         ]);
 
@@ -51,13 +53,14 @@ class AdminRegisterController extends Controller
         }
         if ($registerData['role'] == 'managemenDlh') {
             $registerData['role'] = 2;
+            $registerData['tps'] = 0;
         }
 
         $saveData = User::create([
             'name' => $registerData['name'],
             'email' => $registerData['email'],
             'password' => $registerData['password'],
-            'tps' => $registerData['tps'],
+            'tps_id' => 2,
             'priviliges_id' => $registerData['role'],
         ]);
         return view('auth.register');

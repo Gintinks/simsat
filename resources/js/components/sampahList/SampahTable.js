@@ -35,9 +35,9 @@ function App() {
 
                     <tr className={`${count % 2 == 0 ? ' bg-white' : ' bg-blue-50 '} border-b transition duration-300 ease-in-out hover:bg-slate-200`}>
                     <th className="text-sm  w-6 py-2   whitespace-nowrap border-r border-gray-300">{sampah.created_at.split('T')[0]}</th>
-                        <td className=' w-24 py-2 whitespace-nowrap border-r border-gray-300'>Desa Sumberbrantas</td>
+                        <td className=' w-24 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.name}</td>
                         <td className='w-10 py-2 border-r border-gray-300'>{sampah.berat_sampah_organik}</td>
-                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>0</td>
+                        <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_anorganik}</td>
                         <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_kaca}</td>
                         <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_karet}</td>
                         <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_plastik}</td>

@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.1.4 | MIT License | https://tailwindcss.com
+! tailwindcss v3.1.5 | MIT License | https://tailwindcss.com
 *//*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -4143,18 +4143,6 @@ textarea.form-control.is-invalid {
 }
 .flex-shrink-0 {
   flex-shrink: 0;
-}
-.basis-11 {
-  flex-basis: 2.75rem;
-}
-.basis-16 {
-  flex-basis: 4rem;
-}
-.basis-48 {
-  flex-basis: 12rem;
-}
-.basis-32 {
-  flex-basis: 8rem;
 }
 .basis-28 {
   flex-basis: 7rem;

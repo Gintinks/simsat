@@ -83,7 +83,7 @@
         <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg bg-white">
             <span class="iconify w-16 h-16 self-center" style="color: #17cf67;"data-icon="mdi:leaf"></span>
             <div class="p-3">
-                <p class=" text-end text-2xl font-semibold">182 Kg</p>
+                <p class=" text-end text-2xl font-semibold">{{$beratTotalPermingguAnorganik}} Kg</p>
                 <p class="text-end">Anorganik</p>
             </div>
         </div>
@@ -118,7 +118,7 @@
                 @foreach ($updateLogInput as $logInput)
                 <div class=" border-b-2 border-gray-400">
                     <p class=" pb-1 text-gray-400 text-base">{{$logInput->created_at}}</p>
-                    <p class="pb-1">TPS3R Desa Punten menerima {{$logInput->berat_sampah_total}} Kg Sampah</p>
+                    <p class="pb-1">TPS3R {{$logInput->name}} menambah {{$logInput->berat_sampah_total}} Kg Sampah</p>
                 </div>
                 @endforeach
             {{-- <div class="">
@@ -159,7 +159,7 @@
                 label: "Berat Sampah Anorganik",
                 backgroundColor: "#17cf67 ",
                 borderColor: "#17cf67",
-                data: {!! json_encode($BeratPerhari) !!},
+                data: {!! json_encode($beratPerhariAnorganik) !!},
             },
             {
                 label: "Berat Sampah Organik",

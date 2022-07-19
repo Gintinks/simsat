@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sampah;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Tps;
 use Illuminate\Support\Facades\Hash;
 use Log;
 use Exception;
@@ -39,12 +40,12 @@ class SampahController extends Controller
         //   return view('sampahList',['sampahList' => $tpsSampah]);
         if (auth()->user()->priviliges_id == 2) {
             //$tpsSampah = DB::table('sampahs')->join('users','sampahs.user_id','=','users.id')->select('sampahs.*','users.name');
-            $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->join('users', 'sampahs.user_id', '=', 'users.id')->latest()->get();
+            $tpsSampah = Sampah::select('sampahs.*', 'tps.name')->join('tps', 'sampahs.tps_id', '=', 'tps.id')->latest()->get();
             //$tpsSampah = Sampah::rightJoin('users','users.id','=','sampahs.user_id')->select('users.name');
             return response()->json($tpsSampah);
         }
         if (auth()->user()->priviliges_id == 3) {
-            $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->where('user_id', auth()->user()->id)->join('users', 'sampahs.user_id', '=', 'users.id')->latest()->get();
+            $tpsSampah = Sampah::select('sampahs.*', 'tps.name')->where('tps_id', auth()->user()->tps_id)->join('tps', 'sampahs.tps_id', '=', 'tps.id')->latest()->get();
         }
         return response()->json($tpsSampah);
     }
@@ -64,11 +65,11 @@ class SampahController extends Controller
         $query = Sampah::query();
 
         if (auth()->user()->priviliges_id == 2) {
-            $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->join('users', 'sampahs.user_id', '=', 'users.id');
-            $showFiltered = $tpsSampah;
+            // $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->join('users', 'sampahs.user_id', '=', 'users.id');
+            // $showFiltered = $tpsSampah;
 
             $query = Sampah::query();
-            $query->select('sampahs.*', 'users.tps')->join('users', 'sampahs.user_id', '=', 'users.id');
+            $query->select('sampahs.*', 'tps.name')->join('tps', 'sampahs.tps_id', '=', 'tps.id');
 
             foreach ($request->input('category') as $item) {
                 if ($item['checked'] == true) {
@@ -134,11 +135,11 @@ class SampahController extends Controller
             return response()->json($test);
         }
         if (auth()->user()->priviliges_id == 3) {
-            $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->where('user_id', auth()->user()->id)->join('users', 'sampahs.user_id', '=', 'users.id');
-            $showFiltered = $tpsSampah;
+            // $tpsSampah = Sampah::select('sampahs.*', 'users.tps')->where('user_id', auth()->user()->id)->join('users', 'sampahs.user_id', '=', 'users.id');
+            // $showFiltered = $tpsSampah;
 
             $query = Sampah::query();
-            $query->select('sampahs.*', 'users.tps')->where('user_id', auth()->user()->id)->join('users', 'sampahs.user_id', '=', 'users.id');
+            $query->select('sampahs.*', 'tps.name')->where('tps_id', auth()->user()->tps_id)->join('tps', 'sampahs.tps_id', '=', 'tps.id');
 
             foreach ($request->input('category') as $item) {
                 if ($item['checked'] == true) {
@@ -246,6 +247,7 @@ class SampahController extends Controller
 
 
         $inputSampah['user_id'] = auth()->user()->id;
+        $inputSampah['tps_id'] = auth()->user()->tps_id;
 
         $inputSampah['berat_sampah_anorganik'] = $inputSampah['kertas'] + $inputSampah['kaca'] + $inputSampah['karet'] + $inputSampah['plastik']
             + $inputSampah['logam'] + $inputSampah['lain_lain'];
@@ -257,13 +259,14 @@ class SampahController extends Controller
 
         $saveSampah = Sampah::create([
             'user_id' =>  $inputSampah['user_id'],
+            'tps_id' =>  $inputSampah['tps_id'],
             'berat_sampah_kaca' =>  $inputSampah['kaca'],
             'berat_sampah_karet' =>  $inputSampah['karet'],
             'berat_sampah_plastik' =>  $inputSampah['plastik'],
             'berat_sampah_logam' =>  $inputSampah['logam'],
             'berat_sampah_kertas' =>  $inputSampah['kertas'],
             'berat_sampah_lain_lain' =>  $inputSampah['lain_lain'],
-            // 'berat_sampah_anorganik' =>  $inputSampah['berat_sampah_anorganik'],
+            'berat_sampah_anorganik' =>  $inputSampah['berat_sampah_anorganik'],
             'berat_sampah_organik' =>  $inputSampah['sampah_organik'],
             'berat_sampah_ke_tpa' =>  $inputSampah['diteruskan_ke_tpa'],
             'berat_sampah_diolah' =>  $inputSampah['berat_sampah_diolah'],
@@ -338,7 +341,7 @@ class SampahController extends Controller
             'berat_sampah_logam' =>  $inputUpdateSampah['logam'],
             'berat_sampah_kertas' =>  $inputUpdateSampah['kertas'],
             'berat_sampah_lain_lain' =>  $inputUpdateSampah['lain_lain'],
-            // 'berat_sampah_anorganik' =>  $inputUpdateSampah['berat_sampah_anorganik'],
+            'berat_sampah_anorganik' =>  $inputUpdateSampah['berat_sampah_anorganik'],
             'berat_sampah_organik' =>  $inputUpdateSampah['sampah_organik'],
             'berat_sampah_ke_tpa' =>  $inputUpdateSampah['diteruskan_ke_tpa'],
             'berat_sampah_diolah' =>  $inputUpdateSampah['berat_sampah_diolah'],

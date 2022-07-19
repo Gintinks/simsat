@@ -6989,13 +6989,13 @@ function App() {
           children: sampah.created_at.split('T')[0]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
           className: " w-24 py-2 whitespace-nowrap border-r border-gray-300",
-          children: "Desa Sumberbrantas"
+          children: sampah.name
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
           className: "w-10 py-2 border-r border-gray-300",
           children: sampah.berat_sampah_organik
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
           className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
-          children: "0"
+          children: sampah.berat_sampah_anorganik
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
           className: "w-10 py-2 whitespace-nowrap border-r border-gray-300",
           children: sampah.berat_sampah_kaca
