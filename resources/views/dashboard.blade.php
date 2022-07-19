@@ -115,6 +115,13 @@
         <div class="p-6 md:w-2/6">
             <h2 class="text-xl font-bold ">Update Data</h2>
             <div class="">
+                @foreach ($updateLogInput as $logInput)
+                <div class=" border-b-2 border-gray-400">
+                    <p class=" pb-1 text-gray-400 text-base">{{$logInput->created_at}}</p>
+                    <p class="pb-1">TPS3R Desa Punten menerima {{$logInput->berat_sampah_total}} Kg Sampah</p>
+                </div>
+                @endforeach
+            {{-- <div class="">
                 <div class=" border-b-2 border-gray-400">
                     <p class=" pb-1 text-gray-400 text-base">12 Juni 2022, 09:00</p>
                     <p class="pb-1">TPS3R Desa Punten menambahkan 28 Kg Sampah Organik</p>
@@ -128,7 +135,7 @@
                 <div class=" border-b-2 border-gray-400">
                     <p class=" pb-1 text-gray-400 text-base">12 Juni 2022, 09:00</p>
                     <p class="pb-1">TPS3R Desa Punten menambahkan 28 Kg Sampah Organik</p>
-                </div>
+                </div>--}}
             </div>
 
         </div>
