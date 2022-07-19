@@ -15,7 +15,7 @@ class CreateTpsTable extends Migration
     {
         Schema::create('tps', function (Blueprint $table) {
             $table->id();
-            $table->string('tps');
+            $table->string('name');
             $table->timestamps();
         });
     }
