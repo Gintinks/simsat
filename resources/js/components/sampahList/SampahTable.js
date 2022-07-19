@@ -48,8 +48,7 @@ function App() {
                         <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_ke_tpa}</td>
                         <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_total}</td>
                         <td className='w-16 py-2   whitespace-nowrap border-r border-gray-300'>
-                            {/* <TableActionButtons eachRowId={sampah.id} /> */}
-                            <SampahTableActionButtons eachRowId={sampah.id} />
+                            <SampahTableActionButtons eachRowId={sampah} />
 
                         </td>
                     </tr>

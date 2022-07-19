@@ -47,6 +47,8 @@ Route::get('/onlyManagemenDlh', [ManagemenDlhController::class, 'index'])->name(
 
 Route::get('/sampahList', [SampahController::class, 'showSampahTps'])->name('sampahList')->middleware('is_tps_managementdlh');
 Route::get('/sampah-list', [SampahController::class, 'showHalamanSampahTps'])->name('sampahList')->middleware('is_tps_managementdlh');
+Route::post('/delete-sampah', [SampahController::class, 'destroy'])->name('delete-sampah')->middleware('is_tps_managementdlh');
+Route::post('/update-sampah', [SampahController::class, 'updateSampah'])->name('update-sampah')->middleware('is_tps_managementdlh');
 
 Route::get('/sampah-filter', [SampahController::class, 'sampahFilter'])->name('sampahFilter')->middleware('is_tps_managementdlh');
 
