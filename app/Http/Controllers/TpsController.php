@@ -12,10 +12,10 @@ class TpsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('onlyTps');
-    }
+    // public function index()
+    // {
+    //     return view('onlyTps');
+    // }
 
     public function viewTps()
     {
@@ -51,7 +51,7 @@ class TpsController extends Controller
         ]);
 
 
-        $saveData = User::create([
+        $saveData = Tps::create([
             'name' => $registerTps['tps'],
         ]);
 
@@ -92,7 +92,7 @@ class TpsController extends Controller
         $inputUpdateTps = $request->input();
 
 
-        $updateTps = User::where('id',$inputUpdateTps['id'])->update([
+        $updateTps = Tps::where('id',$inputUpdateTps['id'])->update([
             'name' => $inputUpdateTps['tps'],
         ]);
     }
@@ -105,6 +105,6 @@ class TpsController extends Controller
      */
     public function destroy(Request $request)
     {
-        Sampah::destroy($request->id);
+        Tps::destroy($request->id);
     }
 }
