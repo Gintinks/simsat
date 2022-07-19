@@ -14,6 +14,7 @@ use App\Http\Controllers\SampahController;
 
 
 
+
 Route::get('/listsampah', function () {
     return view('listSampah');
 });
@@ -35,10 +36,10 @@ Route::post('/delete', [App\Http\Controllers\AdminRegisterController::class, 'de
 Route::get('/userList', [AdminRegisterController::class, 'viewUser'])->name('userList')->middleware('is_admin');
 // Route::post('/register', [App\Http\Controllers\AdminRegisterController::class, 'viewUser'])->name('viewUser')->middleware('is_admin');
 
-Route::get('/register-tps', [AdminRegisterController::class, 'index'])->name('registerTps')->middleware('is_admin');
-Route::post('/register-tps', [App\Http\Controllers\AdminRegisterController::class, 'store'])->name('registerTps');
-Route::post('/delete-tps', [App\Http\Controllers\AdminRegisterController::class, 'destroy'])->name('deleteTps');
-Route::get('/list-tps', [AdminRegisterController::class, 'viewUser'])->name('lsitTps')->middleware('is_admin');
+Route::get('/register-tps', [TpsController::class, 'index'])->name('registerTps')->middleware('is_admin');
+Route::post('/register-tps', [TpsController::class, 'store'])->name('registerTps');
+Route::post('/delete-tps', [TpsController::class, 'destroy'])->name('deleteTps');
+Route::get('/list-tps', [TpsController::class, 'viewTps'])->name('lsitTps')->middleware('is_admin');
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('is_tps_managementdlh');
 Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
