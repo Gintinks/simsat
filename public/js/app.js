@@ -6495,14 +6495,25 @@ var FilterSampah = function FilterSampah(props) {
       range = _useState6[0],
       setRange = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      priviliges = _useState8[0],
+      setPriviliges = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     category: category,
     tps: tps,
     range: range
   }),
-      _useState8 = _slicedToArray(_useState7, 2),
-      filterPost = _useState8[0],
-      filterSetPost = _useState8[1];
+      _useState10 = _slicedToArray(_useState9, 2),
+      filterPost = _useState10[0],
+      filterSetPost = _useState10[1];
+
+  react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/get-priviliges').then(function (response) {
+      setPriviliges(response.data);
+    });
+  }, []);
 
   var updateChecked = function updateChecked(id, whichvalue, newvalue) {
     var index = category.findIndex(function (x) {
@@ -6631,15 +6642,15 @@ var FilterSampah = function FilterSampah(props) {
               className: " border-b-2 border-gray-200 py-3",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
                 className: " font-semibold text-lg",
-                children: "Jenis Sampah"
+                children: "priviliges"
               }), displayCategories]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            }), priviliges == "2" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: " border-b-2 border-gray-200 py-3",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
                 className: " font-semibold text-lg",
                 children: "Desa"
               }), displayTPS]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: " border-b-2 border-gray-200 py-3",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
                 className: " font-semibold text-lg",

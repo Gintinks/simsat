@@ -278,16 +278,16 @@ class SampahController extends Controller
     public function updateSampah(Request $request)
     {
         $inputUpdateSampah = $request->input()
-        // ->validate([
-        //     'kertas' => 'nullable|numeric',
-        //     'kaca' => 'nullable|numeric',
-        //     'karet' => 'nullable|numeric',
-        //     'plastik' => 'nullable|numeric',
-        //     'logam' => 'nullable|numeric',
-        //     'lain_lain' => 'nullable|numeric',
-        //     'sampah_organik' => 'nullable|numeric',
-        //     'diteruskan_ke_tpa' => 'nullable|numeric',
-        // ])
+            // ->validate([
+            //     'kertas' => 'nullable|numeric',
+            //     'kaca' => 'nullable|numeric',
+            //     'karet' => 'nullable|numeric',
+            //     'plastik' => 'nullable|numeric',
+            //     'logam' => 'nullable|numeric',
+            //     'lain_lain' => 'nullable|numeric',
+            //     'sampah_organik' => 'nullable|numeric',
+            //     'diteruskan_ke_tpa' => 'nullable|numeric',
+            // ])
         ;
 
         if ($inputUpdateSampah['kertas'] == null) {
@@ -344,8 +344,12 @@ class SampahController extends Controller
             'berat_sampah_diolah' =>  $inputUpdateSampah['berat_sampah_diolah'],
             'berat_sampah_total' =>  $inputUpdateSampah['berat_sampah_total'],
         ]);
+    }
 
-
+    public function getPriviliges()
+    {
+        $test = auth()->user()->priviliges_id;
+        return response()->json($test);
     }
 
     public function destroy(Request $request)
