@@ -120,7 +120,7 @@ class SampahController extends Controller
                             // $showFiltered = $tpsSampah->where('berat_sampah_kertas', '!=', 0)->get();
                             $query->whereBetween('sampahs.created_at', [Carbon::now()->subDays(7)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
                             break;
-                        case '30 Hari Terkahir':
+                        case '30 Hari Terakhir':
                             // $showFiltered = $tpsSampah->where('berat_sampah_logam', '!=', 0)->get();
                             $query->whereBetween('sampahs.created_at', [Carbon::now()->subDays(30)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()]);
                             break;
