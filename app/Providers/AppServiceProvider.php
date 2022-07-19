@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,14 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Gate::define('admin', function(User $user){
-        //     $user->priviliges_id === 1;
-        // });
-        // Gate::define('managementDlh', function(User $user){
-        //     $user->priviliges_id === 2;
-        // });
-        // Gate::define('tps', function(User $user){
-        //     $user->priviliges_id === 3;
-        // });
+        config(['app.locale' => 'id']);
+        Carbon::setLocale('id');
+        date_default_timezone_set('Asia/Jakarta');
     }
 }
