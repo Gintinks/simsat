@@ -190,7 +190,7 @@ class HomeController extends Controller
 
         for ($i = 6; $i > -1; $i--) {
             $nowDate = Carbon::now()->subDays($i)->format('d-m-Y');
-            $day = Carbon::createFromFormat('d-m-Y', $nowDate)->format('l');
+            $day = Carbon::createFromFormat('d-m-Y', $nowDate)->translatedFormat('l');
             $days[] = $day;
             $dates[] = $nowDate;
         }
