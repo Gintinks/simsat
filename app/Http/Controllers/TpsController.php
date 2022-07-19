@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tps;
 
 class TpsController extends Controller
 {
@@ -14,6 +15,12 @@ class TpsController extends Controller
     public function index()
     {
         return view('onlyTps');
+    }
+
+    public function viewTps()
+    {
+        $showAllListedTps = Tps::where('id','!=',0)->get();
+        return response()->json($showAllListedTps);
     }
 
     public function input()
@@ -39,8 +46,17 @@ class TpsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $registerTps = $request->validate([
+            'tps' => 'required|max:255',
+        ]);
+
+
+        $saveData = User::create([
+            'name' => $registerTps['tps'],
+        ]);
+
     }
+    
 
     /**
      * Display the specified resource.
@@ -71,9 +87,14 @@ class TpsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $inputUpdateTps = $request->input();
+
+
+        $updateTps = User::where('id',$inputUpdateTps['id'])->update([
+            'name' => $inputUpdateTps['tps'],
+        ]);
     }
 
     /**
@@ -82,8 +103,8 @@ class TpsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        Sampah::destroy($request->id);
     }
 }
