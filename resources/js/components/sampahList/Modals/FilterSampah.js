@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 
 const FilterSampah = (props) => {
+
     const dataCategory = [
         {
             "id": 1,
@@ -88,7 +89,15 @@ const FilterSampah = (props) => {
     const [category, setCategory] = useState(dataCategory);
     const [tps, setTps] = useState(dataTps);
     const [range, setRange] = useState(dataRange);
+    const [priviliges, setPriviliges] = useState("");
     const [filterPost, filterSetPost] = useState({ category: category, tps: tps, range: range });
+
+
+    React.useEffect(() => {
+        axios.get('/get-priviliges').then((response) => {
+            setPriviliges(response.data);
+        });
+    }, []);
 
     const updateChecked = (id, whichvalue, newvalue) => {
         var index = category.findIndex(x => x.id === id);
@@ -136,9 +145,9 @@ const FilterSampah = (props) => {
             ...range.slice(index + 1)
         ]
         );
-        if(id ===1 && newvalue){
+        if (id === 1 && newvalue) {
             updateRange(2, 'checked', false)
-        }else if(id === 2 && newvalue){
+        } else if (id === 2 && newvalue) {
             updateRange(1, 'checked', false)
         }
     }
@@ -160,7 +169,7 @@ const FilterSampah = (props) => {
     })
 
     const handleFilter = () => {
-        
+
         filterSetPost({ category: category, tps: tps, range: range });
         axios.post('/sampah-filter', filterPost).then((response) => {
             // const dataFilter = response.data.filter((curData) => {
@@ -197,17 +206,17 @@ const FilterSampah = (props) => {
                         <div className="modal-body relative p-4 mx-3">
                             <div className=' border-b-2 border-gray-200 py-3'>
                                 <p className=' font-semibold text-lg'>
-                                    Jenis Sampah
+                                    priviliges
                                 </p>
                                 {displayCategories}
                             </div>
-
-                            <div className=' border-b-2 border-gray-200 py-3'>
+                            {priviliges == "2" ? <div className=' border-b-2 border-gray-200 py-3'>
                                 <p className=' font-semibold text-lg'>
                                     Desa
                                 </p>
                                 {displayTPS}
-                            </div>
+                            </div> : null}
+
 
                             <div className=' border-b-2 border-gray-200 py-3'>
                                 <p className=' font-semibold text-lg'>
