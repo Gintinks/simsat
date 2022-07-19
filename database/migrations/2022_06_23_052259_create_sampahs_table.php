@@ -17,6 +17,8 @@ class CreateSampahsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('tps_id');
+            $table->foreign('tps_id')->references('id')->on('tps');
             $table->integer('berat_sampah_kaca');
             $table->integer('berat_sampah_karet');
             $table->integer('berat_sampah_plastik');
