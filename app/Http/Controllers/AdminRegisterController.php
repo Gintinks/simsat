@@ -96,9 +96,17 @@ class AdminRegisterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $updateData = $request->input();
+
+        $updateData['password'] = bcrypt($updateData['password']);
+
+        $saveUpdateData = User::where('id', '=', $updateData['id'])->update([
+            'name' => $registerData['name'],
+            'email' => $registerData['email'],
+            'password' => $registerData['password'],
+        ]);
     }
 
     /**
