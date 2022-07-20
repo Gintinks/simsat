@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.1.5 | MIT License | https://tailwindcss.com
+! tailwindcss v3.1.4 | MIT License | https://tailwindcss.com
 *//*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -4147,6 +4147,12 @@ textarea.form-control.is-invalid {
 .basis-28 {
   flex-basis: 7rem;
 }
+.basis-10 {
+  flex-basis: 2.5rem;
+}
+.basis-32 {
+  flex-basis: 8rem;
+}
 .table-fixed {
   table-layout: fixed;
 }
@@ -4526,6 +4532,9 @@ textarea.form-control.is-invalid {
 .pt-8 {
   padding-top: 2rem;
 }
+.pl-6 {
+  padding-left: 1.5rem;
+}
 .text-left {
   text-align: left;
 }
@@ -4571,10 +4580,6 @@ textarea.form-control.is-invalid {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
-}
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
 }
 .font-medium {
   font-weight: 500;

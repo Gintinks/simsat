@@ -8,13 +8,17 @@ import ReactPaginate from "react-paginate";
 
 function App() {
     const [post, setPost] = useState([]);
+    const [tps, setTps] = useState([""]);
+    
     let count = 1;
     React.useEffect(() => {
         axios.get('/userList').then((response) => {
             setPost(response.data);
         });
+        axios.get('/list-tps').then((response) => {
+            setTps(response.data);
+        });
     }, []);
-
 
     // const [users, setUsers] = useState(post);
     const [pageNumber, setPageNumber] = useState(0);
@@ -34,7 +38,7 @@ function App() {
                         <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.email}</td>
                         <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.priviliges_id == 2 ? "Manajemen DLH " : "Petugas TPS"}</td>
                         <td className=' max-h-5 max w-14 px-2'>
-                            <TableActionButtons eachRowId={user}  />
+                            <TableActionButtons eachRowId={user}/>
                           
                         </td>
                     </tr>
@@ -52,9 +56,9 @@ function App() {
     return (
         <div className="">
 
-            <ToastContainer />
+            <ToastContainer/>
 
-            <CreateModal />
+            <CreateModal dataTps={tps} />
             <div className="flex flex-col ">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">

@@ -51,7 +51,7 @@ class CreateModal extends Component {
     // Storing Employee Data.
 
     storeEmployeeData = () => {
-        
+
         // if (this.state.isCheckedVisible == true) {
         //     this.setState({
         //         priviliges:"tps"
@@ -67,10 +67,10 @@ class CreateModal extends Component {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password,
-            tps : this.state.TPS,
+            tps: this.state.TPS,
             role: this.state.priviliges,
         };
-        
+
         axios.post('/register', packets)
             .then(() => {
                 toast.success("Akun Baru Sudah Dibuat");
@@ -149,17 +149,17 @@ class CreateModal extends Component {
                                             Pilih Role
                                         </p>
                                         <div className="mb-3 ">
-                                            <button type="button" onClick={() => this.setState({ isCheckedVisible: false, priviliges: "managemenDlh", TPS:"0"})} className={`${this.state.isCheckedVisible ? ' border-yellow-500 text-yellow-500' : 'bg-yellow-500 text-white '} inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>Management DLH</button>
+                                            <button type="button" onClick={() => this.setState({ isCheckedVisible: false, priviliges: "managemenDlh", TPS: "0" })} className={`${this.state.isCheckedVisible ? ' border-yellow-500 text-yellow-500' : 'bg-yellow-500 text-white '} inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>Management DLH</button>
                                             <button type="button" onClick={() => this.setState({ isCheckedVisible: true, priviliges: "tps" })} className={`${this.state.isCheckedVisible ? ' bg-green-500 text-white' : ' border-green-500 text-green-500'} inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>Petugas TPS</button>
                                         </div>
                                     </div>
                                     {
-                                        this.state.isCheckedVisible ?  <div className='my-2 text-sm'>
-                                        <p>
-                                            Pilih TPS
-                                        </p>
-                                        <div class="mb-3 ">
-                                            <select onChange={this.inputEmployeeTPS} class="form-select appearance-none
+                                        this.state.isCheckedVisible ? <div className='my-2 text-sm'>
+                                            <p>
+                                                Pilih TPS
+                                            </p>
+                                            <div class="mb-3 ">
+                                                <select onChange={this.inputEmployeeTPS} class="form-select appearance-none
                                                             block
                                                             w-full
                                                             px-3
@@ -174,15 +174,18 @@ class CreateModal extends Component {
                                                             ease-in-out
                                                             m-0
                                                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                                                <option selected>Tekan Untuk Pilih TPS</option>
-                                                <option value="Punten">Punten</option>
-                                                <option value="Pandanrejo">Pandanrejo</option>
-                                                <option value="Dadaprejo">Dadaprejo</option>
-                                            </select>
-                                        </div>
-                                    </div>: null
+                                                    <option selected>Tekan Untuk Pilih TPS</option>
+                                                    {this.props.dataTps.map((value) => {
+                                                        return (
+                                                            <option value={value.id}>{value.name}</option>
+                                                        );
+                                                    })}
+                                                    
+                                                </select>
+                                            </div>
+                                        </div> : null
                                     }
-                                   
+
 
                                 </form>
                             </div>
