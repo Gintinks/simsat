@@ -17,7 +17,7 @@
             <form method="POST" action="/login">
                 @csrf
 
-                <h1 class="text-center py-2 font-bold text-2xl">Website SIMSAT</h1>
+                <h1 class="text-center py-2 font-bold text-3xl md:text-2xl">Website SIMSAT</h1>
                 <img src="{{ asset('img/batu.png') }}" class="login-pic">  
                     <div class=" px-6">
                         <label for="email" class="col-md-4">{{ __('E-Mail Address') }}</label>
