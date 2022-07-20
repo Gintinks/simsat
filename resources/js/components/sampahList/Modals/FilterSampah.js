@@ -196,7 +196,7 @@ const FilterSampah = (props) => {
                         <div className="modal-body relative p-4 mx-3">
                             <div className=' border-b-2 border-gray-200 py-3'>
                                 <p className=' font-semibold text-lg'>
-                                    priviliges
+                                    Jenis Sampah
                                 </p>
                                 {displayCategories}
                             </div>
