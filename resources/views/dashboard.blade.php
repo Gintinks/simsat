@@ -52,7 +52,7 @@
         </div>
         @if (auth()->user()->priviliges_id == 3)
             <header>
-                <h2 class="text-2xl font-bold">DASHBOARD  {{$titleDashboard->name}}</h2>
+                <h2 class="text-2xl font-bold">DASHBOARD  pt</h2>
             </header>
         @else
         <header>
