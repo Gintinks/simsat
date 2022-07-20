@@ -52,7 +52,7 @@
         </div>
         @if (auth()->user()->priviliges_id == 3)
             <header>
-                <h2 class="text-2xl font-bold">DASHBOARD  {{ auth()->user()->tps_id }}</h2>
+                <h2 class="text-2xl font-bold">DASHBOARD  {{$titleDashboard->name}}</h2>
             </header>
         @else
         <header>
@@ -155,19 +155,15 @@
             }, ],
             borderWidth: 1
         };
-
         const configLineChart = {
             type: "bar",
             data,
             options: {},
         };
-
         var chartLine = new Chart(
             document.getElementById("chartLine"),
             configLineChart
         );
-
-
     </script>
 
     <script>
@@ -182,13 +178,11 @@
                 tension:0.2
             }, ],
         };
-
         const configBarChart = {
             type: "line",
             data: dataBarChart,
             options: {},
         };
-
         var chartBar = new Chart(
             document.getElementById("chartBar"),
             configBarChart

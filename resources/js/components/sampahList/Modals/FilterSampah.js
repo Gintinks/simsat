@@ -227,5 +227,3 @@ const FilterSampah = (props) => {
 }
 
 export default FilterSampah;
-
-
