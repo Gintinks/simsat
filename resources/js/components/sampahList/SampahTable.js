@@ -156,10 +156,10 @@ function App() {
                 previousLinkClassName={"page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"}
                 nextLinkClassName={"page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"}
                 disabledClassName={"page-item disabled"}
-                activeClassName={"page-item active bg-bluerer rounded"}
+                activeClassName={"page-item active bg-blue-600 rounded"}
                 breakClassName={'page-item'}
                 breakLinkClassName={'page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none'}
-                pageClassName={'page-item'}
+                pageClassName={'page-item bg-white'}
                 pageLinkClassName={'page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none'}
                 previousClassName={'page-item bg-white'}
                 nextClassName={'page-item bg-white'}
