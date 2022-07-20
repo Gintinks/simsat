@@ -44,33 +44,7 @@ const FilterSampah = (props) => {
 
     ]
 
-    const dataTps = () => [
-        {
-            "id": 1,
-            "category": "Punten",
-            "checked": false
-        },
-        {
-            "id": 2,
-            "category": "Dadaprejo",
-            "checked": false
-        },
-        {
-            "id": 3,
-            "category": "Suimbergondo",
-            "checked": false
-        },
-        {
-            "id": 4,
-            "category": "Pandanrejo",
-            "checked": false
-        },
-        {
-            "id": 5,
-            "category": "Oro-oro Ombo",
-            "checked": false
-        },
-    ]
+    const dataTps = () => []
 
     const dataRange = () => [
         {
@@ -85,19 +59,24 @@ const FilterSampah = (props) => {
         },
 
     ]
-    let packets = [];
-    const [category, setCategory] = useState(dataCategory);
-    const [tps, setTps] = useState(dataTps);
-    const [range, setRange] = useState(dataRange);
     const [priviliges, setPriviliges] = useState("");
-    const [filterPost, filterSetPost] = useState({ category: category, tps: tps, range: range });
-
-
+    const [tps, setTps] = useState([]);
     React.useEffect(() => {
         axios.get('/get-priviliges').then((response) => {
             setPriviliges(response.data);
         });
+        axios.get('/list-tps').then((response) => {
+            setTps(response.data);
+        });
+        tps.map((value) => {
+            return updateCheckedTps(value.id, 'checked', !value.checked)
+        })
     }, []);
+    const [category, setCategory] = useState(dataCategory);
+    const [range, setRange] = useState(dataRange);
+
+
+
 
     const updateChecked = (id, whichvalue, newvalue) => {
         var index = category.findIndex(x => x.id === id);
@@ -159,7 +138,7 @@ const FilterSampah = (props) => {
     })
     const displayTPS = tps.map((value, index) => {
         return (
-            <button type="button" onClick={() => { updateCheckedTps(value.id, 'checked', !value.checked) }} className={`${value.checked ? '  bg-green-500 text-white hover:bg-green-400' : ' border-green-500 text-green-500 hover:bg-gray-100'} m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>{value.category}</button>
+            <button type="button" onClick={() => { updateCheckedTps(value.id, 'checked', !value.checked) }} className={`${value.checked ? '  bg-green-500 text-white hover:bg-green-400' : ' border-green-500 text-green-500 hover:bg-gray-100'} m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out`}>{value.name}</button>
         );
     })
     const displayRange = range.map((value, index) => {
@@ -169,9 +148,7 @@ const FilterSampah = (props) => {
     })
 
     const handleFilter = () => {
-
-        filterSetPost({ category: category, tps: tps, range: range });
-        axios.post('/sampah-filter', filterPost).then((response) => {
+        axios.post('/sampah-filter', { category: category, tps: tps, range: range }).then((response) => {
             // const dataFilter = response.data.filter((curData) => {
             //     return curData.berat_sampah_karet === 0
             // })
@@ -250,5 +227,3 @@ const FilterSampah = (props) => {
 }
 
 export default FilterSampah;
-
-

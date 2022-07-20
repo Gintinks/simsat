@@ -105,7 +105,7 @@
             <canvas class="p-2 md:p-10" id="chartLine"></canvas>
         </div>
         <div class="shadow-lg rounded-lg overflow-hidden bg-white">
-            <div class="py-3 px-5 text-center bg-gray-50">Data Sampah Total</div>
+            <div class="py-3 px-5 text-center bg-gray-50">Data Sampah Total per Hari</div>
             <canvas class="p-2 md:p-10" id="chartBar"></canvas>
         </div>
     </div>
@@ -121,21 +121,7 @@
                     <p class="pb-1">TPS3R {{$logInput->name}} menambah {{$logInput->berat_sampah_total}} Kg Sampah</p>
                 </div>
                 @endforeach
-            {{-- <div class="">
-                <div class=" border-b-2 border-gray-400">
-                    <p class=" pb-1 text-gray-400 text-base">12 Juni 2022, 09:00</p>
-                    <p class="pb-1">TPS3R Desa Punten menambahkan 28 Kg Sampah Organik</p>
-                </div>
 
-                <div class=" border-b-2 border-gray-400">
-                    <p class=" pb-1 text-gray-400 text-base">12 Juni 2022, 09:00</p>
-                    <p class="pb-1">TPS3R Desa Punten menambahkan 28 Kg Sampah Organik</p>
-                </div>
-
-                <div class=" border-b-2 border-gray-400">
-                    <p class=" pb-1 text-gray-400 text-base">12 Juni 2022, 09:00</p>
-                    <p class="pb-1">TPS3R Desa Punten menambahkan 28 Kg Sampah Organik</p>
-                </div>--}}
             </div>
 
         </div>
@@ -169,19 +155,15 @@
             }, ],
             borderWidth: 1
         };
-
         const configLineChart = {
             type: "bar",
             data,
             options: {},
         };
-
         var chartLine = new Chart(
             document.getElementById("chartLine"),
             configLineChart
         );
-
-
     </script>
 
     <script>
@@ -189,19 +171,18 @@
         const dataBarChart = {
             labels: labelsBarChart,
             datasets: [{
-                label: "Berat Total Sampah Perbulan(Kg)",
-                backgroundColor: "hsl(252, 82.9%, 67.8%)",
-                borderColor: "hsl(252, 82.9%, 67.8%)",
+                label: "Berat Total Sampah per Hari(Kg)",
+                backgroundColor: "#F5CD3F",
+                borderColor: "#17cf67 ",
                 data: {!! json_encode($BeratPerhari) !!},
+                tension:0.2
             }, ],
         };
-
         const configBarChart = {
-            type: "bar",
+            type: "line",
             data: dataBarChart,
             options: {},
         };
-
         var chartBar = new Chart(
             document.getElementById("chartBar"),
             configBarChart

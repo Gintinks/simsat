@@ -31,9 +31,9 @@ const DeleteModal = ({ eachRowId }) => {
             .then(() => {
                 toast.success("Data Sampah Sudah Diupdate");
 
-                // setTimeout(() => {
-                //     location.reload();
-                // }, 2500)
+                setTimeout(() => {
+                    location.reload();
+                }, 2500)
             })
     }
 

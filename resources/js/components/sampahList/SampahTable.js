@@ -112,7 +112,7 @@ function App() {
 
     return (
 
-        <div className="  bg-blue p-3 md:p-20 rounded-3xl" >
+        <div className=" h-screen bg-blue p-3 md:p-20 rounded-3xl" >
             <FilterSampah filterData={handleFilter} filterDataNama/>
             <ToastContainer />
 
@@ -169,4 +169,3 @@ function App() {
 }
 
 export default App;
-

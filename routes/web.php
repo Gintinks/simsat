@@ -37,7 +37,7 @@ Route::get('/userList', [AdminRegisterController::class, 'viewUser'])->name('use
 // Route::post('/register', [App\Http\Controllers\AdminRegisterController::class, 'viewUser'])->name('viewUser')->middleware('is_admin');
 
 // Route::get('/register-tps', [TpsController::class, 'index'])->name('registerTps')->middleware('is_admin');
-Route::get('/list-tps', [TpsController::class, 'viewTps'])->name('lsitTps')->middleware('is_admin');
+Route::get('/list-tps', [TpsController::class, 'viewTps'])->name('list-tps');
 Route::post('/register-tps', [TpsController::class, 'store'])->name('registerTps');
 Route::post('/delete-tps', [TpsController::class, 'destroy'])->name('deleteTps');
 Route::post('/delete-tps', [TpsController::class, 'update'])->name('deleteTps');
