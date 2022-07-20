@@ -6726,9 +6726,10 @@ var DeleteModal = function DeleteModal(_ref) {
 
   var updateData = function updateData() {
     axios__WEBPACK_IMPORTED_MODULE_0___default().post('/update-sampah', update).then(function () {
-      react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.success("Data Sampah Sudah Diupdate"); // setTimeout(() => {
-      //     location.reload();
-      // }, 2500)
+      react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.success("Data Sampah Sudah Diupdate");
+      setTimeout(function () {
+        location.reload();
+      }, 2500);
     });
   };
 
