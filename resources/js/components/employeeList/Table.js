@@ -10,7 +10,7 @@ function App() {
     const [post, setPost] = useState([]);
     const [tps, setTps] = useState([""]);
     
-    let count = 1;
+    let count = 0;
     React.useEffect(() => {
         axios.get('/userList').then((response) => {
             setPost(response.data);
@@ -30,10 +30,10 @@ function App() {
         .slice(pagesVisited, pagesVisited + usersPerPage)
         .map((user) => {
             return (
+                // {count += count+1+((pageNumber-1)*10)}
                 <tbody>
-
                     <tr className="border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                        <th className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r">{count++}</th>
+                        <th className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r">{count += 1+((pageNumber)*10)}</th>
                         <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.name}</td>
                         <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.email}</td>
                         <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r'>{user.priviliges_id == 2 ? "Manajemen DLH " : "Petugas TPS"}</td>
@@ -92,7 +92,7 @@ function App() {
                 activeClassName={"page-item active bg-blue-600 rounded text-gray-200 "}
                 breakClassName={'page-item'}
                 breakLinkClassName={'page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none'}
-                pageClassName={'page-item'}
+                pageClassName={'page-item bg-white'}
                 pageLinkClassName={'page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none'}
                 previousClassName={'page-item bg-white'}
                 nextClassName={'page-item bg-white'}

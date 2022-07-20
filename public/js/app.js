@@ -5764,8 +5764,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
-/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5796,7 +5795,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 var UpdateModal = /*#__PURE__*/function (_Component) {
   _inherits(UpdateModal, _Component);
 
@@ -5811,23 +5809,48 @@ var UpdateModal = /*#__PURE__*/function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "inputEmployeeName", function (event) {
       _this.setState({
-        employeeName: event.target.value
+        name: event.target.value
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "inputEmployeeSalary", function (event) {
+    _defineProperty(_assertThisInitialized(_this), "inputEmployeeEmail", function (event) {
       _this.setState({
-        employeeSalary: event.target.value
+        email: event.target.value
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "updateEmployeeData", function () {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/update/employee/data', {
-        employeeId: _this.props.modalId,
-        employeeName: _this.state.employeeName,
-        employeeSalary: _this.state.employeeSalary
-      }).then(function () {
-        react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.success("Employee Updated Successully");
+    _defineProperty(_assertThisInitialized(_this), "inputEmployeePassword", function (event) {
+      _this.setState({
+        password: event.target.value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "inputEmployeeTPS", function (event) {
+      _this.setState({
+        TPS: event.target.value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "storeEmployeeData", function () {
+      // if (this.state.isCheckedVisible == true) {
+      //     this.setState({
+      //         priviliges:"tps"
+      //     });
+      // }else{
+      //     this.setState({
+      //         priviliges:"managemenDlh",
+      //         TPS:0
+      //     });
+      // }
+      //  toast.success(this.state.isCheckedVisible)
+      var packets = {
+        id: _this.props.eachRowId.id,
+        name: _this.state.name,
+        email: _this.state.email,
+        password: _this.state.password
+      };
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/update', packets).then(function () {
+        react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.warn("Akun Sudah di Update");
         setTimeout(function () {
           location.reload();
         }, 2500);
@@ -5835,110 +5858,136 @@ var UpdateModal = /*#__PURE__*/function (_Component) {
     });
 
     _this.state = {
-      employeeName: null,
-      employeeSalary: null
+      name: _this.props.eachRowId.name,
+      email: _this.props.eachRowId.email,
+      password: _this.props.eachRowId.password,
+      priviliges: "manajemenDlh",
+      TPS: 0,
+      isCheckedVisible: _this.props.eachRowId.priviliges_id == 2 ? false : true
     };
     return _this;
-  } // Updating employee name state.
+  } // Creating employee name state.
 
 
   _createClass(UpdateModal, [{
     key: "render",
     value: function render() {
-      var _this$state$employeeN, _this$state$employeeS;
-
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "modal fade",
-        id: "updateModal" + this.props.modalId,
-        tabIndex: "-1",
-        "aria-labelledby": "exampleModalLabel",
-        "aria-hidden": "true",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "modal-dialog",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "modal-content",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "modal-header",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h5", {
-                className: "modal-title",
-                id: "exampleModalLabel",
-                children: "Employee Details"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                type: "button",
-                className: "btn-close",
-                "data-bs-dismiss": "modal",
-                "aria-label": "Close"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "modal-body",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
-                className: "form",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "form-group",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                    type: "text",
-                    id: "employeeName",
-                    className: "form-control mb-3",
-                    value: (_this$state$employeeN = this.state.employeeName) !== null && _this$state$employeeN !== void 0 ? _this$state$employeeN : "",
-                    onChange: this.inputEmployeeName
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "form-group",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                    type: "text",
-                    id: "employeeSalary",
-                    className: "form-control mb-3",
-                    value: (_this$state$employeeS = this.state.employeeSalary) !== null && _this$state$employeeS !== void 0 ? _this$state$employeeS : "",
-                    onChange: this.inputEmployeeSalary
-                  })
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto",
+          id: 'updateModal' + this.props.eachRowId.id,
+          tabindex: "-1",
+          "aria-labelledby": "exampleModalCenterTitle",
+          "aria-modal": "true",
+          role: "dialog",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "modal-dialog modal-dialog-centered relative w-auto pointer-events-none",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: "modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
+                  className: "text-xl font-medium leading-normal text-gray-800",
+                  id: "exampleModalScrollableLabel",
+                  children: "Buat Akun Baru"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                  type: "button",
+                  className: "btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline",
+                  "data-bs-dismiss": "modal",
+                  "aria-label": "Close"
                 })]
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "modal-footer",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                type: "submit",
-                className: "btn btn-info",
-                value: "Update",
-                onClick: this.updateEmployeeData
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                type: "button",
-                className: "btn btn-secondary",
-                "data-bs-dismiss": "modal",
-                children: "Close"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                className: "modal-body text-left relative p-4 mx-3",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+                  className: "",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                    className: "my-2 text-sm",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                      children: "Nama"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                      type: "text",
+                      id: "employeeName",
+                      className: "px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1",
+                      value: this.state.name,
+                      onChange: this.inputEmployeeName
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                    className: "my-2 text-sm",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                      children: "Email"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                      type: "email",
+                      id: "employeeEmail",
+                      className: "px-3 my-2 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1",
+                      value: this.state.email,
+                      onChange: this.inputEmployeeEmail,
+                      readonly: true
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                    className: "my-2 text-sm",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                      children: "Password"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                      type: "text",
+                      id: "employeePassword",
+                      className: "px-3 my-2 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1",
+                      value: this.state.password,
+                      onChange: this.inputEmployeePassword
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                    className: "my-2 text-sm",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                      children: "Pilih Role"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                      className: "mb-3 ",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                        type: "button",
+                        className: "".concat(this.state.isCheckedVisible ? ' border-yellow-500 text-yellow-500' : 'bg-yellow-500 text-white ', " inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"),
+                        children: "Management DLH"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                        type: "button",
+                        className: "".concat(this.state.isCheckedVisible ? ' bg-green-500 text-white' : ' border-green-500 text-green-500', " inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"),
+                        children: "Petugas TPS"
+                      })]
+                    })]
+                  }), this.state.isCheckedVisible ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                    className: "my-2 text-sm",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                      children: "Pilih TPS"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                      "class": "mb-3 ",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("select", {
+                        onChange: this.inputEmployeeTPS,
+                        "class": "form-select appearance-none\r block\r w-full\r px-3\r py-1.5\r text-base\r font-normal\r text-gray-700\r bg-white bg-clip-padding bg-no-repeat\r border border-solid border-gray-300\r rounded\r transition\r ease-in-out\r m-0\r focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none",
+                        "aria-label": "Default select example",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                          selected: true,
+                          children: "TPS Tidak dapat Diganti"
+                        })
+                      })
+                    })]
+                  }) : null]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                  type: "button",
+                  className: "inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out",
+                  "data-bs-dismiss": "modal",
+                  children: "Tutup"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                  type: "button",
+                  value: "Save",
+                  onClick: this.storeEmployeeData,
+                  "class": "inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out ml-1",
+                  children: "Save changes"
+                })]
               })]
-            })]
+            })
           })
         })
       });
     }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(props, current_state) {
-      var employeeUpdate = {
-        employeeName: null,
-        employeeSalary: null
-      }; // Updating data from input.
-
-      if (current_state.employeeName && current_state.employeeName !== props.employeeData.currentEmployeeName) {
-        return null;
-      }
-
-      if (current_state.employeeSalary && current_state.employeeSalary !== props.employeeData.currentEmployeeSalary) {
-        return null;
-      } // Updating data from props Below.
-
-
-      if (current_state.employeeName !== props.employeeData.currentEmployeeName || current_state.employeeName === props.employeeData.currentEmployeeName) {
-        employeeUpdate.employeeName = props.employeeData.currentEmployeeName;
-      }
-
-      if (current_state.employeeSalary !== props.employeeData.currentEmployeeSalary || current_state.employeeSalary === props.employeeData.currentEmployeeSalary) {
-        employeeUpdate.employeeSalary = props.employeeData.currentEmployeeSalary;
-      }
-
-      return employeeUpdate;
-    } // Updating employee data.
-
   }]);
 
   return UpdateModal;
@@ -6126,7 +6175,7 @@ function App() {
       tps = _useState4[0],
       setTps = _useState4[1];
 
-  var count = 1;
+  var count = 0;
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     axios.get('/userList').then(function (response) {
       setPost(response.data);
@@ -6144,29 +6193,33 @@ function App() {
   var usersPerPage = 10;
   var pagesVisited = pageNumber * usersPerPage;
   var displayUsers = post.slice(pagesVisited, pagesVisited + usersPerPage).map(function (user) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tbody", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
-        className: "border-b transition duration-300 ease-in-out hover:bg-gray-100",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
-          className: "px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r",
-          children: count++
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r",
-          children: user.name
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r",
-          children: user.email
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: "text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r",
-          children: user.priviliges_id == 2 ? "Manajemen DLH " : "Petugas TPS"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-          className: " max-h-5 max w-14 px-2",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_TableActionButtons__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            eachRowId: user
-          })
-        })]
+    return (
+      /*#__PURE__*/
+      // {count += count+1+((pageNumber-1)*10)}
+      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tbody", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
+          className: "border-b transition duration-300 ease-in-out hover:bg-gray-100",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+            className: "px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r",
+            children: count += 1 + pageNumber * 10
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+            className: "text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r",
+            children: user.name
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+            className: "text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r",
+            children: user.email
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+            className: "text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r",
+            children: user.priviliges_id == 2 ? "Manajemen DLH " : "Petugas TPS"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+            className: " max-h-5 max w-14 px-2",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_TableActionButtons__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              eachRowId: user
+            })
+          })]
+        })
       })
-    });
+    );
   });
   var pageCount = Math.ceil(post.length / usersPerPage);
 
@@ -6232,7 +6285,7 @@ function App() {
       activeClassName: "page-item active bg-blue-600 rounded text-gray-200 ",
       breakClassName: 'page-item',
       breakLinkClassName: 'page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none',
-      pageClassName: 'page-item',
+      pageClassName: 'page-item bg-white',
       pageLinkClassName: 'page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none',
       previousClassName: 'page-item bg-white',
       nextClassName: 'page-item bg-white'
@@ -6281,11 +6334,26 @@ var TableActionButtons = function TableActionButtons(_ref) {
         "data-bs-toggle": "modal",
         "data-bs-target": '#viewModal' + eachRowId.id,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-          "class": "tooltip-text border border-black bg-white p-3 -mt-12 -ml-16 rounded hidden group-hover:block absolute text-center py-2 px-6 z-50",
+          "class": "text-white tooltip-text border bg-green-400  -mt-12 -ml-16 rounded-xl hidden group-hover:block absolute text-center py-2 px-6 z-50",
           children: "View Akun"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-          "class": "iconify",
+          "class": "iconify h-5 w-5",
           "data-icon": "el:eye-open"
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "group",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+        type: "button",
+        className: "  inline-block p-2 mr-2 bg-gray-300  leading-tight uppercase rounded shadow-md hover:bg-yellow-500 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out",
+        "data-bs-toggle": "modal",
+        "data-bs-target": '#updateModal' + eachRowId.id,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+          "class": "text-white tooltip-text border bg-green-400  -mt-12 -ml-16 rounded-xl hidden group-hover:block absolute text-center py-2 px-6 z-50",
+          children: "Edit Akun"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+          "class": "iconify h-5 w-5",
+          "data-icon": "clarity:note-edit-line"
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
@@ -6296,7 +6364,7 @@ var TableActionButtons = function TableActionButtons(_ref) {
         "data-bs-toggle": "modal",
         "data-bs-target": '#deleteModal' + eachRowId.id,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-          "class": "tooltip-text border border-black bg-white p-3 -mt-12 -ml-16 rounded hidden group-hover:block absolute text-center py-2 px-6 z-50",
+          "class": " text-white tooltip-text border bg-green-400  -mt-12 -ml-16 rounded-xl hidden group-hover:block absolute text-center py-2 px-6 z-50",
           children: "Hapus Akun"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
           "class": "iconify h-5 w-5",
@@ -6306,6 +6374,8 @@ var TableActionButtons = function TableActionButtons(_ref) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Modals_DeleteModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
       eachRowId: eachRowId
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Modals_ViewModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      eachRowId: eachRowId
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Modals_UpdateModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
       eachRowId: eachRowId
     })]
   });
@@ -7253,7 +7323,7 @@ var SampahTableActionButtons = function SampahTableActionButtons(_ref) {
         "data-bs-toggle": "modal",
         "data-bs-target": '#updateModal' + eachRowId.id,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-          "class": "tooltip-text border border-black bg-white p-3 -mt-12 -ml-16 rounded hidden group-hover:block absolute text-center py-2 px-6 z-50",
+          "class": "text-white tooltip-text border bg-green-400  -mt-12 -ml-16 rounded-xl hidden group-hover:block absolute text-center py-2 px-6 z-50",
           children: "Edit Data"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
           "class": "iconify h-5 w-5",
@@ -7268,7 +7338,7 @@ var SampahTableActionButtons = function SampahTableActionButtons(_ref) {
         "data-bs-toggle": "modal",
         "data-bs-target": '#deleteModal' + eachRowId.id,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-          "class": "tooltip-text border border-black bg-white p-3 -mt-12 -ml-16 rounded hidden group-hover:block absolute text-center py-2 px-6 z-50",
+          "class": "text-white tooltip-text border bg-green-400  -mt-12 -ml-16 rounded-xl hidden group-hover:block absolute text-center py-2 px-6 z-50",
           children: "Hapus Data"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
           "class": "iconify h-5 w-5",

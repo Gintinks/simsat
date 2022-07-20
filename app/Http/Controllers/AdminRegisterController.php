@@ -103,9 +103,9 @@ class AdminRegisterController extends Controller
         $updateData['password'] = bcrypt($updateData['password']);
 
         $saveUpdateData = User::where('id', '=', $updateData['id'])->update([
-            'name' => $registerData['name'],
-            'email' => $registerData['email'],
-            'password' => $registerData['password'],
+            'name' => $updateData['name'],
+            'email' => $updateData['email'],
+            'password' => $updateData['password'],
         ]);
     }
 

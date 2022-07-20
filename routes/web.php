@@ -31,6 +31,7 @@ Route::post('/login', [LoginCosController::class, 'authenticate'])->name('login'
 Route::get('/logout', [LoginCosController::class, 'logout'])->name('logout');
 
 Route::get('/register', [AdminRegisterController::class, 'index'])->name('register')->middleware('is_admin');
+Route::post('/update', [AdminRegisterController::class, 'update'])->name('update')->middleware('is_admin');
 Route::post('/register', [App\Http\Controllers\AdminRegisterController::class, 'store'])->name('register');
 Route::post('/delete', [App\Http\Controllers\AdminRegisterController::class, 'destroy'])->name('delete');
 Route::get('/userList', [AdminRegisterController::class, 'viewUser'])->name('userList')->middleware('is_admin');

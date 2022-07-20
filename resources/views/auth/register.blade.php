@@ -5,7 +5,7 @@
         <div>
             <div class="dropdown relative mb-2">
                 <button
-                    class="flex text-lg hover:bg-green-500 hover:text-white focus:text-white focus:bg-green-500  border-green-500 text-green-500 px-6 py-2 border-2 font-medium leading-tight rounded focus:ring-0 transition duration-150 ease-in-out"
+                    class="flex text-xl bg-white hover:bg-green-500 hover:text-white focus:text-white focus:bg-green-500  border-green-500 text-green-500 px-6 py-2 border-2 font-medium leading-tight rounded focus:ring-0 transition duration-150 ease-in-out"
                     type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     {{ auth()->user()->name }}
                     <span class="iconify h-6 w-6 ml-2" data-icon="bxs:user"></span>
