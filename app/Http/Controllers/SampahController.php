@@ -94,7 +94,7 @@ class SampahController extends Controller
                             // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
                             $query->where('berat_sampah_plastik', '!=', 0);
                             break;
-                        case 'Lainlain':
+                        case 'Lain-lain':
                             // $showFiltered = $tpsSampah->where('berat_sampah_karet', '!=', 0)->get();
                             $query->where('berat_sampah_lain_lain', '!=', 0);
                             break;
@@ -109,8 +109,10 @@ class SampahController extends Controller
             }
 
             foreach ($request->input('tps') as $item) {
-                if ($item['checked'] == true) {
-                    $query->where('tps.name', '=', $item['category']);
+                if (isset($item['checked'])) {
+                    if($item['checked'] == true){
+                        $query->orWhere('tps.name', '=', $item['name']);
+                    }
                 }
             }
 
@@ -142,7 +144,7 @@ class SampahController extends Controller
             $query->select('sampahs.*', 'tps.name')->where('tps_id', auth()->user()->tps_id)->join('tps', 'sampahs.tps_id', '=', 'tps.id');
 
             foreach ($request->input('category') as $item) {
-                if ($item['checked'] == true) {
+                if ($item['checked'] ) {
                     switch ($item['category']) {
                         case 'Logam':
                             // $showFiltered = $tpsSampah->where('berat_sampah_logam', '!=', 0)->get();

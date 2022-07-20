@@ -6443,27 +6443,7 @@ var FilterSampah = function FilterSampah(props) {
   }];
 
   var dataTps = function dataTps() {
-    return [{
-      "id": 1,
-      "category": "Punten",
-      "checked": false
-    }, {
-      "id": 2,
-      "category": "Dadaprejo",
-      "checked": false
-    }, {
-      "id": 3,
-      "category": "Suimbergondo",
-      "checked": false
-    }, {
-      "id": 4,
-      "category": "Pandanrejo",
-      "checked": false
-    }, {
-      "id": 5,
-      "category": "Oro-oro Ombo",
-      "checked": false
-    }];
+    return [];
   };
 
   var dataRange = function dataRange() {
@@ -6478,42 +6458,37 @@ var FilterSampah = function FilterSampah(props) {
     }];
   };
 
-  var packets = [];
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataCategory),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
-      category = _useState2[0],
-      setCategory = _useState2[1];
+      priviliges = _useState2[0],
+      setPriviliges = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataTps),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
       tps = _useState4[0],
       setTps = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataRange),
-      _useState6 = _slicedToArray(_useState5, 2),
-      range = _useState6[0],
-      setRange = _useState6[1];
-
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
-      _useState8 = _slicedToArray(_useState7, 2),
-      priviliges = _useState8[0],
-      setPriviliges = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
-    category: category,
-    tps: tps,
-    range: range
-  }),
-      _useState10 = _slicedToArray(_useState9, 2),
-      filterPost = _useState10[0],
-      filterSetPost = _useState10[1];
 
   react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/get-priviliges').then(function (response) {
       setPriviliges(response.data);
     });
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/list-tps').then(function (response) {
+      setTps(response.data);
+    });
+    tps.map(function (value) {
+      return updateCheckedTps(value.id, 'checked', !value.checked);
+    });
   }, []);
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataCategory),
+      _useState6 = _slicedToArray(_useState5, 2),
+      category = _useState6[0],
+      setCategory = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(dataRange),
+      _useState8 = _slicedToArray(_useState7, 2),
+      range = _useState8[0],
+      setRange = _useState8[1];
 
   var updateChecked = function updateChecked(id, whichvalue, newvalue) {
     var index = category.findIndex(function (x) {
@@ -6572,7 +6547,7 @@ var FilterSampah = function FilterSampah(props) {
         updateCheckedTps(value.id, 'checked', !value.checked);
       },
       className: "".concat(value.checked ? '  bg-green-500 text-white hover:bg-green-400' : ' border-green-500 text-green-500 hover:bg-gray-100', " m-1 inline-block px-6 py-2 border-2 font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition duration-150 ease-in-out"),
-      children: value.category
+      children: value.name
     });
   });
   var displayRange = range.map(function (value, index) {
@@ -6587,12 +6562,11 @@ var FilterSampah = function FilterSampah(props) {
   });
 
   var handleFilter = function handleFilter() {
-    filterSetPost({
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/sampah-filter', {
       category: category,
       tps: tps,
       range: range
-    });
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/sampah-filter', filterPost).then(function (response) {
+    }).then(function (response) {
       // const dataFilter = response.data.filter((curData) => {
       //     return curData.berat_sampah_karet === 0
       // })
@@ -7095,7 +7069,7 @@ function App() {
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-    className: "  bg-blue p-3 md:p-20 rounded-3xl",
+    className: " h-screen bg-blue p-3 md:p-20 rounded-3xl",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Modals_FilterSampah__WEBPACK_IMPORTED_MODULE_5__["default"], {
       filterData: handleFilter,
       filterDataNama: true
