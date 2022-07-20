@@ -157,14 +157,27 @@ const FilterSampah = (props) => {
 
     }
 
+    const handleCSV = () => {
+        axios.post('/sampah-filter').then((response) => {
+            
+        });
+
+    }
+
     return (
         <div>
-            <div className='flex  pb-3'>
+            <div className='flex justify-between  pb-3'>
                 <button type="button" className="flex justify-between px-10 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModalCenter">
                     Filter
                     <span class="iconify ml-1 h-4 w-4" data-icon="charm:filter"></span>
+                </button>
+
+                <button type="button" className="flex p-1 px-6 justify-between rounded self-center bg-green-600 text-white font-medium leading-tight shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none hover:scale-110 focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out"
+                onClick={() => { handleCSV() }}>
+                    <span class="iconify mr-1 h-5 w-5" data-icon="ant-design:file-excel-filled"></span>
+                    Print CSV
                 </button>
             </div>
 

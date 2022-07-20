@@ -6684,10 +6684,14 @@ var FilterSampah = function FilterSampah(props) {
     });
   };
 
+  var handleCSV = function handleCSV() {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/sampah-filter').then(function (response) {});
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "flex  pb-3",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      className: "flex justify-between  pb-3",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
         type: "button",
         className: "flex justify-between px-10 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out",
         "data-bs-toggle": "modal",
@@ -6696,7 +6700,17 @@ var FilterSampah = function FilterSampah(props) {
           "class": "iconify ml-1 h-4 w-4",
           "data-icon": "charm:filter"
         })]
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
+        type: "button",
+        className: "flex p-1 px-6 justify-between rounded self-center bg-green-600 text-white font-medium leading-tight shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none hover:scale-110 focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out",
+        onClick: function onClick() {
+          handleCSV();
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          "class": "iconify mr-1 h-5 w-5",
+          "data-icon": "ant-design:file-excel-filled"
+        }), "Print CSV"]
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto",
       id: "exampleModalCenter",
