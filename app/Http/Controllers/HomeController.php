@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sampah;
+use App\Models\Tps;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -88,9 +89,10 @@ class HomeController extends Controller
             foreach ($beratPerhariAnorganikArray as $sumTotalAnorganik) {
                 $sumTotalBeratPerhariAnorganikArray += $sumTotalAnorganik;
             }
-
+            $titleDashboard = Tps::select('name')->where('id', auth()->user()->tps_id)->first();
             $totalTakTerolah = Sampah::where('tps_id', auth()->user()->tps_id)->whereBetween('created_at', [Carbon::now()->subDays(6)->startOfDay(), Carbon::now()->subDays(0)->endOfDay()])->sum('berat_sampah_ke_tpa');
             $updateLogInput = Sampah::select('sampahs.*','tps.name as name')->join('tps','sampahs.tps_id','=','tps.id')->orderBy('created_at','desc')->take(3)->get();
+            
 
             // $totalHariSenin = Sampah::where('user_id',auth()->user()->id)->whereDay('created_at',$senin)->sum('berat_sampah_total');
             // $totalHariSelasa = Sampah::where('user_id',auth()->user()->id)->whereDay('created_at',$selasa)->sum('berat_sampah_total');
@@ -125,6 +127,7 @@ class HomeController extends Controller
 
 
             return view('dashboard', [
+                'titleDashboard' => $titleDashboard,
                 'BeratPerhari' => $beratPerhariArray,
                 'beratPerhariAnorganik' => $beratPerhariAnorganikArray,
                 'BeratPerhariOrganik' => $beratPerhariOrganikArray,
@@ -185,7 +188,7 @@ class HomeController extends Controller
         }
 
         foreach ($beratPerhariAnorganikArray as $sumTotalAnorganik) {
-            $sumTotalBeratPerhariAnorganikArray += $sumTotalOrganik;
+            $sumTotalBeratPerhariAnorganikArray += $sumTotalAnorganik;
         }
 
         for ($i = 6; $i > -1; $i--) {
