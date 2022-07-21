@@ -73,7 +73,7 @@
         </div>
 
         <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg bg-white">
-            <span class="iconify w-16 h-16 self-center" data-icon="mdi:leaf-off" style="color: #17cf67;"></span>
+            <span class="iconify w-16 h-16 self-center" data-icon="mdi:leaf" style="color: #17cf67;"></span>
             <div class="p-3">
                 <p class="text-end text-2xl font-semibold">{{$beratTotalPermingguOrganik}} Kg</p>
                 <p class="text-end">Organik</p>
@@ -81,7 +81,7 @@
         </div>
 
         <div class="shadow-md flex border-b-4 border border-green-400 justify-between rounded-t-lg bg-white">
-            <span class="iconify w-16 h-16 self-center" style="color: #17cf67;"data-icon="mdi:leaf"></span>
+            <span class="iconify w-16 h-16 self-center" style="color: #17cf67;"data-icon="mdi:leaf-off"></span>
             <div class="p-3">
                 <p class=" text-end text-2xl font-semibold">{{$beratTotalPermingguAnorganik}} Kg</p>
                 <p class="text-end">Anorganik</p>
