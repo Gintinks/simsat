@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     {{-- <link rel="preconnect" href="https://fonts.googleapis.com"> --}}
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
