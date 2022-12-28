@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 
 const DeleteModal = ({ eachRowId }) => {
-
+    const [priviliges, setPriviliges] = useState("");
     const [update, setUpdate] = useState({
         id: eachRowId.id,
         kertas: eachRowId.berat_sampah_kertas,
@@ -17,24 +17,37 @@ const DeleteModal = ({ eachRowId }) => {
         sampah_organik: eachRowId.berat_sampah_organik,
         diteruskan_ke_tpa: eachRowId.berat_sampah_ke_tpa,
     })
+    React.useEffect(() => {
+        axios.get('/get-priviliges').then((response) => {
+            setPriviliges(response.data);
+        });
+        
+    }, []);
+    const current = new Date();
+    const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setUpdate({
-          ...update,
-          [name]: parseInt(value),
+            ...update,
+            [name]: parseInt(value),
         });
-      };
+    };
+    
     const updateData = () => {
-
-        axios.post('/update-sampah', update)
+        if (priviliges == "3" && eachRowId.created_at.split('T')[0] != date) {
+            toast.warning("Data sampah yang dapat diganti hanyalah data untuk hari ini");
+        }
+        else {
+            axios.post('/update-sampah', update)
             .then(() => {
-                toast.success("Data Sampah Sudah Diupdate");
+                toast.success("Data Sampah Berhasil Diupdate");
 
                 setTimeout(() => {
                     location.reload();
                 }, 2500)
             })
+        }
     }
 
 
@@ -182,6 +195,7 @@ const DeleteModal = ({ eachRowId }) => {
                         </button>
                         <button type="button"
                             value="Save"
+                            data-bs-dismiss="modal"
                             onClick={updateData}
                             class="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
                             Update Data

@@ -1,3 +1,6 @@
+@section('page_title')
+    {{ "Input Sampah" }}
+@endsection
 @extends('layouts.nav')
 
 @section('main')

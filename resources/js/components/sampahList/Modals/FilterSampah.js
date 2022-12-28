@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
 
 
 const FilterSampah = (props) => {
@@ -61,6 +60,7 @@ const FilterSampah = (props) => {
     ]
     const [priviliges, setPriviliges] = useState("");
     const [tps, setTps] = useState([]);
+    
     React.useEffect(() => {
         axios.get('/get-priviliges').then((response) => {
             setPriviliges(response.data);
@@ -72,11 +72,9 @@ const FilterSampah = (props) => {
             return updateCheckedTps(value.id, 'checked', !value.checked)
         })
     }, []);
+
     const [category, setCategory] = useState(dataCategory);
     const [range, setRange] = useState(dataRange);
-
-
-
 
     const updateChecked = (id, whichvalue, newvalue) => {
         var index = category.findIndex(x => x.id === id);
@@ -90,13 +88,7 @@ const FilterSampah = (props) => {
             ...category.slice(index + 1)
         ]
         );
-        /*
-        the first input of the function is the id of the item
-        the second input of the function is the atrribute that you wish to change
-        the third input of the function is the new value for that attribute
-        It's a pleasure :0
-        ~atlas
-        */
+        
     }
     const updateCheckedTps = (id, whichvalue, newvalue) => {
         var index = tps.findIndex(x => x.id === id);
@@ -149,38 +141,17 @@ const FilterSampah = (props) => {
 
     const handleFilter = () => {
         axios.post('/sampah-filter', { category: category, tps: tps, range: range }).then((response) => {
-            // const dataFilter = response.data.filter((curData) => {
-            //     return curData.berat_sampah_karet === 0
-            // })
             props.filterData(response.data)
         });
-
     }
 
     // const handleCSV = () => {
     //     axios.post('/sampah-export').then((response) => {
-            
     //     });
-
     // }
 
     return (
         <div>
-            <div className='flex justify-between  pb-3'>
-                <button type="button" className="flex justify-between px-10 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModalCenter">
-                    Filter
-                    <span class="iconify ml-1 h-4 w-4" data-icon="charm:filter"></span>
-                </button>
-
-                {/* <button type="button" className="flex p-1 px-6 justify-between rounded self-center bg-green-600 text-white font-medium leading-tight shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none hover:scale-110 focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out"
-                onClick={() => { handleCSV() }}>
-                    <span class="iconify mr-1 h-5 w-5" data-icon="ant-design:file-excel-filled"></span>
-                    Print CSV
-                </button> */}
-            </div>
-
 
             <div className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
                 <div className="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">

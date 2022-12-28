@@ -25,6 +25,11 @@ class SampahController extends Controller
     {
         return view('sampahList');
     }
+
+    public function showHalamanStatistik()
+    {
+        return view('statistikSampah');
+    }
     public function showSampahTps()
     {
 
@@ -110,7 +115,7 @@ class SampahController extends Controller
 
             foreach ($request->input('tps') as $item) {
                 if (isset($item['checked'])) {
-                    if($item['checked'] == true){
+                    if ($item['checked'] == true) {
                         $query->Where('tps.name', '=', $item['name']);
                     }
                 }
@@ -144,7 +149,7 @@ class SampahController extends Controller
             $query->select('sampahs.*', 'tps.name')->where('tps_id', auth()->user()->tps_id)->join('tps', 'sampahs.tps_id', '=', 'tps.id');
 
             foreach ($request->input('category') as $item) {
-                if ($item['checked'] ) {
+                if ($item['checked']) {
                     switch ($item['category']) {
                         case 'Logam':
                             // $showFiltered = $tpsSampah->where('berat_sampah_logam', '!=', 0)->get();
@@ -279,6 +284,75 @@ class SampahController extends Controller
             ->back()
             ->with('success', 'Data sampah sudah berhasil dimasukkan ke database!');
     }
+
+    public function statistikMinggu(Request $request)
+    {
+        $beratPerhariArray = [];
+        $days = [];
+        $dates = [];
+
+
+        for ($i = 6; $i > -1; $i--) {
+            $beratPerhari = Sampah::whereBetween('created_at', [Carbon::createFromDate(2022, 12, 28, 'Asia/Jakarta')->subDays($i)->startOfDay(), Carbon::createFromDate(2022, 12, 28, 'Asia/Jakarta')->subDays($i)->endOfDay()])->sum($request->input('category'));
+            $beratPerhariArray[] = $beratPerhari;
+        }
+
+        for ($i = 6; $i > -1; $i--) {
+            $nowDate = Carbon::createFromDate(2022, 12, 28, 'Asia/Jakarta')->subDays($i)->format('d-m-Y');
+            $day = Carbon::createFromFormat('d-m-Y', $nowDate)->translatedFormat('l');
+            $days[] = $day;
+            $dates[] = $nowDate;
+        }
+
+
+        return response()->json(['berat' => $beratPerhariArray, 'days' => $days, 'dates' => $dates]);
+    }
+
+    public function statistikBulan(Request $request)
+    {
+        $beratPerhariArray = [];
+        $days = [];
+        $dates = [];
+
+        $lastDayofMonth = Carbon::createFromDate(2022, $request->input('month'), 01, 'Asia/Jakarta')->endOfMonth()->format('d');
+
+
+        for ($i = 1; $i <= $lastDayofMonth; $i++) {
+            $beratPerhari = Sampah::whereBetween('created_at', [Carbon::createFromDate(2022, $request->input('month'), 01, 'Asia/Jakarta')->addDays($i)->startOfDay(), Carbon::createFromDate(2022, $request->input('month'), 01, 'Asia/Jakarta')->addDays($i)->endOfDay()])->sum($request->input('category'));
+            $beratPerhariArray[] = $beratPerhari;
+        }
+
+        for ($i = 0; $i < $lastDayofMonth; $i++) {
+            $nowDate = Carbon::createFromDate(2022, $request->input('month'), 01, 'Asia/Jakarta')->addDays($i)->format('d-m-Y');
+            $day = Carbon::createFromFormat('d-m-Y', $nowDate)->translatedFormat('l');
+            $days[] = $day;
+            $dates[] = $nowDate;
+        }
+
+
+        return response()->json(['berat' => $beratPerhariArray, 'days' => $days, 'dates' => $dates]);
+    }
+
+    public function statistikTahun(Request $request)
+    {
+        $beratPerhariArray = [];
+        $months = [];
+
+
+
+        for ($i = 0; $i < 12; $i++) {
+            $beratPerhari = Sampah::whereBetween('created_at', [Carbon::createFromDate(2022, 01, 01, 'Asia/Jakarta')->addMonth($i)->startOfMonth(), Carbon::createFromDate(2022, 01, 01, 'Asia/Jakarta')->addMonth($i)->endOfMonth()])->sum($request->input('category'));
+            $beratPerhariArray[] = $beratPerhari;
+        }
+
+        for ($i = 0; $i < 12; $i++) {
+            $nowDate = Carbon::createFromDate(2022, 01, 01, 'Asia/Jakarta')->addMonth($i)->format('F');
+            // $month = Carbon::createFromFormat('d-m-Y', $nowDate)->translatedFormat('l');
+            $months[] = $nowDate;
+        }
+        return response()->json(['berat' => $beratPerhariArray, 'month' => $months]);
+    }
+    
 
     public function updateSampah(Request $request)
     {

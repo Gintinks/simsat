@@ -1,3 +1,6 @@
+@section('page_title')
+    {{ "Dashboard" }}
+@endsection
 @extends('layouts.nav')
 
 @section('main')
@@ -143,14 +146,14 @@
             labels: labels,
             datasets: [{
                 label: "Berat Sampah Anorganik",
-                backgroundColor: "#17cf67 ",
-                borderColor: "#17cf67",
+                backgroundColor: "#F5CD3F",
+                borderColor: "#F5CD3F",
                 data: {!! json_encode($beratPerhariAnorganik) !!},
             },
             {
                 label: "Berat Sampah Organik",
-                backgroundColor: "#F5CD3F",
-                borderColor: "#F5CD3F",
+                backgroundColor: "#17cf67",
+                borderColor: "#17cf67",
                 data: {!! json_encode($BeratPerhariOrganik) !!},
             }, ],
             borderWidth: 1

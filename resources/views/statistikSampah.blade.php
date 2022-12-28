@@ -1,10 +1,10 @@
 @section('page_title')
-    {{ "List Sampah" }}
+    {{ "Statistik" }}
 @endsection
 @extends('layouts.nav')
 
 @section('main')
-    <div class="container" id="sampahData">
+    <div class="container" id="sampahGraph">
        {{-- <p class=" text-3xl font-semibold">Some error happened dude</p> --}}
     </div>
 @endsection

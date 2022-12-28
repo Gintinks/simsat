@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tps;
+use App\Models\Sampah;
 
 class AdminRegisterController extends Controller
 {
@@ -118,7 +119,8 @@ class AdminRegisterController extends Controller
     public function destroy(Request $request)
     {
         
-        // $deleteUser=User::where('id', 9)->get();
+        $user_sampah = Sampah::where('user_id', $request->id);
+        $user_sampah->delete();
         User::destroy($request->id);
         // $deleteUser->delete(); 
         // return;

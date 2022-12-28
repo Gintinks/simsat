@@ -58,6 +58,10 @@ Route::get('/sampah-list', [SampahController::class, 'showHalamanSampahTps'])->n
 Route::get('/get-priviliges', [SampahController::class, 'getPriviliges'])->name('getPriviliges')->middleware('is_tps_managementdlh');
 Route::post('/delete-sampah', [SampahController::class, 'destroy'])->name('delete-sampah')->middleware('is_tps_managementdlh');
 Route::post('/update-sampah', [SampahController::class, 'updateSampah'])->name('update-sampah')->middleware('is_tps_managementdlh');
+Route::get('/statistik', [SampahController::class, 'showHalamanStatistik'])->name('onlyManagemenDlh')->middleware('is_managemendlh');
+Route::post('/statistikMinggu', [SampahController::class, 'statistikMinggu'])->name('onlyManagemenDlh')->middleware('is_managemendlh');
+Route::post('/statistikBulan', [SampahController::class, 'statistikBulan'])->name('onlyManagemenDlh')->middleware('is_managemendlh');
+Route::post('/statistikTahun', [SampahController::class, 'statistikTahun'])->name('onlyManagemenDlh')->middleware('is_managemendlh');
 
 Route::get('/sampah-filter', [SampahController::class, 'sampahFilter'])->name('sampahFilter')->middleware('is_tps_managementdlh');
 

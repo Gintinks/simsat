@@ -8,11 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('page_title', 'SIMSAT')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -35,6 +35,8 @@
     </div>
     @yield('script')
     <script src="{{ asset('js/nav.js') }}"></script>
-    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    {{-- <script src="https://code.iconify.design/3/3.0.1/iconify.min.js"></script> --}}
+    {{-- <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/@iconify/iconify@3.0.1/dist/iconify.min.js"></script>
     <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
 </body>

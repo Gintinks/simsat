@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sampah;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -23,26 +24,6 @@ class AddUserController extends Controller
     {
         return view('ini route ke halaman form add user');
     }
-
-    //kirim value form ke sini
-    // public function addUser(Request $request)
-    // {
-    //     $request->validate($request,[
-    //         'name' => 'required',
-    //         'email' => 'required',
-    //         'password' => 'required|min:8',
-    //         'priviliges' => 'required',
-    //     ]);
-    //     $user =  User::create([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'priviliges_id' => $request->priviliges,
-    //         'password' => $request->password,
-            
-    //     ]);
-    //     return redirect()->route('input route disini')->withSuccess(['success' => 'Berhasi Membuet User']);
-
-    // }
 
     public function addUser(Request $request)
     {
@@ -110,8 +91,10 @@ class AddUserController extends Controller
     {   
         try
         {
-            $user = User::findOrFail($id);
-            $user->delete();
+            // $user_sampah = Sampah::where('user_id', $id);
+            // $user_sampah->delete();
+            // $user = User::findOrFail($id);
+            // $user->delete();
         }
         catch(Exception $e)
         {

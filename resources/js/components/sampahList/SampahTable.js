@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ReactPaginate from "react-paginate";
 import SampahTableActionButtons from './SampahTableActionButtons';
 import FilterSampah from './Modals/FilterSampah';
+import UnduhDataSampah from './UnduhDataSampah';
 
 
 function App() {
@@ -49,7 +50,6 @@ function App() {
                         <td className='w-10 py-2 whitespace-nowrap border-r border-gray-300'>{sampah.berat_sampah_total}</td>
                         <td className='w-16 py-2   whitespace-nowrap border-r border-gray-300'>
                             <SampahTableActionButtons eachRowId={sampah} />
-
                         </td>
                     </tr>
                 </tbody>
@@ -59,50 +59,9 @@ function App() {
 
     const pageCount = Math.ceil(post.length / usersPerPage);
     
-    //Performance Killer
-    //This shit pretty much doubles the
-    //data that is being handled by REACT
+  
     const handleFilter = (data) => {
         
-        // let filtered = filterPost;
-        // data.map((value) => {
-        //     if (value.checked == true) {
-        //         switch (value.category) {
-        //             case "Karet":
-        //                 filtered = filtered.filter((curData) => {
-        //                     return curData.berat_sampah_karet !== 0
-        //                 })
-        //                 break;
-        //             case "Kaca":
-        //                 filtered = filtered.filter((curData) => {
-        //                     return curData.berat_sampah_karet !== 0
-        //                 })
-        //                 break;
-        //             case "Kertas":
-        //                 filtered = filtered.filter((curData) => {
-        //                     return curData.berat_sampah_kertas !== 0
-        //                 })
-        //                 break;
-        //             case "Plastik":
-        //                 filtered = filtered.filter((curData) => {
-        //                     return curData.berat_sampah_plastik !== 0
-        //                 })
-        //                 break;
-        //             case "Lain-lain":
-        //                 filtered = filtered.filter((curData) => {
-        //                     return curData.berat_sampah_lain_lain !== 0
-        //                 })
-        //                 break;
-        //             case "Organik":
-        //                 filtered = filtered.filter((curData) => {
-        //                     return curData.berat_sampah_organik !== 0
-        //                 })
-        //                 break;
-        //             default:
-
-        //         }
-        //     }
-        // })
         setPost(data);
     }
 
@@ -113,10 +72,20 @@ function App() {
     return (
 
         <div className=" h-screen bg-blue p-3 md:p-20 rounded-3xl" >
+            <div className='flex justify-between  pb-3'>
+                <button type="button" className=" rounded-sm flex justify-between px-10 py-2.5 bg-blue-600 text-white font-medium leading-tight shadow-md hover:bg-blue-700 hover:shadow-lg hover:scale-110 focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModalCenter">
+                    Filter
+                    <span class="iconify ml-1 h-4 w-4" data-icon="charm:filter"></span>
+                </button>
+
+                <UnduhDataSampah sampah={post} />
+            </div>
+
             <FilterSampah filterData={handleFilter} filterDataNama/>
             <ToastContainer />
 
-            {/* <CreateModal /> */}
             <div className="flex flex-col">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">

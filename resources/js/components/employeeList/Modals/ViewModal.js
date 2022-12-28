@@ -23,6 +23,9 @@ const ViewModal = ({ eachRowId }) => {
                             className="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
                             data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="my-3 self-center">
+                        <img src="https://media.istockphoto.com/id/1016761216/id/foto/konsep-potret.jpg?s=1024x1024&w=is&k=20&c=Oy8kjwNy5rhuUxb9CYZ7VDAvhVIeadolIEWvU5at9QU=" class=" w-40 h-40 rounded-full" alt=""></img>
+                    </div>
                     <div className='pl-6'>
                         <div className='flex p-1 text-lg font-medium'>
                             <p className=' basis-28 text-left'>Nama</p>
@@ -38,17 +41,17 @@ const ViewModal = ({ eachRowId }) => {
                             <p className=' basis-28 text-left'>Role</p>
                             {eachRowId.priviliges_id == 2 ? <p>: Manajemen DLH</p> : <p>: TPS</p>}
                         </div>
-                        {eachRowId.priviliges_id == 2 ?null:
-                        <div className='flex p-1 text-lg font-medium'>
-                            <p className=' basis-28 text-left'>TPS</p>
-                            {tps.map((value) => {
-                                if (value.id == eachRowId.tps_id) {
-                                    return (
-                                        <div value={value.id}>: {value.name}</div>
-                                    );
-                                }
-                            })}
-                        </div>
+                        {eachRowId.priviliges_id == 2 ? null :
+                            <div className='flex p-1 text-lg font-medium'>
+                                <p className=' basis-28 text-left'>TPS</p>
+                                {tps.map((value) => {
+                                    if (value.id == eachRowId.tps_id) {
+                                        return (
+                                            <div value={value.id}>: {value.name}</div>
+                                        );
+                                    }
+                                })}
+                            </div>
                         }
                     </div>
                     <div

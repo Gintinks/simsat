@@ -59,7 +59,7 @@
                     @if (auth()->user()->priviliges_id == 2)
                         <p
                             class="py-2 my-2 md:my-8  {{ 'statistik' == request()->path() ? 'bg-yellow-300' : '' }} md:bg-transparent  rounded transition duration-300 ease-in-out">
-                            <a href="" class="flex  justify-center md:pl-3">
+                            <a href="/statistik" class="flex  justify-center md:pl-3">
                                 <span
                                     class="iconify h-10 w-10 mr-3 {{ 'statistik' == request()->path() ? 'md:text-yellow-300' : '' }} hover:text-yellow-400"
                                     data-icon="akar-icons:statistic-up"></span>
