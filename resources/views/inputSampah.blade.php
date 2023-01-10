@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class=" bg-blue-200 md:rounded-xl md:w-1/3 h-max mt-4">
+            <div class=" bg-blue-200 md:rounded-xl md:w-1/3 h-max md:mt-4">
                 {{-- Grouping Input --}}
                 <div class=" px-14">
                     <div class='my-2 py-3'>

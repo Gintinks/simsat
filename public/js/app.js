@@ -5427,12 +5427,12 @@ function SampahGraph() {
       category = _useState4[0],
       setCategory = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(12),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(1),
       _useState6 = _slicedToArray(_useState5, 2),
       month = _useState6[0],
       setMonth = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(2022),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(2023),
       _useState8 = _slicedToArray(_useState7, 2),
       year = _useState8[0],
       setYear = _useState8[1];
@@ -5458,7 +5458,8 @@ function SampahGraph() {
       case 1:
         axios__WEBPACK_IMPORTED_MODULE_0___default().post('/statistikBulan', {
           category: category,
-          month: month
+          month: month,
+          year: year
         }).then(function (response) {
           setPost(response.data);
         });
@@ -5473,7 +5474,7 @@ function SampahGraph() {
         });
         break;
     }
-  }, [option, category, month]);
+  }, [option, category, month, year]);
 
   var changeTime = function changeTime(number) {
     setOption(number);
@@ -5508,7 +5509,8 @@ function SampahGraph() {
       case 1:
         axios__WEBPACK_IMPORTED_MODULE_0___default().post('/statistikBulan', {
           category: category,
-          month: month
+          month: month,
+          year: year
         }).then(function (response) {
           setPost(response.data);
         });
@@ -5694,17 +5696,20 @@ function SampahGraph() {
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
               "class": "ml-3 mb-3 w-56 ",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("select", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
                 "class": "form-select appearance-none\r block\r w-full\r px-3\r py-1.5\r font-normal\r text-gray-700\r bg-white bg-clip-padding bg-no-repeat\r border border-solid border-gray-300\r rounded\r transition\r ease-in-out\r m-0\r focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none",
                 "aria-label": "tahunan",
                 value: year,
                 onChange: function onChange(e) {
                   return changeYear(e.target.value);
                 },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
                   value: "2022",
                   children: "2022"
-                })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                  value: "2023",
+                  children: "2023"
+                })]
               })
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
@@ -5756,17 +5761,20 @@ function SampahGraph() {
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
               "class": "ml-3 mb-3 w-56 ",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("select", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
                 "class": "form-select appearance-none\r block\r w-full\r px-3\r py-1.5\r font-normal\r text-gray-700\r bg-white bg-clip-padding bg-no-repeat\r border border-solid border-gray-300\r rounded\r transition\r ease-in-out\r m-0\r focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none",
                 "aria-label": "tahunan",
                 value: year,
                 onChange: function onChange(e) {
                   return changeYear(e.target.value);
                 },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
                   value: "2022",
                   children: "2022"
-                })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                  value: "2023",
+                  children: "2023"
+                })]
               })
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {

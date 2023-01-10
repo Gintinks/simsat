@@ -7,8 +7,8 @@ import TahunanChart from './sampahChart/TahunanChart';
 function SampahGraph() {
     const [option, setOption] = useState(0);
     const [category, setCategory] = useState("berat_sampah_total");
-    const [month, setMonth] = useState(12);
-    const [year, setYear] = useState(2022);
+    const [month, setMonth] = useState(1);
+    const [year, setYear] = useState(2023);
     const [post, setPost] = useState([]);
 
     React.useEffect(() => {
@@ -23,7 +23,7 @@ function SampahGraph() {
                 });
                 break;
             case 1:
-                axios.post('/statistikBulan', { category: category, month: month }).then((response) => {
+                axios.post('/statistikBulan', { category: category, month: month, year:year }).then((response) => {
                     setPost(response.data);
                 });
                 break;
@@ -34,7 +34,7 @@ function SampahGraph() {
                 break;
         }
 
-    }, [option, category, month]);
+    }, [option, category, month, year]);
 
     const changeTime = (number) => {
         setOption(number);
@@ -65,7 +65,7 @@ function SampahGraph() {
                 });
                 break;
             case 1:
-                axios.post('/statistikBulan', { category: category, month: month }).then((response) => {
+                axios.post('/statistikBulan', { category: category, month: month, year:year }).then((response) => {
                     setPost(response.data);
                 });
                 break;
@@ -213,6 +213,7 @@ function SampahGraph() {
                                             value={year}
                                             onChange={(e) => changeYear(e.target.value)}>
                                             <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
                                         </select>
                                     </div>
                                 </div>
@@ -276,6 +277,7 @@ function SampahGraph() {
                                             value={year}
                                             onChange={(e) => changeYear(e.target.value)}>
                                             <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
                                         </select>
                                     </div>
                                 </div>

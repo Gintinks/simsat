@@ -293,12 +293,12 @@ class SampahController extends Controller
 
 
         for ($i = 6; $i > -1; $i--) {
-            $beratPerhari = Sampah::whereBetween('created_at', [Carbon::createFromDate(2022, 12, 28, 'Asia/Jakarta')->subDays($i)->startOfDay(), Carbon::createFromDate(2022, 12, 28, 'Asia/Jakarta')->subDays($i)->endOfDay()])->sum($request->input('category'));
+            $beratPerhari = Sampah::whereBetween('created_at', [Carbon::createFromDate(2023, 01, 03, 'Asia/Jakarta')->subDays($i)->startOfDay(), Carbon::createFromDate(2023, 01, 03, 'Asia/Jakarta')->subDays($i)->endOfDay()])->sum($request->input('category'));
             $beratPerhariArray[] = $beratPerhari;
         }
 
         for ($i = 6; $i > -1; $i--) {
-            $nowDate = Carbon::createFromDate(2022, 12, 28, 'Asia/Jakarta')->subDays($i)->format('d-m-Y');
+            $nowDate = Carbon::createFromDate(2023, 01, 03, 'Asia/Jakarta')->subDays($i)->format('d-m-Y');
             $day = Carbon::createFromFormat('d-m-Y', $nowDate)->translatedFormat('l');
             $days[] = $day;
             $dates[] = $nowDate;
@@ -314,16 +314,16 @@ class SampahController extends Controller
         $days = [];
         $dates = [];
 
-        $lastDayofMonth = Carbon::createFromDate(2022, $request->input('month'), 01, 'Asia/Jakarta')->endOfMonth()->format('d');
+        $lastDayofMonth = Carbon::createFromDate($request->input('year'), $request->input('month'), 01, 'Asia/Jakarta')->endOfMonth()->format('d');
 
 
         for ($i = 1; $i <= $lastDayofMonth; $i++) {
-            $beratPerhari = Sampah::whereBetween('created_at', [Carbon::createFromDate(2022, $request->input('month'), 01, 'Asia/Jakarta')->addDays($i)->startOfDay(), Carbon::createFromDate(2022, $request->input('month'), 01, 'Asia/Jakarta')->addDays($i)->endOfDay()])->sum($request->input('category'));
+            $beratPerhari = Sampah::whereBetween('created_at', [Carbon::createFromDate($request->input('year'), $request->input('month'), 01, 'Asia/Jakarta')->addDays($i)->startOfDay(), Carbon::createFromDate($request->input('year'), $request->input('month'), 01, 'Asia/Jakarta')->addDays($i)->endOfDay()])->sum($request->input('category'));
             $beratPerhariArray[] = $beratPerhari;
         }
 
         for ($i = 0; $i < $lastDayofMonth; $i++) {
-            $nowDate = Carbon::createFromDate(2022, $request->input('month'), 01, 'Asia/Jakarta')->addDays($i)->format('d-m-Y');
+            $nowDate = Carbon::createFromDate($request->input('year'), $request->input('month'), 01, 'Asia/Jakarta')->addDays($i)->format('d-m-Y');
             $day = Carbon::createFromFormat('d-m-Y', $nowDate)->translatedFormat('l');
             $days[] = $day;
             $dates[] = $nowDate;
@@ -341,12 +341,12 @@ class SampahController extends Controller
 
 
         for ($i = 0; $i < 12; $i++) {
-            $beratPerhari = Sampah::whereBetween('created_at', [Carbon::createFromDate(2022, 01, 01, 'Asia/Jakarta')->addMonth($i)->startOfMonth(), Carbon::createFromDate(2022, 01, 01, 'Asia/Jakarta')->addMonth($i)->endOfMonth()])->sum($request->input('category'));
+            $beratPerhari = Sampah::whereBetween('created_at', [Carbon::createFromDate($request->input('year'), 01, 01, 'Asia/Jakarta')->addMonth($i)->startOfMonth(), Carbon::createFromDate($request->input('year'), 01, 01, 'Asia/Jakarta')->addMonth($i)->endOfMonth()])->sum($request->input('category'));
             $beratPerhariArray[] = $beratPerhari;
         }
 
         for ($i = 0; $i < 12; $i++) {
-            $nowDate = Carbon::createFromDate(2022, 01, 01, 'Asia/Jakarta')->addMonth($i)->format('F');
+            $nowDate = Carbon::createFromDate($request->input('year'), 01, 01, 'Asia/Jakarta')->addMonth($i)->format('F');
             // $month = Carbon::createFromFormat('d-m-Y', $nowDate)->translatedFormat('l');
             $months[] = $nowDate;
         }
